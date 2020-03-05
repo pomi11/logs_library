@@ -8,8 +8,8 @@ LOG::LOG()
 LOG::LOG(std::string header,std::string message,std::vector<std::pair<std::string,std::string>> custom)
 {
     date=QDateTime::currentDateTime();
-    sHeader=header;
-    sMessage=message;
+    this->header=header;
+    this->message=message;
     vCustoms=custom;
 }
 
@@ -91,6 +91,14 @@ void LOGS::add(std::string header,QDateTime,std::string message,std::vector<std:
 void LOGS::add_msg(std::string message)
 {
     LOG log = LOG(this->header,message,this->customs);
+    log.set_type(this->type);
+    this->logs.push_back(log);
+}
+
+void LOGS::add_msg(std::string message,std::string type)
+{
+    LOG log = LOG(this->header,message,this->customs);
+    log.set_type(type);
     this->logs.push_back(log);
 }
 
@@ -348,13 +356,45 @@ std::vector<LOG> LOGS::get_LOGs_by_date(QDateTime date)
 int LOGS::save(char mode) // w - zapisz bez nadpisywania(jeśli plik istnieje, robi nowy z nazwa_1), r - z nadpisywaniem, q - zapytaj, a - dopisz do istniejącego pliku
 {
     QFile file(QString::fromStdString(fileName));
-    file.open(QFileDevice::OpenModeFlag::ReadWrite);
+
+    file.open(QFileDevice::OpenModeFlag::Truncate | QFileDevice::OpenModeFlag::WriteOnly | QFile::Text);
     if(!file.isOpen())
     {
         std::cout<<"something_wrong";
         return -1;
     }
-    file.write("test",5);
+    file.write(header.c_str());
+   // QTextStream ts(&file);
+    file.write("\n");
+   // ts << endl;
+    foreach(auto item,logs)
+    {
+
+        if(item.get_header()!="")
+        {
+            file.write(item.get_header().c_str());
+            file.write("\t");
+        }
+
+        if(item.get_date(format)!="")
+        {
+            file.write(item.get_date(this->format).c_str());
+            file.write("\t");
+        }
+
+        if(item.get_type()=="")
+        {
+            item.set_type("[NORMAL]");
+        }
+
+        file.write(item.get_type().c_str());
+        file.write("\t");
+        file.write(item.get_message().c_str());
+        file.write("\n");
+    }
+    file.write("\n");
+   // ts << endl;
+    file.write(footer.c_str());
     file.close();
     return 0;
 }

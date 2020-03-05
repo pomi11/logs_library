@@ -7,11 +7,12 @@
 #include <vector>
 //#include <map>
 #include <QFileInfo>
+#include <QTextStream>
 
 class LOGS_LIBRARY_EXPORT LOG
 {
 private:
-    std::string sHeader,sMessage;
+    std::string header,message,type;
     QDateTime date;
     std::vector<std::pair<std::string,std::string>> vCustoms;
 
@@ -19,16 +20,19 @@ public:
     LOG();
     LOG(QDateTime date) {this->date=date;};
     LOG(std::string header,std::string message,std::vector<std::pair<std::string,std::string>> custom);
-    void set_message(std::string message)   {this->sMessage=message;};
+    void set_message(std::string message)   {this->message=message;};
     void set_customs(std::vector<std::pair<std::string,std::string>> custom) {vCustoms=custom;};
     void add_custom(std::string tag, std::string message);
     void add_customs(std::vector<std::pair<std::string,std::string>> custom);
     void set_date(std::string date,std::string format);
     void set_date(QDateTime date)   {this->date=date;};
-    void set_header(std::string header) {this->sHeader=header;};
-    std::string get_message() {return this->sMessage;};
+    void set_header(std::string header) {this->header=header;};
+    void set_type(std::string type) {this->type=type;};
+    std::string get_message() {return this->message;};
     std::string get_date(std::string format);
     QDateTime get_date();
+    std::string get_header() {return this->header;};
+    std::string get_type() {return this->type;};
 };
 
 /*class LOGS_LIBRARY_EXPORT FILE_STUCT
@@ -40,7 +44,7 @@ public:
 class LOGS_LIBRARY_EXPORT LOGS
 {
 private:
-    std::string login, fileName,path,mainHeader,header;
+    std::string login, fileName,path,mainHeader,header,format,footer,type;
     std::vector<LOG> logs;
     std::vector<std::pair<std::string,std::string>> customs;
     int autoSaveTime = 0;
@@ -57,6 +61,7 @@ public:
     void add(std::string header,std::string date,std::string format,std::string message,std::vector<std::pair<std::string,std::string>> customs);
     void add(std::string header,QDateTime,std::string message,std::vector<std::pair<std::string,std::string>> customs);
     void add_msg(std::string message);
+    void add_msg(std::string message,std::string type);
     void add_msg(std::string message, QDateTime date);
     void add_msg(std::string message,std::string date,std::string format);
     void add_msg(std::string message,std::vector<std::pair<std::string,std::string>> customs);
@@ -85,6 +90,11 @@ public:
 
     void set_file_name(std::string fileName) {this->fileName=fileName;};
     void set_file_path(std::string path) {this->path=path;};
+
+    void set_date_format(std::string format) {this->format=format;};
+    void set_main_header(std::string header) {this->mainHeader=header;};
+    void set_footer(std::string footer) {this->footer=footer;};
+    void set_default_type(std::string type) {this->type=type;};
 
     int save(char mode='r'); // w - zapisz bez nadpisywania(jeśli plik istnieje, robi nowy z nazwa_1), r - z nadpisywaniem, q - zapytaj, a - dopisz do istniejącego pliku
 
