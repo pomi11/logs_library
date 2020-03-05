@@ -1,5 +1,6 @@
 #include "logs_library.h"
 
-Logs_library::Logs_library()
+LOG::LOG()
 {
+    std::cout<<"To dziala!";
 }

@@ -2,11 +2,12 @@
 #define LOGS_LIBRARY_H
 
 #include "logs_library_global.h"
+#include <iostream>
 
-class LOGS_LIBRARY_EXPORT Logs_library
+class LOGS_LIBRARY_EXPORT LOG
 {
 public:
-    Logs_library();
+    LOG();
 };
 
 #endif // LOGS_LIBRARY_H
