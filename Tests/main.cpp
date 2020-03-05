@@ -5,11 +5,12 @@
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
-    QDateTime qdt = QDateTime::currentDateTime();
 
+    LOGS log;
 
-    QDateTime afw = QDateTime::fromString(QDateTime::currentDateTime().toString("dd:MMMM:yyyy//HH:mm:ss"),"dd:MMMM:yyyy//HH:mm:ss");
-    QDate dd= QDate::fromString()
-    qDebug()<<afw;
+    log.set_file_name("D:\\test.txt");
+    log.save();
+    qDebug()<<"koniec?";
     return a.exec();
 }
+
