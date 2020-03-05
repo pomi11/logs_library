@@ -3,6 +3,7 @@
 LOG::LOG()
 {
     date=QDateTime::currentDateTime();
+    format="dd.MM.yyyy hh:mm:ss";
 }
 
 LOG::LOG(std::string header,std::string message,std::vector<std::pair<std::string,std::string>> custom)
@@ -10,6 +11,7 @@ LOG::LOG(std::string header,std::string message,std::vector<std::pair<std::strin
     date=QDateTime::currentDateTime();
     this->header=header;
     this->message=message;
+    format="dd.MM.yyyy hh:mm:ss";
     vCustoms=custom;
 }
 
@@ -28,6 +30,7 @@ void LOG::add_customs(std::vector<std::pair<std::string,std::string>> custom)
 
 void LOG::set_date(std::string date,std::string format)
 {
+    this->format=format;
     this->date=QDateTime::fromString(QString::fromStdString(date),QString::fromStdString(format));
 }
 
@@ -39,6 +42,102 @@ std::string LOG::get_date(std::string format)
 QDateTime LOG::get_date()
 {
     return this->date;
+}
+FILE_STRUCT::FILE_STRUCT(std::string filePath,std::string header,std::string footer,std::vector<LOG> elements)
+{
+    this->filePath=filePath;
+    this->header=header;
+    this->footer=footer;
+    this->elements=elements;
+}
+
+int FILE_STRUCT::write(char mode)
+{
+    QFile file(QString::fromStdString(filePath));
+
+    file.open(QFileDevice::OpenModeFlag::Truncate | QFileDevice::OpenModeFlag::WriteOnly | QFile::Text);
+    if(!file.isOpen())
+    {
+        std::cout<<"something_wrong";
+        return -1;
+    }
+    file.write(header.c_str());
+    if(newLineHeader)
+        file.write("\n");
+
+    std::string format = (*elements.begin()).get_date_format();
+
+    std::cout<<"testowe"<<format;
+
+    foreach(auto item,elements)
+    {
+
+        if(item.get_header()!="")
+        {
+            if(braces.first!="")
+                file.write(braces.first.c_str());
+
+            file.write(item.get_header().c_str());
+
+            if(braces.second!="")
+                file.write(braces.second.c_str());
+
+            if(newLineElements)
+                file.write("\n");
+            else
+                file.write("\t");
+        }
+
+        if(item.get_date(format)!="")
+        {
+            if(braces.first!="")
+                file.write(braces.first.c_str());
+
+            file.write(item.get_date(format).c_str());
+
+            if(braces.second!="")
+                file.write(braces.second.c_str());
+
+            if(newLineElements)
+                file.write("\n");
+            else
+                file.write("\t");
+        }
+
+        if(item.get_type()=="")
+        {
+            item.set_type("NORMAL");
+        }
+
+        if(braces.first!="")
+            file.write(braces.first.c_str());
+
+        file.write(item.get_type().c_str());
+
+        if(braces.second!="")
+            file.write(braces.second.c_str());
+
+        if(newLineElements)
+            file.write("\n");
+        else
+            file.write("\t");
+
+        if(braces.first!="")
+            file.write(braces.first.c_str());
+
+        file.write(item.get_message().c_str());
+
+        if(braces.second!="")
+            file.write(braces.second.c_str());
+
+        file.write("\n");
+    }
+
+    if(newLineFooter)
+        file.write("\n");
+    file.write(footer.c_str());
+
+    file.close();
 }
 
 LOGS::LOGS()
@@ -65,6 +164,7 @@ void LOGS::add(std::string header,QDateTime date,std::string message)
     LOG log = LOG();
     log.set_header(header);
     log.set_date(date);
+    log.set_date_format(this->format);
     log.set_message(message);
     this->logs.push_back(log);
 }
@@ -92,6 +192,7 @@ void LOGS::add_msg(std::string message)
 {
     LOG log = LOG(this->header,message,this->customs);
     log.set_type(this->type);
+    log.set_date_format(this->format);
     this->logs.push_back(log);
 }
 
@@ -99,6 +200,7 @@ void LOGS::add_msg(std::string message,std::string type)
 {
     LOG log = LOG(this->header,message,this->customs);
     log.set_type(type);
+    log.set_date_format(this->format);
     this->logs.push_back(log);
 }
 
@@ -106,6 +208,7 @@ void LOGS::add_msg(std::string message, QDateTime date)
 {
     LOG log = LOG(this->header,message,this->customs);
     log.set_date(date);
+    log.set_date_format(this->format);
     this->logs.push_back(log);
 }
 
@@ -119,6 +222,7 @@ void LOGS::add_msg(std::string message,std::string date,std::string format)
 void LOGS::add_msg(std::string message,std::vector<std::pair<std::string,std::string>> customs)
 {
     LOG log = LOG(this->header,message,customs);
+    log.set_date_format(this->format);
     this->logs.push_back(log);
 }
 
@@ -355,47 +459,9 @@ std::vector<LOG> LOGS::get_LOGs_by_date(QDateTime date)
 
 int LOGS::save(char mode) // w - zapisz bez nadpisywania(jeśli plik istnieje, robi nowy z nazwa_1), r - z nadpisywaniem, q - zapytaj, a - dopisz do istniejącego pliku
 {
-    QFile file(QString::fromStdString(fileName));
-
-    file.open(QFileDevice::OpenModeFlag::Truncate | QFileDevice::OpenModeFlag::WriteOnly | QFile::Text);
-    if(!file.isOpen())
-    {
-        std::cout<<"something_wrong";
-        return -1;
-    }
-    file.write(header.c_str());
-   // QTextStream ts(&file);
-    file.write("\n");
-   // ts << endl;
-    foreach(auto item,logs)
-    {
-
-        if(item.get_header()!="")
-        {
-            file.write(item.get_header().c_str());
-            file.write("\t");
-        }
-
-        if(item.get_date(format)!="")
-        {
-            file.write(item.get_date(this->format).c_str());
-            file.write("\t");
-        }
-
-        if(item.get_type()=="")
-        {
-            item.set_type("[NORMAL]");
-        }
-
-        file.write(item.get_type().c_str());
-        file.write("\t");
-        file.write(item.get_message().c_str());
-        file.write("\n");
-    }
-    file.write("\n");
-   // ts << endl;
-    file.write(footer.c_str());
-    file.close();
+    FILE_STRUCT toSave = FILE_STRUCT(fileName,mainHeader,footer,logs);
+    toSave.set_braces(braces);
+    toSave.write();
     return 0;
 }
 

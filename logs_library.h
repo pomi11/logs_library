@@ -5,14 +5,14 @@
 #include <QDateTime>
 #include <iostream>
 #include <vector>
-//#include <map>
+#include <map>
 #include <QFileInfo>
 #include <QTextStream>
 
 class LOGS_LIBRARY_EXPORT LOG
 {
 private:
-    std::string header,message,type;
+    std::string header,message,type,format;
     QDateTime date;
     std::vector<std::pair<std::string,std::string>> vCustoms;
 
@@ -26,6 +26,7 @@ public:
     void add_customs(std::vector<std::pair<std::string,std::string>> custom);
     void set_date(std::string date,std::string format);
     void set_date(QDateTime date)   {this->date=date;};
+    void set_date_format(std::string format) {this->format=format;};
     void set_header(std::string header) {this->header=header;};
     void set_type(std::string type) {this->type=type;};
     std::string get_message() {return this->message;};
@@ -33,13 +34,37 @@ public:
     QDateTime get_date();
     std::string get_header() {return this->header;};
     std::string get_type() {return this->type;};
+    std::string get_date_format() {return this->format;};
 };
 
-/*class LOGS_LIBRARY_EXPORT FILE_STUCT
+class LOGS_LIBRARY_EXPORT FILE_STRUCT
 {
+private:
+        bool newLineHeader = true;
+        bool newLineElements = false;
+        bool newLineFooter = true;
+        std::vector<LOG> elements;
+        std::map<std::string,std::string> tags;
+        std::pair<std::string,std::string> braces;
+        std::string header,footer,filePath;
+public:
+        FILE_STRUCT(std::string filePath,std::string header,std::string footer,std::vector<LOG> elements);
 
+        void set_new_line_header(bool value) {newLineHeader=value;};
+        void set_new_line_elements(bool value) {newLineElements=value;};
+        void set_new_line_footer(bool value) {newLineFooter=value;};
+
+        void set_elements(std::vector<LOG> logs) {elements=logs;};
+
+        void set_tags(std::map<std::string,std::string> tags) {this->tags=tags;};
+        void add_tags(std::string name,std::string value) {tags[name]=value;};
+        void add_tags(std::string name) {tags[name]=name;};
+
+        void set_braces(std::string start,std::string end) {this->braces=std::make_pair(start,end);};
+        void set_braces(std::pair<std::string,std::string> braces) {this->braces=braces;};
+
+        int write(char mode = 'r');
 };
-*/
 
 class LOGS_LIBRARY_EXPORT LOGS
 {
@@ -47,6 +72,7 @@ private:
     std::string login, fileName,path,mainHeader,header,format,footer,type;
     std::vector<LOG> logs;
     std::vector<std::pair<std::string,std::string>> customs;
+    std::pair<std::string,std::string> braces;
     int autoSaveTime = 0;
 public:
     LOGS();
@@ -101,6 +127,8 @@ public:
     void autosave_start();
     void autosave_start(int autoSaveTime);
     void set_autosave_time(int time) {this->autoSaveTime=time;};
+    void set_braces(std::string start,std::string end) {this->braces=std::make_pair(start,end);};
+    void set_braces(std::pair<std::string,std::string> braces) {this->braces=braces;};
 };
 
 #endif // LOGS_LIBRARY_H
