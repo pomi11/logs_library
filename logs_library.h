@@ -8,7 +8,7 @@
 #include <map>
 #include <QFileInfo>
 #include <QTextStream>
-
+//
 class LOGS_LIBRARY_EXPORT LOG
 {
 private:
