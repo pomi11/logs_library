@@ -139,7 +139,7 @@ int FILE_STRUCT::write(char mode)
 
     file.close();
 }
-
+/*
 LOGS::LOGS()
 {
 
@@ -474,3 +474,4 @@ void LOGS::autosave_start(int autoSaveTime)
 {
     this->autoSaveTime=autoSaveTime;
 }
+*/

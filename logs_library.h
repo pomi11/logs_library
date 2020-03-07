@@ -8,7 +8,7 @@
 #include <map>
 #include <QFileInfo>
 #include <QTextStream>
-//
+
 class LOGS_LIBRARY_EXPORT LOG
 {
 private:
@@ -39,33 +39,50 @@ public:
 
 class LOGS_LIBRARY_EXPORT FILE_STRUCT
 {
-private:
-        bool newLineHeader = true;
-        bool newLineElements = false;
-        bool newLineFooter = true;
-        std::vector<LOG> elements;
-        std::map<std::string,std::string> tags;
-        std::pair<std::string,std::string> braces;
-        std::string header,footer,filePath;
+protected:
+    bool newLineHeader = true;
+    bool newLineElements = false;
+    bool newLineFooter = true;
+    std::vector<LOG> elements;
+    std::map<std::string,std::string> tags;
+    std::pair<std::string,std::string> braces;
+    std::string header,footer,filePath;
 public:
-        FILE_STRUCT(std::string filePath,std::string header,std::string footer,std::vector<LOG> elements);
+    FILE_STRUCT(std::string filePath,std::string header,std::string footer,std::vector<LOG> elements);
 
-        void set_new_line_header(bool value) {newLineHeader=value;};
-        void set_new_line_elements(bool value) {newLineElements=value;};
-        void set_new_line_footer(bool value) {newLineFooter=value;};
+    void set_new_line_header(bool value) {newLineHeader=value;};
+    void set_new_line_elements(bool value) {newLineElements=value;};
+    void set_new_line_footer(bool value) {newLineFooter=value;};
 
-        void set_elements(std::vector<LOG> logs) {elements=logs;};
+    void set_elements(std::vector<LOG> logs) {elements=logs;};
 
-        void set_tags(std::map<std::string,std::string> tags) {this->tags=tags;};
-        void add_tags(std::string name,std::string value) {tags[name]=value;};
-        void add_tags(std::string name) {tags[name]=name;};
+    void set_tags(std::map<std::string,std::string> tags) {this->tags=tags;};
+    void add_tags(std::string name,std::string value) {tags[name]=value;};
+    void add_tags(std::string name) {tags[name]=name;};
 
-        void set_braces(std::string start,std::string end) {this->braces=std::make_pair(start,end);};
-        void set_braces(std::pair<std::string,std::string> braces) {this->braces=braces;};
+    void set_braces(std::string start,std::string end) {this->braces=std::make_pair(start,end);};
+    void set_braces(std::pair<std::string,std::string> braces) {this->braces=braces;};
 
-        int write(char mode = 'r');
+    int write(char mode = 'r');
 };
 
+class LOGS_LIBRARY_EXPORT XML: public FILE_STRUCT
+{
+public:
+    XML(std::string filePath,std::string header,std::string footer,std::vector<LOG> elements)
+        :FILE_STRUCT(filePath,header,footer,elements){};
+    //       int write(char mode = 'r');
+};
+
+class LOGS_LIBRARY_EXPORT TXT: public FILE_STRUCT
+{
+public:
+    TXT(std::string filePath,std::string header,std::string footer,std::vector<LOG> elements)
+        :FILE_STRUCT(filePath,header,footer,elements){};
+    //        int write(char mode = 'r');
+};
+
+/*
 class LOGS_LIBRARY_EXPORT LOGS
 {
 private:
@@ -130,6 +147,7 @@ public:
     void set_braces(std::string start,std::string end) {this->braces=std::make_pair(start,end);};
     void set_braces(std::pair<std::string,std::string> braces) {this->braces=braces;};
 };
+*/
 
 #endif // LOGS_LIBRARY_H
 

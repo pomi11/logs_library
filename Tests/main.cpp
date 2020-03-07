@@ -1,12 +1,12 @@
 #include <QCoreApplication>
-#include <../logs_library.h>
+#include <../logs.h>
 #include <QDebug>
 
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
 
-    LOGS log;
+    LOGS<TXT> log;
 
     log.set_file_name("D:\\test.txt");
     log.set_date_format("dd//MM//yyyy");

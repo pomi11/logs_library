@@ -20,6 +20,7 @@ SOURCES += \
     logs_library.cpp
 
 HEADERS += \
+    logs.h \
     logs_library_global.h \
     logs_library.h
 
