@@ -17,12 +17,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    logs_library.cpp
+    file_struct.cpp \
+    log.cpp \
+    logs.cpp \
+    logs_library.cpp \
+    sys_info.cpp
 
 HEADERS += \
+    file_struct.h \
+    log.h \
     logs.h \
     logs_library_global.h \
-    logs_library.h
+    logs_library.h \
+    sys_info.h
 
 TRANSLATIONS += \
     logs_library_pl_PL.ts
@@ -32,3 +39,4 @@ unix {
     target.path = /usr/lib
 }
 !isEmpty(target.path): INSTALLS += target
+LIBS += -lpsapi

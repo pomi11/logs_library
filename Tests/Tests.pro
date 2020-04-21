@@ -29,5 +29,7 @@ win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../release/ -llogs_library
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../debug/ -llogs_library
 else:unix: LIBS += -L$$PWD/../ -llogs_library
 
+LIBS += -lpsapi
+
 INCLUDEPATH += $$PWD/../debug
 DEPENDPATH += $$PWD/../debug

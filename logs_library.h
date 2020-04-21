@@ -8,79 +8,10 @@
 #include <map>
 #include <QFileInfo>
 #include <QTextStream>
+#include "logs.h"
 
-class LOGS_LIBRARY_EXPORT LOG
-{
-private:
-    std::string header,message,type,format;
-    QDateTime date;
-    std::vector<std::pair<std::string,std::string>> vCustoms;
 
-public:
-    LOG();
-    LOG(QDateTime date) {this->date=date;};
-    LOG(std::string header,std::string message,std::vector<std::pair<std::string,std::string>> custom);
-    void set_message(std::string message)   {this->message=message;};
-    void set_customs(std::vector<std::pair<std::string,std::string>> custom) {vCustoms=custom;};
-    void add_custom(std::string tag, std::string message);
-    void add_customs(std::vector<std::pair<std::string,std::string>> custom);
-    void set_date(std::string date,std::string format);
-    void set_date(QDateTime date)   {this->date=date;};
-    void set_date_format(std::string format) {this->format=format;};
-    void set_header(std::string header) {this->header=header;};
-    void set_type(std::string type) {this->type=type;};
-    std::string get_message() {return this->message;};
-    std::string get_date(std::string format);
-    QDateTime get_date();
-    std::string get_header() {return this->header;};
-    std::string get_type() {return this->type;};
-    std::string get_date_format() {return this->format;};
-};
 
-class LOGS_LIBRARY_EXPORT FILE_STRUCT
-{
-protected:
-    bool newLineHeader = true;
-    bool newLineElements = false;
-    bool newLineFooter = true;
-    std::vector<LOG> elements;
-    std::map<std::string,std::string> tags;
-    std::pair<std::string,std::string> braces;
-    std::string header,footer,filePath;
-public:
-    FILE_STRUCT(std::string filePath,std::string header,std::string footer,std::vector<LOG> elements);
-
-    void set_new_line_header(bool value) {newLineHeader=value;};
-    void set_new_line_elements(bool value) {newLineElements=value;};
-    void set_new_line_footer(bool value) {newLineFooter=value;};
-
-    void set_elements(std::vector<LOG> logs) {elements=logs;};
-
-    void set_tags(std::map<std::string,std::string> tags) {this->tags=tags;};
-    void add_tags(std::string name,std::string value) {tags[name]=value;};
-    void add_tags(std::string name) {tags[name]=name;};
-
-    void set_braces(std::string start,std::string end) {this->braces=std::make_pair(start,end);};
-    void set_braces(std::pair<std::string,std::string> braces) {this->braces=braces;};
-
-    int write(char mode = 'r');
-};
-
-class LOGS_LIBRARY_EXPORT XML: public FILE_STRUCT
-{
-public:
-    XML(std::string filePath,std::string header,std::string footer,std::vector<LOG> elements)
-        :FILE_STRUCT(filePath,header,footer,elements){};
-    //       int write(char mode = 'r');
-};
-
-class LOGS_LIBRARY_EXPORT TXT: public FILE_STRUCT
-{
-public:
-    TXT(std::string filePath,std::string header,std::string footer,std::vector<LOG> elements)
-        :FILE_STRUCT(filePath,header,footer,elements){};
-    //        int write(char mode = 'r');
-};
 
 /*
 class LOGS_LIBRARY_EXPORT LOGS
