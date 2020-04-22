@@ -6,25 +6,28 @@ LOG::LOG()
     format="dd.MM.yyyy hh:mm:ss";
 }
 
-LOG::LOG(std::string header,std::string message,std::vector<std::pair<std::string,std::string>> custom)
+LOG::LOG(std::string header,std::string message,std::map<QString,QString> custom)
 {
     date=QDateTime::currentDateTime();
     this->header=header;
+    map["header"]=QString::fromStdString(header);
     this->message=message;
+    map["message"]=QString::fromStdString(message);
     format="dd.MM.yyyy hh:mm:ss";
-    vCustoms=custom;
+    map["date"]=date.toString(QString::fromStdString(format));
+    this->add_customs(custom);
 }
 
 void LOG::add_custom(std::string tag, std::string message)
 {
-    vCustoms.push_back(std::pair<std::string,std::string>(tag,message));
+    map[QString::fromStdString(tag)]=QString::fromStdString(message);
 }
 
-void LOG::add_customs(std::vector<std::pair<std::string,std::string>> custom)
+void LOG::add_customs(std::map<QString,QString> custom)
 {
     foreach(auto item,custom)
     {
-        vCustoms.push_back(item);
+        map[item.first]=item.second;
     }
 }
 
@@ -32,6 +35,7 @@ void LOG::set_date(std::string date,std::string format)
 {
     this->format=format;
     this->date=QDateTime::fromString(QString::fromStdString(date),QString::fromStdString(format));
+    map["date"]=this->date.toString(QString::fromStdString(format));
 }
 
 std::string LOG::get_date(std::string format)
@@ -43,7 +47,6 @@ QDateTime LOG::get_date()
 {
     return this->date;
 }
-
 
 /*
 LOGS::LOGS()

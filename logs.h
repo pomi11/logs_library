@@ -2,16 +2,21 @@
 #define LOGS_H
 
 #include "file_struct.h"
+#include "sys_info.h"
+#include <thread>
+#include <QtConcurrent/QtConcurrent>
 
 class LOGS
 {
 private:
     std::string login, fileName,path,mainHeader,header,format,footer,type;
     std::vector<LOG> logs;
-    std::vector<std::pair<std::string,std::string>> customs;
+    std::map<QString,QString> customs;
     std::pair<std::string,std::string> braces;
-    int autoSaveTime = 0;
-    FILE_STRUCT* fs;
+    int autoSaveTime = 10;
+    FILE_STRUCT* fs; // do ogarnięcia temat wycieku pamięci ewentualny
+    std::thread *thread;
+    bool stop = false;
 public:
     LOGS();
     LOGS(std::string fileName) {this->fileName = fileName;};
@@ -22,8 +27,8 @@ public:
     void add(LOG log);
     void add(std::string header,std::string date,std::string format,std::string message);
     void add(std::string header,QDateTime date,std::string message);
-    void add(std::string header,std::string date,std::string format,std::string message,std::vector<std::pair<std::string,std::string>> customs);
-    void add(std::string header,QDateTime,std::string message,std::vector<std::pair<std::string,std::string>> customs);
+    void add(std::string header,std::string date,std::string format,std::string message,std::map<QString,QString> customs);
+    void add(std::string header,QDateTime,std::string message,std::map<QString,QString> customs);
 
     /*void add_msg(std::string message);
     void add_msg(std::string message,std::string type);
@@ -35,7 +40,7 @@ public:
     void add_msg(std::string message,std::string date,std::string format,std::vector<std::pair<std::string,std::string>> customs);*/
 
     //void add_msg(std::string message,std::string type="", std::string header = "", std::string date="",std::string format="",std::vector<std::pair<std::string,std::string>> customs={});
-    void add_msg(std::string message,std::string type="", std::string header = "", QDateTime date=QDateTime(),std::string format="",std::vector<std::pair<std::string,std::string>> customs={});
+    void add_msg(std::string message,std::string type="", std::string header = "", QDateTime date=QDateTime(),std::string format="",std::map<QString,QString> customs={});
 
     void remove(int index);
     void remove(std::string message, bool all=true, bool first=false,bool last=false);
@@ -68,8 +73,10 @@ public:
 
     int save(QString filePath, char mode='r',FILE_STRUCT *file_struct = nullptr); // w - zapisz bez nadpisywania(jeśli plik istnieje, robi nowy z nazwa_1), r - z nadpisywaniem, q - zapytaj, a - dopisz do istniejącego pliku
 
-    void autosave_start();
-    void autosave_start(int autoSaveTime);
+    void autosave(QString filePath, char mode='r',FILE_STRUCT *file_struct = nullptr);
+    void autosave_start(int autoSaveTime,QString filePath, char mode='r',FILE_STRUCT *file_struct = nullptr);
+    void autosave_start(QString filePath, char mode='r',FILE_STRUCT *file_struct = nullptr);
+    void autosave_stop();
     void set_autosave_time(int time) {this->autoSaveTime=time;};
     void set_braces(std::string start,std::string end) {this->braces=std::make_pair(start,end);};
     void set_braces(std::pair<std::string,std::string> braces) {this->braces=braces;};

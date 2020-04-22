@@ -310,6 +310,27 @@ std::vector<std::string> SYS_INFO::get_info(std::vector<std::string> infoNames)
     return res;
 }
 
+std::map<QString,QString> SYS_INFO::get_info_map(std::vector<std::string> infoNames)
+{
+    std::map<QString,QString> res;
+    if(infoNames.size()==0)
+    {
+        for(auto it = infos.begin();it!=infos.end();it++)
+        {
+            res[QString::fromStdString(it->first)]=QString::fromStdString(it->second);
+        }
+    }
+    else
+    {
+        for(auto it = infoNames.begin();it!=infoNames.end();it++)
+        {
+            //res.push_back(infos[*it]);
+            res[QString::fromStdString(*it)]=QString::fromStdString(infos[*it]);
+        }
+    }
+    return res;
+}
+
 int SYS_INFO::set_enabled(std::string infoname, bool enable)
 {
     enabledInfos[infoname] = enable;
@@ -344,3 +365,18 @@ std::vector<std::string> SYS_INFO::listInfo()
 
     return res;
 }
+
+std::string exec_cmd(std::string &cmd)
+{
+    std::array<char, 128> buffer;
+    std::string result;
+    std::unique_ptr<FILE, decltype(&pclose)> pipe(popen(cmd.c_str(), "r"), pclose);
+    if (!pipe) {
+        throw std::runtime_error("popen() failed!");
+    }
+    while (fgets(buffer.data(), buffer.size(), pipe.get()) != nullptr) {
+        result += buffer.data();
+    }
+
+    return result;
+};

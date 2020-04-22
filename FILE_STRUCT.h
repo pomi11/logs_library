@@ -34,8 +34,9 @@ public:
 
     int write(char mode = 'r');*/
 
-    virtual std::string start_file() = 0;
-    virtual std::string log(QString header = "",QString content = "", QDateTime date = QDateTime()) = 0;
+    virtual std::string start_file(QString description) = 0;
+    virtual std::string sys_info(std::map<QString,QString> sysInfo) = 0;
+    virtual std::string log(std::vector<std::map<QString,QString>> logs) = 0;
     virtual std::string end_file() = 0;
 
 };
@@ -44,15 +45,23 @@ class XML: public FILE_STRUCT
 {
 private:
     std::vector<std::string> tags;
+    std::string file_header();
+    bool isNumLog=true, isSysSum=true,isFileDescr=true,isFileDate=true;
 public:
     XML(QString header,QString footer);
     XML();
-    std::string log(QString header = "",QString content = "", QDateTime date = QDateTime())  override;
+    std::string log(std::vector<std::map<QString,QString>> logs)  override;
     std::string end_file() override;
-    std::string start_file() override;
+    std::string start_file(QString description) override;
+    std::string sys_info(std::map<QString,QString> sysInfo) override;
+
+    void show_num_log(bool enable) {isNumLog=enable;};
+    void show_file_date(bool enable) {isFileDate=enable;};
+    void show_file_descr(bool enable) {isFileDescr=enable;};
+    void show_sys_info(bool enable) {isSysSum=enable;};
 
     int set_file_header(std::string header);
-    int set_log_header(std::string header);
+    /*int set_log_header(std::string header);*/
 };
 
 class TXT: public FILE_STRUCT
@@ -60,9 +69,9 @@ class TXT: public FILE_STRUCT
 public:
     TXT(QString header,QString footer);
     TXT();
-    std::string log(QString header = "",QString content = "", QDateTime date = QDateTime())  override;
+    std::string log(std::vector<std::map<QString,QString>> logs)  override;
     std::string end_file() override;
-    std::string start_file() override;
+    std::string start_file(QString description) override;
 };
 
 #endif // FILE_STRUCT_H

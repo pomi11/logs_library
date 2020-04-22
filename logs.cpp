@@ -30,22 +30,22 @@ void LOGS::add(std::string header,QDateTime date,std::string message)
     this->logs.push_back(log);
 }
 
-void LOGS::add(std::string header,std::string date,std::string format,std::string message,std::vector<std::pair<std::string,std::string>> customs)
+void LOGS::add(std::string header,std::string date,std::string format,std::string message,std::map<QString,QString> customs)
 {
     LOG log = LOG();
     log.set_header(header);
     log.set_date(date,format);
     log.set_message(message);
-    log.set_customs(customs);
+    log.add_customs(customs);
     this->logs.push_back(log);
 }
 
-void LOGS::add(std::string header,QDateTime,std::string message,std::vector<std::pair<std::string,std::string>> customs)
+void LOGS::add(std::string header,QDateTime,std::string message,std::map<QString,QString> customs)
 {
     LOG log = LOG();
     log.set_header(header);
     log.set_message(message);
-    log.set_customs(customs);
+    log.add_customs(customs);
     this->logs.push_back(log);
 }
 /*
@@ -123,7 +123,7 @@ template<class T> void LOGS<T>::add_msg(std::string message,std::string date,std
     logs.push_back(log);
 }
 */
-void LOGS::add_msg(std::string message, std::string type, std::string header, QDateTime date, std::string format, std::vector<std::pair<std::string, std::string>> customs)
+void LOGS::add_msg(std::string message, std::string type, std::string header, QDateTime date, std::string format, std::map<QString,QString> customs)
 {
     if(type=="")
         type = this->type;
@@ -147,7 +147,7 @@ void LOGS::add_msg(std::string message, std::string type, std::string header, QD
     log.set_type(type);
     log.set_header(header);
     log.set_date(date);
-    log.set_customs(customs);
+    log.add_customs(customs);
     log.set_message(message);
 
     logs.push_back(log);
@@ -380,28 +380,52 @@ std::vector<LOG> LOGS::get_LOGs_by_date(QDateTime date)
 int LOGS::save(QString filePath, char mode, FILE_STRUCT *fileStruct) // w - zapisz bez nadpisywania(jeśli plik istnieje, robi nowy z nazwa_1), r - z nadpisywaniem, q - zapytaj, a - dopisz do istniejącego pliku
 {
     //T toSave = T(fileName,mainHeader,footer,logs);
-    if(fileStruct==nullptr)
+   /* if(fileStruct==nullptr)
     {
-        std::cout<<"Brak struktury pliku";
+        std::cout<<"Brak struktury pliku. Uzyty zostanie domyslny";
     }
-    else
+    else*/
+    if(fileStruct!=nullptr)
         this->fs = fileStruct;
 
     QFile file(filePath);
-    file.open(QFile::Append|QFile::Text);
-    file.write(fs->start_file().c_str());
-    file.write(fs->log("TEST","testowy log",QDateTime::currentDateTime()).c_str());
+    file.open(QFile::WriteOnly|QFile::Text);
+    file.write(fs->start_file("").c_str());
+    std::vector<std::map<QString,QString>> map;
+    for(auto it = this->logs.begin();it!=this->logs.end();it++)
+    {
+        map.push_back(it->get_val_map());
+    }
+    file.write(fs->sys_info(SYS_INFO().get_info_map()).c_str());
+    file.write(fs->log(map).c_str());
     file.write(fs->end_file().c_str());
     file.close();
     return 0;
 }
 
-void LOGS::autosave_start()
+void LOGS::autosave(QString filePath, char mode, FILE_STRUCT *fileStruct)
 {
-
+    while(!stop)
+    {
+        save(filePath,mode,fileStruct);
+        QThread::sleep(autoSaveTime);
+    }
 }
 
-void LOGS::autosave_start(int autoSaveTime)
+void LOGS::autosave_start(QString filePath, char mode,FILE_STRUCT *fileStruct)
+{
+    auto func1 = std::bind(&LOGS::autosave,this,filePath,mode,fileStruct);
+    QtConcurrent::run(func1);
+}
+
+void LOGS::autosave_stop()
+{
+    this->stop=true;
+   // this->thread->
+}
+
+void LOGS::autosave_start(int autoSaveTime,QString filePath, char mode,FILE_STRUCT *fileStruct)
 {
     this->autoSaveTime=autoSaveTime;
+    autosave_start(filePath,mode);
 }
