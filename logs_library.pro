@@ -1,5 +1,5 @@
 QT -= gui
-
+QT += network
 TEMPLATE = lib
 DEFINES += LOGS_LIBRARY_LIBRARY
 
@@ -17,14 +17,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    directserver.cpp \
     file_struct.cpp \
+    iconnector.cpp \
     log.cpp \
     logs.cpp \
     logs_library.cpp \
     sys_info.cpp
 
 HEADERS += \
+    directserver.h \
     file_struct.h \
+    iconnector.h \
     log.h \
     logs.h \
     logs_library_global.h \

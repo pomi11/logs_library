@@ -1,12 +1,13 @@
 #ifndef FILE_STRUCT_H
 #define FILE_STRUCT_H
 
+#include "logs_library_global.h"
 #include <iostream>
 #include <vector>
 #include <map>
 #include "log.h"
 
-class FILE_STRUCT
+class LOGS_LIBRARY_EXPORT FILE_STRUCT
 {
 /*protected:
     /*bool newLineHeader = true;

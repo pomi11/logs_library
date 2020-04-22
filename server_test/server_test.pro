@@ -17,19 +17,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp
 
-TRANSLATIONS += \
-    Tests_pl_PL.ts
-
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
+
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../release/ -llogs_library
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../debug/ -llogs_library
 else:unix: LIBS += -L$$PWD/../ -llogs_library
-
-LIBS += -lpsapi
-
-INCLUDEPATH += $$PWD/../debug
-DEPENDPATH += $$PWD/../debug

@@ -1,10 +1,12 @@
 #ifndef LOG_H
 #define LOG_H
 
+#include "logs_library_global.h"
 #include <QDateTime>
 #include <map>
 
-class LOG
+
+class LOGS_LIBRARY_EXPORT LOG
 {
 private:
     std::string header,message,type,format;

@@ -1,12 +1,13 @@
 #ifndef LOGS_H
 #define LOGS_H
 
+#include "logs_library_global.h"
 #include "file_struct.h"
 #include "sys_info.h"
 #include <thread>
 #include <QtConcurrent/QtConcurrent>
 
-class LOGS
+class LOGS_LIBRARY_EXPORT LOGS
 {
 private:
     std::string login, fileName,path,mainHeader,header,format,footer,type;

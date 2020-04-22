@@ -1,6 +1,7 @@
 #ifndef SYSTEM_INFO_H
 #define SYSTEM_INFO_H
 
+#include "logs_library_global.h"
 #include <iostream>
 #include <vector>
 #include <cpuid.h>
@@ -25,7 +26,7 @@
     #include <unistd.h>
 #endif
 
-struct DISK_INFO
+struct LOGS_LIBRARY_EXPORT DISK_INFO
 {
     std::string name;
     int number;
@@ -40,7 +41,7 @@ struct DISK_INFO
 
 };*/
 
-class SYS_INFO
+class LOGS_LIBRARY_EXPORT SYS_INFO
 {
 private:
     std::map<std::string,bool> enabledInfos;
