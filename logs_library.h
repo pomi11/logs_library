@@ -18,28 +18,28 @@ class LOGS_LIBRARY_EXPORT LOGS
 {
 private:
     std::string login, fileName,path,mainHeader,header,format,footer,type;
-    std::vector<LOG> logs;
-    std::vector<std::pair<std::string,std::string>> customs;
+    QVector<LOG> logs;
+    QVector<std::pair<std::string,std::string>> customs;
     std::pair<std::string,std::string> braces;
     int autoSaveTime = 0;
 public:
     LOGS();
     LOGS(std::string fileName) {this->fileName = fileName;};
     LOGS(std::string fileName,std::string path) {this->fileName=fileName;this->path=path;};
-    LOGS(std::vector<LOG> logs) {this->logs = logs;};
-    LOGS(std::string fileName,std::vector<LOG> logs) {this->fileName = fileName;this->logs = logs;};
+    LOGS(QVector<LOG> logs) {this->logs = logs;};
+    LOGS(std::string fileName,QVector<LOG> logs) {this->fileName = fileName;this->logs = logs;};
 
     void add(LOG log);
     void add(std::string header,std::string date,std::string format,std::string message);
     void add(std::string header,QDateTime date,std::string message);
-    void add(std::string header,std::string date,std::string format,std::string message,std::vector<std::pair<std::string,std::string>> customs);
-    void add(std::string header,QDateTime,std::string message,std::vector<std::pair<std::string,std::string>> customs);
+    void add(std::string header,std::string date,std::string format,std::string message,QVector<std::pair<std::string,std::string>> customs);
+    void add(std::string header,QDateTime,std::string message,QVector<std::pair<std::string,std::string>> customs);
     void add_msg(std::string message);
     void add_msg(std::string message,std::string type);
     void add_msg(std::string message, QDateTime date);
     void add_msg(std::string message,std::string date,std::string format);
-    void add_msg(std::string message,std::vector<std::pair<std::string,std::string>> customs);
-    void add_msg(std::string message,std::string date,std::string format,std::vector<std::pair<std::string,std::string>> customs);
+    void add_msg(std::string message,QVector<std::pair<std::string,std::string>> customs);
+    void add_msg(std::string message,std::string date,std::string format,QVector<std::pair<std::string,std::string>> customs);
 
     void remove(int index);
     void remove(std::string message, bool all=true, bool first=false,bool last=false);
@@ -55,12 +55,12 @@ public:
     LOG* get_LOG(std::string date,std::string format, bool reverse=false);
     LOG* get_LOG(QDateTime date, bool reverse=false);
 
-    std::vector<LOG> get_LOGs();
-    std::vector<LOG> get_LOGs(int indexFrom = 0, int indexTo = 0);
-    std::vector<LOG> get_LOGs(std::string message);
-    std::vector<LOG> get_LOGs_by_date(std::string date,std::string format);
-    std::vector<LOG> get_LOGs_by_date(QDateTime date);
-   // std::vector<LOG> get_LOGs_by_date();
+    QVector<LOG> get_LOGs();
+    QVector<LOG> get_LOGs(int indexFrom = 0, int indexTo = 0);
+    QVector<LOG> get_LOGs(std::string message);
+    QVector<LOG> get_LOGs_by_date(std::string date,std::string format);
+    QVector<LOG> get_LOGs_by_date(QDateTime date);
+   // QVector<LOG> get_LOGs_by_date();
 
     void set_file_name(std::string fileName) {this->fileName=fileName;};
     void set_file_path(std::string path) {this->path=path;};

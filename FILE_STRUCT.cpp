@@ -22,19 +22,19 @@ std::string XML::start_file(QString description)
     return result.toStdString();
 }
 
-std::string XML::log(std::vector<std::map<QString,QString>> logs)
+std::string XML::log(QVector<QMap<QString,QString>> logs)
 {
     QString result;
     result+="\n\t<LOGS>";
 
-    for(size_t i=0;i<logs.capacity();i++)
+    for(int i=0;i<logs.count();i++)
     {
         result+="\n\t\t<LOG num=\""+QString::number(i+1)+"\">\n";
         for(auto it=logs.at(i).begin();it!=logs.at(i).end();it++)
         {
-            QString tag = it->first;
+            QString tag = it.key();
             tag.remove(":");
-            result+="\t\t   <"+tag+">  "+it->second+"  </"+tag+">\n";
+            result+="\t\t   <"+tag+">  "+it.value()+"  </"+tag+">\n";
         }
         result+="\t\t</LOG>\n";
     }
@@ -43,16 +43,16 @@ std::string XML::log(std::vector<std::map<QString,QString>> logs)
     return result.toStdString();
 }
 
-std::string XML::sys_info(std::map<QString,QString> sysInfo)
+std::string XML::sys_info(QMap<QString,QString> sysInfo)
 {
     QString result;
     result+="\n\t<SYSTEM_INFO>\n";
 
     for(auto it=sysInfo.begin();it!=sysInfo.end();it++)
     {
-        QString tag = it->first;
+        QString tag = it.key();
         tag.remove(":");
-        result+="\t\t<"+tag+">  "+it->second+"  </"+tag+">\n";
+        result+="\t\t<"+tag+">  "+it.value()+"  </"+tag+">\n";
     }
 
     result+="\t</SYSTEM_INFO>\n";
@@ -79,7 +79,7 @@ std::string TXT::start_file(QString description)
     return "to jest startTXT\n";
 }
 
-std::string TXT::log(std::vector<std::map<QString,QString>> logs)
+std::string TXT::log(QVector<QMap<QString,QString>> logs)
 {
     //std::string res = header.toStdString()+"\n \t"+date.toString("dd.MM.yyyy").toStdString()+" "+content.toStdString()+"\nTXT_LOG\n";
   //  return infos.at(0).toStdString();
@@ -90,100 +90,34 @@ std::string TXT::end_file()
     return "to jest endTXT";
 }
 
-/*FILE_STRUCT::FILE_STRUCT(std::string filePath,std::string header,std::string footer,std::vector<LOG> elements)
+QDataStream& operator>>(QDataStream& in,XML *& fs)
 {
-    this->filePath=filePath;
-    this->header=header;
-    this->footer=footer;
-    this->elements=elements;
+
+    //std::string s_login, s_fileName,s_path,s_mainHeader,s_header,s_format,s_footer,s_type;
+    QVector<QString> tags;
+    bool isNumLog,isSysSum,isFileDescr,isFileDate;
+    in >>tags;
+    in>>isNumLog;
+    in>>isSysSum;
+    in>>isFileDescr;
+    in>>isFileDate;
+    // qDebug()<<fullPath;
+    fs = new XML();
+    fs->set_tags(tags);
+    fs->show_num_log(isNumLog);
+    fs->show_sys_info(isSysSum);
+    fs->show_file_descr(isFileDescr);
+    fs->show_file_date(isFileDate);
+
+    return in;
 }
 
-int FILE_STRUCT::write(char mode)
+QDataStream& operator<<(QDataStream& out,XML &fs)
 {
-    QFile file(QString::fromStdString(filePath));
-
-    file.open(QFileDevice::OpenModeFlag::Truncate | QFileDevice::OpenModeFlag::WriteOnly | QFile::Text);
-    if(!file.isOpen())
-    {
-        std::cout<<"something_wrong";
-        return -1;
-    }
-    file.write(header.c_str());
-    if(newLineHeader)
-        file.write("\n");
-
-    std::string format = elements.begin()->get_date_format();
-
-    std::cout<<"testowe"<<format;
-
-    foreach(auto item,elements)
-    {
-
-        if(item.get_header()!="")
-        {
-            if(braces.first!="")
-                file.write(braces.first.c_str());
-
-            file.write(item.get_header().c_str());
-
-            if(braces.second!="")
-                file.write(braces.second.c_str());
-
-            if(newLineElements)
-                file.write("\n");
-            else
-                file.write("\t");
-        }
-
-        if(item.get_date(format)!="")
-        {
-            if(braces.first!="")
-                file.write(braces.first.c_str());
-
-            file.write(item.get_date(format).c_str());
-
-            if(braces.second!="")
-                file.write(braces.second.c_str());
-
-            if(newLineElements)
-                file.write("\n");
-            else
-                file.write("\t");
-        }
-
-        if(item.get_type()=="")
-        {
-            item.set_type("NORMAL");
-        }
-
-        if(braces.first!="")
-            file.write(braces.first.c_str());
-
-        file.write(item.get_type().c_str());
-
-        if(braces.second!="")
-            file.write(braces.second.c_str());
-
-        if(newLineElements)
-            file.write("\n");
-        else
-            file.write("\t");
-
-        if(braces.first!="")
-            file.write(braces.first.c_str());
-
-        file.write(item.get_message().c_str());
-
-        if(braces.second!="")
-            file.write(braces.second.c_str());
-
-        file.write("\n");
-    }
-
-    if(newLineFooter)
-        file.write("\n");
-    file.write(footer.c_str());
-
-    file.close();
+    out<<fs.get_tags();
+    out<<fs.is_num_log();
+    out<<fs.is_sys_info();
+    out<<fs.is_file_descr();
+    out<<fs.is_file_date();
+    return out;
 }
-*/

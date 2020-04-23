@@ -1,22 +1,19 @@
 #include <QCoreApplication>
-#include <../logs_library.h>
-#include <QDebug>
-#include <iostream>
-//#include <cpuid.h>
-#include <QSysInfo>
-#include <QStorageInfo>
-#include <QStandardPaths>
-#include "../sys_info.h"
-#include "../directserver.h"
+#include "logs.h"
+#include "iconnector.h"
+#include <QTcpSocket>
+//#include "../sys_info.h"
+//#include "directserver.h"
+//#include "datastreamextension.h"
 
 
-#ifdef __WIN32
+/*#ifdef __WIN32
     #include <sysinfoapi.h>
     #include <windef.h>
     #include <winbase.h>
     #include <psapi.h>
 #endif
-
+*/
 #ifdef __linux__
     #include <unistd.h>
     #include <sys/time.h>
@@ -29,28 +26,25 @@
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
-
+    LOGS log;
+    log.add("header",QDateTime::currentDateTime(),"test");
+    log.add("header",QDateTime::currentDateTime(),"test2");
+    log.add("header",QDateTime::currentDateTime(),"test3");
+    log.add("header",QDateTime::currentDateTime(),"test4");
     int i =0;
-    while(1)
-    {
-        Sleep(2000);
-        qDebug()<<"lte's go";
-        QTcpSocket s;
-        QTcpSocket s2;
-        s.connectToHost("localhost",1616);
-        s2.connectToHost("localhost",1616);
-        qDebug()<<s.waitForConnected(2000);
-        QString d = "to jest "+QString::number(i)+"\r\n";
-        s.write(d.toStdString().c_str());
-        s.waitForBytesWritten(20000);
-        d = "SECOND "+QString::number(i)+"\r\n";
-        qDebug() << s.waitForReadyRead();
-        s.write(d.toStdString().c_str());
-        s.waitForBytesWritten(20000);
-        Sleep(1000);
-        s.close();
-        i++;
-    }
+    QTcpSocket s,s2;
+    DirectConnection dc;
+
+    dc.connect("localhost",1616,"jakis","test");
+
+    dc.send_data(log);
+    log.add("header",QDateTime::currentDateTime(),"test5");
+    log.add("header",QDateTime::currentDateTime(),"test6");
+    QVector<LOG> logi = log.get_LOGs(0);
+    dc.send_data(logi);
+    dc.close();
+
+    qDebug()<<"KONIEC!";
 
     return a.exec();
 }

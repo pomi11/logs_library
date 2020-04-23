@@ -8,7 +8,9 @@
 #include <QSysInfo>
 #include <QString>
 #include <QStorageInfo>
+#include <QMap>
 #include <memory>
+#include <QDataStream>
 
 #ifdef __WIN32
     #include <sysinfoapi.h>
@@ -28,7 +30,7 @@
 
 struct LOGS_LIBRARY_EXPORT DISK_INFO
 {
-    std::string name;
+    QString name;
     int number;
     qint64 totalSpace;
     qint64 usageSpace;
@@ -37,28 +39,34 @@ struct LOGS_LIBRARY_EXPORT DISK_INFO
 
 /*struct INFO
 {
-    std::string description, short_descr,value;
+    QString description, short_descr,value;
 
 };*/
 
 class LOGS_LIBRARY_EXPORT SYS_INFO
 {
 private:
-    std::map<std::string,bool> enabledInfos;
-    std::map<std::string,std::string> infos;
-    std::string sysname,CPUname,arch,username;
+    QMap<QString,bool> enabledInfos;
+    QMap<QString,QString> infos;
+    QString sysname,CPUname,arch,username;
     int cores;
     unsigned long long int maxMemory,availMemory,useMemory,procPeak,procCurr;
-    std::vector<DISK_INFO> disks;
+    QVector<DISK_INFO> disks;
 public:
     SYS_INFO();
+    SYS_INFO(QMap<QString,bool> enabledInfos,QMap<QString,QString> infos,
+             QString sysname,QString CPUname,QString arch, QString username,int cores,
+             quint64 maxMemory, quint64 availMemory, quint64 useMemory,quint64 procPeak,
+             quint64 procCurr, QVector<DISK_INFO> disks);
 
-    std::string get_sysname() const {return sysname;};
-    std::string get_cpuname() const {return CPUname;};
-    std::string get_arch() const {return arch;};
-    std::string get_username() const {return username;};
+    QString get_sysname() const {return sysname;};
+    QString get_cpuname() const {return CPUname;};
+    QString get_arch() const {return arch;};
+    QString get_username() const {return username;};
 
     int get_cores() const {return cores;};
+
+    QMap<QString,bool> get_enabled_infos() {return enabledInfos;};
 
     unsigned long long int get_max_memory() const {return maxMemory;} ;
     unsigned long long int get_avail_memory() const {return availMemory;};
@@ -66,7 +74,7 @@ public:
     unsigned long long int get_proc_peak() const {return procPeak;};
     unsigned long long int get_proc_curr() const {return procCurr;};
 
-    std::vector<DISK_INFO> get_disks_info() const {return disks;};
+    QVector<DISK_INFO> get_disks_info() const {return disks;};
 
     int gather_sysname();
     int gather_CPUname();
@@ -81,16 +89,24 @@ public:
     int gather_disks_info();
     int gather_info();
 
-//    std::string gather_get(std::string infoName);
-//    std::vector<std::pair<std::string,std::string>> gather_get(std::vector<std::string> infoNames);
-    std::string get_info(std::string infoName);
-    std::vector<std::string> get_info(std::vector<std::string> infoNames = std::vector<std::string>());
-    std::map<QString,QString> get_info_map(std::vector<std::string> infoNames = std::vector<std::string>());
-    int set_enabled(std::string infoname, bool enable=true);
-    int set_enabled(std::vector<std::string> infoNames= std::vector<std::string>(),bool enable=true);
-    static std::vector<std::string> listInfo();
+//    QString gather_get(QString infoName);
+//    QVector<std::pair<QString,QString>> gather_get(QVector<QString> infoNames);
+    QString get_info(QString infoName);
+    QVector<QString> get_info(QVector<QString> infoNames = QVector<QString>());
+    QMap<QString,QString> get_info_map(QVector<QString> infoNames = QVector<QString>());
+    int set_enabled(QString infoname, bool enable=true);
+    int set_enabled(QVector<QString> infoNames= QVector<QString>(),bool enable=true);
+    static QVector<QString> listInfo();
 };
 
+LOGS_LIBRARY_EXPORT QDataStream& operator>>(QDataStream& in,SYS_INFO &fs);
+LOGS_LIBRARY_EXPORT QDataStream& operator<<(QDataStream& out,SYS_INFO &fs);
+
+LOGS_LIBRARY_EXPORT QDataStream& operator>>(QDataStream& in,DISK_INFO &fs);
+LOGS_LIBRARY_EXPORT QDataStream& operator<<(QDataStream& out,DISK_INFO const &fs);
+
+/*LOGS_LIBRARY_EXPORT QDataStream& operator>>(QDataStream& in,QVector<DISK_INFO> &list);
+LOGS_LIBRARY_EXPORT QDataStream& operator<<(QDataStream& out,QVector<DISK_INFO> const &list);*/
 
 
 #endif // SYSTEM_INFO_H

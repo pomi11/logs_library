@@ -11,7 +11,7 @@ void LOGS::add(LOG log)
     this->logs.push_back(log);
 }
 
-void LOGS::add(std::string header,std::string date,std::string format,std::string message)
+void LOGS::add(QString header,QString date,QString format,QString message)
 {
     LOG log = LOG();
     log.set_header(header);
@@ -20,7 +20,7 @@ void LOGS::add(std::string header,std::string date,std::string format,std::strin
     this->logs.push_back(log);
 }
 
-void LOGS::add(std::string header,QDateTime date,std::string message)
+void LOGS::add(QString header,QDateTime date,QString message)
 {
     LOG log = LOG();
     log.set_header(header);
@@ -30,7 +30,7 @@ void LOGS::add(std::string header,QDateTime date,std::string message)
     this->logs.push_back(log);
 }
 
-void LOGS::add(std::string header,std::string date,std::string format,std::string message,std::map<QString,QString> customs)
+void LOGS::add(QString header,QString date,QString format,QString message,QMap<QString,QString> customs)
 {
     LOG log = LOG();
     log.set_header(header);
@@ -40,7 +40,7 @@ void LOGS::add(std::string header,std::string date,std::string format,std::strin
     this->logs.push_back(log);
 }
 
-void LOGS::add(std::string header,QDateTime,std::string message,std::map<QString,QString> customs)
+void LOGS::add(QString header,QDateTime,QString message,QMap<QString,QString> customs)
 {
     LOG log = LOG();
     log.set_header(header);
@@ -48,82 +48,8 @@ void LOGS::add(std::string header,QDateTime,std::string message,std::map<QString
     log.add_customs(customs);
     this->logs.push_back(log);
 }
-/*
-template<class T> void LOGS<T>::add_msg(std::string message)
-{
-    LOG log = LOG(this->header,message,this->customs);
-    log.set_type(this->type);
-    log.set_date_format(this->format);
-    this->logs.push_back(log);
-}
 
-template<class T> void LOGS<T>::add_msg(std::string message,std::string type)
-{
-    LOG log = LOG(this->header,message,this->customs);
-    log.set_type(type);
-    log.set_date_format(this->format);
-    this->logs.push_back(log);
-}
-
-template<class T> void LOGS<T>::add_msg(std::string message, QDateTime date)
-{
-    LOG log = LOG(this->header,message,this->customs);
-    log.set_date(date);
-    log.set_date_format(this->format);
-    this->logs.push_back(log);
-}
-
-template<class T> void LOGS<T>::add_msg(std::string message,std::string date,std::string format)
-{
-    LOG log = LOG(this->header,message,this->customs);
-    log.set_date(date,format);
-    this->logs.push_back(log);
-}
-
-template<class T> void LOGS<T>::add_msg(std::string message,std::vector<std::pair<std::string,std::string>> customs)
-{
-    LOG log = LOG(this->header,message,customs);
-    log.set_date_format(this->format);
-    this->logs.push_back(log);
-}
-
-template<class T> void LOGS<T>::add_msg(std::string message,std::string date,std::string format,std::vector<std::pair<std::string,std::string>> customs)
-{
-    LOG log = LOG(this->header,message,customs);
-    log.set_date(date,format);
-    this->logs.push_back(log);
-}*/
-
-/*template<class T> void LOGS<T>::add_msg(std::string message, std::string type, std::string header, std::string date, std::string format, std::vector<std::pair<std::string, std::string> > customs)
-{
-    if(type=="")
-        type = this->type;
-
-    if(header=="")
-        header = this->header;
-
-    if(date=="")
-    {
-        if(format=="")
-            date = QDateTime::currentDateTime().toString("dd.MM.yyyy hh:mm:ss").toStdString();
-        else
-            date = QDateTime::currentDateTime().toString(QString::fromStdString(format)).toStdString();
-    }
-
-    if(customs.size()==0)
-        this->customs=customs;
-
-    LOG log = LOG();
-    log.set_type(type);
-    log.set_header(header);
-    log.set_date(date,format);
-    log.set_customs(customs);
-    log.set_message(message);
-
-    logs.push_back(log);
-}
-*/
-void LOGS::add_msg(std::string message, std::string type, std::string header, QDateTime date, std::string format, std::map<QString,QString> customs)
+void LOGS::add_msg(QString message, QString type, QString header, QDateTime date, QString format, QMap<QString,QString> customs)
 {
     if(type=="")
         type = this->type;
@@ -158,7 +84,7 @@ void LOGS::remove(int index)
     logs.erase(logs.begin()+index);
 }
 
-void LOGS::remove(std::string message, bool all, bool first,bool last)
+void LOGS::remove(QString message, bool all, bool first,bool last)
 {
     if(first || all)
     {
@@ -185,7 +111,7 @@ void LOGS::remove(std::string message, bool all, bool first,bool last)
     }
 }
 
-void LOGS::remove_by_date(std::string date, std::string format, bool all, bool first,bool last)
+void LOGS::remove_by_date(QString date, QString format, bool all, bool first,bool last)
 {
     if(first || all)
     {
@@ -239,17 +165,17 @@ void LOGS::remove_by_date(QDateTime date, bool all, bool first,bool last)
     }
 }
 
-void LOGS::change_message(int index, std::string newMessage)
+void LOGS::change_message(int index, QString newMessage)
 {
-    logs.at(index).set_message(newMessage);
+    logs[index].set_message(newMessage);
 }
 
 LOG* LOGS::get_LOG(int index)
 {
-    return &logs.at(index);
+    return &logs[index];
 }
 
-LOG* LOGS::get_LOG(std::string message, bool reverse)
+LOG* LOGS::get_LOG(QString message, bool reverse)
 {
     if(!reverse)
     {
@@ -257,7 +183,7 @@ LOG* LOGS::get_LOG(std::string message, bool reverse)
         {
             if(it->get_message()==message)
             {
-                return it.base();
+                return it;
             }
         }
     }
@@ -267,14 +193,14 @@ LOG* LOGS::get_LOG(std::string message, bool reverse)
         {
             if(it->get_message()==message)
             {
-                return it.base().base();
+                return it.base();
             }
         }
     }
     return nullptr;
 }
 
-LOG* LOGS::get_LOG(std::string date,std::string format, bool reverse)
+LOG* LOGS::get_LOG(QString date,QString format, bool reverse)
 {
     if(!reverse)
     {
@@ -282,7 +208,7 @@ LOG* LOGS::get_LOG(std::string date,std::string format, bool reverse)
         {
             if(it->get_date(format)==date)
             {
-                return it.base();
+                return it;
             }
         }
     }
@@ -292,7 +218,7 @@ LOG* LOGS::get_LOG(std::string date,std::string format, bool reverse)
         {
             if(it->get_date(format)==date)
             {
-                return it.base().base();
+                return it.base();
             }
         }
     }
@@ -307,7 +233,7 @@ LOG* LOGS::get_LOG(QDateTime date, bool reverse)
         {
             if(it->get_date()==date)
             {
-                return it.base();
+                return it;
             }
         }
     }
@@ -317,27 +243,27 @@ LOG* LOGS::get_LOG(QDateTime date, bool reverse)
         {
             if(it->get_date()==date)
             {
-                return it.base().base();
+                return it.base();
             }
         }
     }
     return nullptr;
 }
 
-std::vector<LOG> LOGS::get_LOGs()
+QVector<LOG> LOGS::get_LOGs()
 {
     return this->logs;
 }
 
-std::vector<LOG> LOGS::get_LOGs(int indexFrom, int indexTo)
+QVector<LOG> LOGS::get_LOGs(int indexFrom, int indexTo)
 {
-    std::vector<LOG> result = std::vector<LOG>(logs.begin()+indexFrom,logs.end()+indexTo);
+    QVector<LOG> result = QVector<LOG>(logs.begin()+indexFrom,logs.end()+indexTo);
     return result;
 }
 
-std::vector<LOG> LOGS::get_LOGs(std::string message)
+QVector<LOG> LOGS::get_LOGs(QString message)
 {
-    std::vector<LOG> result;
+    QVector<LOG> result;
     for(auto it = logs.begin();it<logs.end();it++)
     {
         if(it->get_message()==message)
@@ -349,9 +275,9 @@ std::vector<LOG> LOGS::get_LOGs(std::string message)
     return result;
 }
 
-std::vector<LOG> LOGS::get_LOGs_by_date(std::string date,std::string format)
+QVector<LOG> LOGS::get_LOGs_by_date(QString date,QString format)
 {
-    std::vector<LOG> result;
+    QVector<LOG> result;
     for(auto it = logs.begin();it<logs.end();it++)
     {
         if(it->get_date(format)==date)
@@ -363,9 +289,9 @@ std::vector<LOG> LOGS::get_LOGs_by_date(std::string date,std::string format)
     return result;
 }
 
-std::vector<LOG> LOGS::get_LOGs_by_date(QDateTime date)
+QVector<LOG> LOGS::get_LOGs_by_date(QDateTime date)
 {
-    std::vector<LOG> result;
+    QVector<LOG> result;
     for(auto it = logs.begin();it<logs.end();it++)
     {
         if(it->get_date()==date)
@@ -391,7 +317,7 @@ int LOGS::save(QString filePath, char mode, FILE_STRUCT *fileStruct) // w - zapi
     QFile file(filePath);
     file.open(QFile::WriteOnly|QFile::Text);
     file.write(fs->start_file("").c_str());
-    std::vector<std::map<QString,QString>> map;
+    QVector<QMap<QString,QString>> map;
     for(auto it = this->logs.begin();it!=this->logs.end();it++)
     {
         map.push_back(it->get_val_map());
@@ -429,3 +355,40 @@ void LOGS::autosave_start(int autoSaveTime,QString filePath, char mode,FILE_STRU
     this->autoSaveTime=autoSaveTime;
     autosave_start(filePath,mode);
 }
+
+QDataStream& operator>>(QDataStream& in,LOGS & fs)
+{
+    QString fileName,path,mainHeader,format,footer,type;
+    QVector<LOG> logs;
+    //int autoSaveTime;
+
+    in>>fileName;
+    in>>path;
+    in>>mainHeader;
+    in>>format;
+    in>>footer;
+    in>>type;
+    in>>logs;
+    fs = LOGS(logs);
+    fs.set_file_name(fileName);
+    fs.set_file_path(path);
+    fs.set_main_header(mainHeader);
+    fs.set_date_format(format);
+    fs.set_footer(footer);
+    fs.set_default_type(type);
+    return in;
+}
+
+QDataStream& operator<<(QDataStream& out,LOGS &fs)
+{
+    out<<fs.get_file_name();
+    out<<fs.get_file_path();
+    out<<fs.get_main_header();
+    out<<fs.get_date_format();
+    out<<fs.get_footer();
+    out<<fs.get_default_type();
+    out<<fs.get_LOGs(0);
+
+    return out;
+}
+

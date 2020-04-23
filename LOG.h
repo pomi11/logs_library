@@ -3,37 +3,44 @@
 
 #include "logs_library_global.h"
 #include <QDateTime>
-#include <map>
+#include <QMap>
+#include <QDataStream>
 
 
 class LOGS_LIBRARY_EXPORT LOG
 {
 private:
-    std::string header,message,type,format;
+    QString header,message,type,format;
     QDateTime date;
-   // std::vector<std::pair<std::string,std::string>> vCustoms;
-    std::map<QString,QString> map;
+   // QVector<std::pair<QString,QString>> vCustoms;
+    QMap<QString,QString> map;
 
 public:
     LOG();
     LOG(QDateTime date) {this->date=date;};
-    LOG(std::string header,std::string message,std::map<QString,QString> custom);
-    void set_message(std::string message)   {this->message=message; map["message"]=QString::fromStdString(message);};
-    //void set_customs(std::vector<std::pair<std::string,std::string>> custom) {vCustoms=custom;};
-    void add_custom(std::string tag, std::string message);
-    void add_customs(std::map<QString,QString> custom);
-    void set_date(std::string date,std::string format);
-    void set_date(QDateTime date)   {this->date=date; map["date"]=this->date.toString(QString::fromStdString(format));};
-    void set_date_format(std::string format) {this->format=format;};
-    void set_header(std::string header) {this->header=header; map["header"]=QString::fromStdString(header);};
-    void set_type(std::string type) {this->type=type; map["type"]=QString::fromStdString(type);};
-    std::map<QString,QString> get_val_map() {return map;};
-    std::string get_message() {return this->message;};
-    std::string get_date(std::string format);
+    LOG(QString header,QString message,QMap<QString,QString> custom);
+    void set_message(QString message)   {this->message=message; map["message"]=message;};
+    //void set_customs(QVector<std::pair<QString,QString>> custom) {vCustoms=custom;};
+    void add_custom(QString tag, QString message);
+    void add_customs(QMap<QString,QString> custom);
+    void set_date(QString date,QString format);
+    void set_date(QDateTime date)   {this->date=date; map["date"]=this->date.toString(format);};
+    void set_date_format(QString format) {this->format=format;};
+    void set_header(QString header) {this->header=header; map["header"]=header;};
+    void set_type(QString type) {this->type=type; map["type"]=type;};
+    QMap<QString,QString> get_val_map() {return map;};
+    QString get_message() {return this->message;};
+    QString get_date(QString format);
     QDateTime get_date();
-    std::string get_header() {return this->header;};
-    std::string get_type() {return this->type;};
-    std::string get_date_format() {return this->format;};
+    QString get_header() {return this->header;};
+    QString get_type() {return this->type;};
+    QString get_date_format() {return this->format;};
 };
+
+LOGS_LIBRARY_EXPORT QDataStream& operator>>(QDataStream& in,LOG &fs);
+LOGS_LIBRARY_EXPORT QDataStream& operator<<(QDataStream& out,LOG &fs);
+
+LOGS_LIBRARY_EXPORT QDataStream& operator>>(QDataStream& in,QVector<LOG> &list);
+LOGS_LIBRARY_EXPORT QDataStream& operator<<(QDataStream& out,QVector<LOG> const &list);
 
 #endif // LOG_H

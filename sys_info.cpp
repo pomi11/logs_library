@@ -19,18 +19,19 @@ SYS_INFO::SYS_INFO()
     infos["sysname"]=this->sysname;
     infos["arch"]=this->arch;
     infos["cpuname"]=this->CPUname;
-    infos["cores"]=QString::number(this->cores).toStdString();
+    infos["cores"]=QString::number(this->cores);
     infos["username"]=this->username;
-    infos["max_memory"]=QString::number(this->maxMemory).toStdString();
-    infos["avail_memory"]=QString::number(this->availMemory).toStdString();
-    infos["use_memory"]=QString::number(this->useMemory).toStdString();
-    infos["proc_peak"]=QString::number(this->procPeak).toStdString();
-    infos["proc_curr"]=QString::number(this->procCurr).toStdString();
-    std::string tmp,tmp2;
+    infos["max_memory"]=QString::number(this->maxMemory);
+    infos["avail_memory"]=QString::number(this->availMemory);
+    infos["use_memory"]=QString::number(this->useMemory);
+    infos["proc_peak"]=QString::number(this->procPeak);
+    infos["proc_curr"]=QString::number(this->procCurr);
+    QString tmp,tmp2;
     for(auto it = disks.begin();it!=disks.end();it++)
     {
         tmp2 = (*it).name;
-        tmp2.erase(tmp2.length()-1);
+        //tmp2.erase(tmp2.length()-1);
+        tmp2 = tmp2.left(tmp2.count()-1);
         infos["disks"]+=tmp2;
         if(it!=disks.end()-1)
         {
@@ -38,15 +39,77 @@ SYS_INFO::SYS_INFO()
         }
         tmp = "max_";
 
-        infos[tmp+tmp2] = QString::number((*it).totalSpace).toStdString();
+        infos[tmp+tmp2] = QString::number((*it).totalSpace);
         tmp = "avail_";
-        infos[tmp+tmp2] = QString::number((*it).freeSpace).toStdString();
+        infos[tmp+tmp2] = QString::number((*it).freeSpace);
+    }
+}
+
+SYS_INFO::SYS_INFO(QMap<QString,bool> enabledInfos,QMap<QString,QString> infos,
+                   QString sysname,QString CPUname,QString arch, QString username,int cores,
+                   quint64 maxMemory, quint64 availMemory, quint64 useMemory,quint64 procPeak,
+                   quint64 procCurr, QVector<DISK_INFO> disks)
+{
+    this->enabledInfos=enabledInfos;
+    this->infos=infos;
+    this->sysname=sysname;
+    this->CPUname=CPUname;
+    this->arch=arch;
+    this->username=username;
+    this->cores=cores;
+    this->maxMemory=maxMemory;
+    this->availMemory=availMemory;
+    this->useMemory=useMemory;
+    this->procPeak=procPeak;
+    this->procCurr=procCurr;
+    this->disks=disks;
+
+    enabledInfos["sysname"]=true;
+    enabledInfos["arch"]=true;
+    enabledInfos["cpuname"]=true;
+    enabledInfos["cores"]=true;
+    enabledInfos["username"]=true;
+    enabledInfos["max_memory"]=true;
+    enabledInfos["avail_memory"]=true;
+    enabledInfos["use_memory"]=true;
+    enabledInfos["proc_peak"]=true;
+    enabledInfos["proc_curr"]=true;
+    enabledInfos["disks"]=true;
+
+    gather_info();
+
+    infos["sysname"]=this->sysname;
+    infos["arch"]=this->arch;
+    infos["cpuname"]=this->CPUname;
+    infos["cores"]=QString::number(this->cores);
+    infos["username"]=this->username;
+    infos["max_memory"]=QString::number(this->maxMemory);
+    infos["avail_memory"]=QString::number(this->availMemory);
+    infos["use_memory"]=QString::number(this->useMemory);
+    infos["proc_peak"]=QString::number(this->procPeak);
+    infos["proc_curr"]=QString::number(this->procCurr);
+    QString tmp,tmp2;
+    for(auto it = disks.begin();it!=disks.end();it++)
+    {
+        tmp2 = (*it).name;
+        //tmp2.erase(tmp2.length()-1);
+        tmp2 = tmp2.left(tmp2.count()-1);
+        infos["disks"]+=tmp2;
+        if(it!=disks.end()-1)
+        {
+            infos["disks"]+="|";
+        }
+        tmp = "max_";
+
+        infos[tmp+tmp2] = QString::number((*it).totalSpace);
+        tmp = "avail_";
+        infos[tmp+tmp2] = QString::number((*it).freeSpace);
     }
 }
 
 int SYS_INFO::gather_sysname()
 {
-    this->sysname = QSysInfo::prettyProductName().toStdString();
+    this->sysname = QSysInfo::prettyProductName();
 }
 
 int SYS_INFO::gather_CPUname()
@@ -77,7 +140,7 @@ int SYS_INFO::gather_CPUname()
 
 int SYS_INFO::gather_arch()
 {
-    this->arch = QSysInfo::currentCpuArchitecture().toStdString();
+    this->arch = QSysInfo::currentCpuArchitecture();
     return 0;
 }
 
@@ -139,7 +202,7 @@ int SYS_INFO::gather_avail_memory()
 #endif
 #ifdef __linux__
     // do POPRAWY!
-    std::string cmd = "cat /proc/meminfo | grep \"memavailable:\" -i | grep -Eo \"[0-9]{0,256}\"";
+    QString cmd = "cat /proc/meminfo | grep \"memavailable:\" -i | grep -Eo \"[0-9]{0,256}\"";
     this->availMemory = QString::fromStdString(exec_cmd(cmd)).toLong()*1024;
 #endif
     return 0;
@@ -189,7 +252,7 @@ int SYS_INFO::gather_proc_curr()
     char mypid[6];   // ex. 34567
     sprintf(mypid, "%d", currID);
     //std::cout<<"\ncurrent PID = "<<mypid<<"\n";
-    std::string cmd = "cat /proc/";
+    QString cmd = "cat /proc/";
     cmd+=mypid;
     cmd+="/status | grep \"vmrss\" -i | grep -Eo \"[0-9]{0,256}\"";
     this->procCurr = QString::fromStdString(exec_cmd(cmd)).toLong();
@@ -210,7 +273,7 @@ int SYS_INFO::gather_disks_info()
             {
                 #ifdef __WIN32
                    //qDebug()<<storage.displayName();
-                   di.name=storage.displayName().toStdString();
+                   di.name=storage.displayName();
                 #endif
 
                 #ifdef __linux__
@@ -268,7 +331,7 @@ int SYS_INFO::gather_info()
     return 0;
 }
 
-/*std::string SYS_INFO::gather_get(std::string infoName)
+/*QString SYS_INFO::gather_get(QString infoName)
 {
     if(infoName=="sysname")
     {
@@ -279,25 +342,25 @@ int SYS_INFO::gather_info()
     return " ";
 }*/
 
-/*std::vector<std::pair<std::string,std::string>> SYS_INFO::gather_get(std::vector<std::string> infoNames)
+/*QVector<std::pair<QString,QString>> SYS_INFO::gather_get(QVector<QString> infoNames)
 {
-    return std::vector<std::pair<std::string,std::string>>();
+    return QVector<std::pair<QString,QString>>();
 }*/
 
-std::string SYS_INFO::get_info(std::string infoName)
+QString SYS_INFO::get_info(QString infoName)
 {
     return infos[infoName];
 }
 
-std::vector<std::string> SYS_INFO::get_info(std::vector<std::string> infoNames)
+QVector<QString> SYS_INFO::get_info(QVector<QString> infoNames)
 {
-    std::vector<std::string> res;
+    QVector<QString> res;
     if(infoNames.size()==0)
     {
         for(auto it = infos.begin();it!=infos.end();it++)
         {
-            if(enabledInfos[it->first])
-                res.push_back(it->second);
+            if(enabledInfos[it.key()])
+                res.push_back(it.value());
         }
     }
     else
@@ -310,14 +373,14 @@ std::vector<std::string> SYS_INFO::get_info(std::vector<std::string> infoNames)
     return res;
 }
 
-std::map<QString,QString> SYS_INFO::get_info_map(std::vector<std::string> infoNames)
+QMap<QString,QString> SYS_INFO::get_info_map(QVector<QString> infoNames)
 {
-    std::map<QString,QString> res;
+    QMap<QString,QString> res;
     if(infoNames.size()==0)
     {
         for(auto it = infos.begin();it!=infos.end();it++)
         {
-            res[QString::fromStdString(it->first)]=QString::fromStdString(it->second);
+            res[it.key()]=it.value();
         }
     }
     else
@@ -325,19 +388,19 @@ std::map<QString,QString> SYS_INFO::get_info_map(std::vector<std::string> infoNa
         for(auto it = infoNames.begin();it!=infoNames.end();it++)
         {
             //res.push_back(infos[*it]);
-            res[QString::fromStdString(*it)]=QString::fromStdString(infos[*it]);
+            res[*it]=infos[*it];
         }
     }
     return res;
 }
 
-int SYS_INFO::set_enabled(std::string infoname, bool enable)
+int SYS_INFO::set_enabled(QString infoname, bool enable)
 {
     enabledInfos[infoname] = enable;
     return 0;
 }
 
-int SYS_INFO::set_enabled(std::vector<std::string> infoNames,bool enable)
+int SYS_INFO::set_enabled(QVector<QString> infoNames,bool enable)
 {
     for(auto it = infoNames.begin();it!=infoNames.end();it++)
     {
@@ -346,9 +409,9 @@ int SYS_INFO::set_enabled(std::vector<std::string> infoNames,bool enable)
     return 0;
 }
 
-std::vector<std::string> SYS_INFO::listInfo()
+QVector<QString> SYS_INFO::listInfo()
 {
-    std::vector<std::string> res;
+    QVector<QString> res;
     res.push_back("sysname");
     res.push_back("arch");
     res.push_back("cpuname");
@@ -366,11 +429,11 @@ std::vector<std::string> SYS_INFO::listInfo()
     return res;
 }
 
-std::string exec_cmd(std::string &cmd)
+QString exec_cmd(QString &cmd)
 {
     std::array<char, 128> buffer;
-    std::string result;
-    std::unique_ptr<FILE, decltype(&pclose)> pipe(popen(cmd.c_str(), "r"), pclose);
+    QString result;
+    std::unique_ptr<FILE, decltype(&pclose)> pipe(popen(cmd.toStdString().c_str(), "r"), pclose);
     if (!pipe) {
         throw std::runtime_error("popen() failed!");
     }
@@ -380,3 +443,78 @@ std::string exec_cmd(std::string &cmd)
 
     return result;
 };
+
+QDataStream& operator>>(QDataStream& in,SYS_INFO & fs)
+{
+    QMap<QString,bool> enabledInfos;
+    QMap<QString,QString> infos;
+    QString sysname,CPUname,arch,username;
+    int cores;
+    unsigned long long int maxMemory,availMemory,useMemory,procPeak,procCurr;
+    QVector<DISK_INFO> disks;
+
+    in>>enabledInfos;
+    in>>infos;
+    in>>sysname;
+    in>>CPUname;
+    in>>arch;
+    in>>username;
+    in>>cores;
+    in>>maxMemory;
+    in>>availMemory;
+    in>>useMemory;
+    in>>procPeak;
+    in>>procCurr;
+    in>>disks;
+
+    fs = SYS_INFO(enabledInfos,infos,sysname,CPUname,arch,username,cores,maxMemory,availMemory,useMemory,
+                  procPeak,procCurr,disks);
+    return in;
+}
+
+QDataStream& operator<<(QDataStream& out,SYS_INFO &fs)
+{
+    out<<fs.get_enabled_infos();
+    out<<fs.get_info_map();
+    out<<fs.get_sysname();
+    out<<fs.get_cpuname();
+    out<<fs.get_arch();
+    out<<fs.get_username();
+    out<<fs.get_cores();
+    out<<fs.get_max_memory();
+    out<<fs.get_avail_memory();
+    out<<fs.get_use_memory();
+    out<<fs.get_proc_peak();
+    out<<fs.get_proc_curr();
+    out<<fs.get_disks_info();
+
+    return out;
+}
+
+QDataStream& operator>>(QDataStream& in,DISK_INFO & fs)
+{
+    /*QString name;
+    int number;
+    qint64 totalSpace;
+    qint64 usageSpace;
+    qint64 freeSpace;*/
+
+    in>>fs.name;
+    in>>fs.number;
+    in>>fs.totalSpace;
+    in>>fs.usageSpace;
+    in>>fs.freeSpace;
+
+    return in;
+}
+
+QDataStream& operator<<(QDataStream& out,DISK_INFO const &fs)
+{
+    out<<fs.name;
+    out<<fs.number;
+    out<<fs.totalSpace;
+    out<<fs.usageSpace;
+    out<<fs.freeSpace;
+
+    return out;
+}

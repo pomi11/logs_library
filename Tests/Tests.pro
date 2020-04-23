@@ -31,5 +31,5 @@ else:unix: LIBS += -L$$PWD/../ -llogs_library
 
 LIBS += -lpsapi
 
-INCLUDEPATH += $$PWD/../debug
-DEPENDPATH += $$PWD/../debug
+INCLUDEPATH += $$PWD/../
+DEPENDPATH += $$PWD/../

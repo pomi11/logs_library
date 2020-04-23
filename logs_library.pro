@@ -22,7 +22,6 @@ SOURCES += \
     iconnector.cpp \
     log.cpp \
     logs.cpp \
-    logs_library.cpp \
     sys_info.cpp
 
 HEADERS += \
@@ -44,3 +43,10 @@ unix {
 }
 !isEmpty(target.path): INSTALLS += target
 LIBS += -lpsapi
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../build-logs_library-Nienazwany-Debug/release/ -llogs_library
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../build-logs_library-Nienazwany-Debug/debug/ -llogs_library
+else:unix: LIBS += -L$$PWD/../build-logs_library-Nienazwany-Debug/ -llogs_library
+
+INCLUDEPATH += $$PWD/../
+DEPENDPATH += $$PWD/../

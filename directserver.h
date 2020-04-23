@@ -16,7 +16,8 @@ enum RETURN_CODE
 enum FILE_EXT
 {
     NUMBERS,
-    DATE
+    DATE,
+    NONE
 };
 
 class LOGS_LIBRARY_EXPORT DirectServer : public QObject
@@ -25,13 +26,17 @@ class LOGS_LIBRARY_EXPORT DirectServer : public QObject
 private:
     int logNum = 0;
     QTcpServer *control, *data;
-    std::vector<QTcpSocket*> clients;
-    std::vector<QTcpSocket*> acceptedClients;
-    QString saveDir,username,password, fileName;
+    QVector<QTcpSocket*> clients;
+    QVector<QTcpSocket*> acceptedClients;
+    QVector<QTcpSocket*> dataClients;
+    QString saveDir,username,password, fileName,userTMP,passTMP;
     LOGS *logs = nullptr;
     FILE_STRUCT *fs = nullptr;
     FILE_EXT fe = NUMBERS;
-
+    QString currentCMD="";
+    int save();
+    bool isAccepted(QString sck);
+    qint16 controlPort,dataPort;
 public:
     DirectServer();
     //void incomingConnection(qintptr handle) override;
@@ -41,31 +46,17 @@ public:
     void set_file_name(QString file) {fileName=file;};
     void set_file_struct(FILE_STRUCT *fileStruct) {fs=fileStruct;};
     void set_file_ext(FILE_EXT fe) {this->fe=fe;};
+    void set_control_port(quint16 port) {controlPort=port;control->close();control->listen(QHostAddress::Any,port);};
+    void set_data_port(quint16 port) {dataPort=port;control->close();data->listen(QHostAddress::Any,port);};
 
-    int save();
+    FILE_STRUCT *get_file_struct() {return fs;};
+
+
 public slots:
     void controlService();
     void dataService();
+    void disconnectedSocket();
     void newControlConn();
     void newDataConn();
 };
-
-/*
-class DirectThread : public QThread
-{
-    Q_OBJECT
-
-public:
-    DirectThread(int socketDescriptor, const QString &fortune, QObject *parent);
-
-    void run() override;
-
-signals:
-    void error(QTcpSocket::SocketError socketError);
-
-private:
-    int socketDescriptor;
-    QString text;
-};
-*/
 #endif // DIRECTSERVER_H

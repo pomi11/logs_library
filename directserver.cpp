@@ -13,24 +13,42 @@ DirectServer::DirectServer():
    QObject::connect(control,&QTcpServer::newConnection,this,&DirectServer::newControlConn);
    QObject::connect(data,&QTcpServer::newConnection,this,&DirectServer::newDataConn);
   // listen(QHostAddress::Any,1617);
+   fs = new XML();
    //QObject::connect(this,&DirectServer::go,this,&DirectServer::loop);
 }
 
 void DirectServer::newControlConn()
 {
         QTcpSocket *tmp = control->nextPendingConnection();
-        qDebug()<<tmp->peerPort();
         clients.push_back(tmp);
         QObject::connect(tmp,&QTcpSocket::readyRead,this,&DirectServer::controlService);
+        QObject::connect(tmp,&QTcpSocket::disconnected,this,&DirectServer::disconnectedSocket);
+        tmp->write(QString::number(tmp->socketDescriptor()).toStdString().c_str());
+        tmp->waitForBytesWritten();
         //QObject::connect(tmp,&QTcpSocket::writ,this,&DirectServer::clientService);
 }
 
 void DirectServer::newDataConn()
 {
-        QTcpSocket *tmp = control->nextPendingConnection();
-        qDebug()<<tmp->peerPort();
-        clients.push_back(tmp);
-        QObject::connect(tmp,&QTcpSocket::readyRead,this,&DirectServer::dataService);
+        QTcpSocket *tmp = data->nextPendingConnection();
+        tmp->waitForReadyRead(300000);
+        QString tst = tmp->readAll();
+        if(isAccepted(tst))
+        {
+            dataClients.push_back(tmp);
+            QObject::connect(tmp,&QTcpSocket::readyRead,this,&DirectServer::dataService);
+            QObject::connect(tmp,&QTcpSocket::disconnected,this,&DirectServer::disconnectedSocket);
+            tmp->write("JUUPUI");
+            tmp->waitForBytesWritten();
+        }
+        else
+        {
+            tmp->write("Your connection wasn't accepted!Closing.");
+            tmp->waitForBytesWritten();
+            tmp->close();
+        }
+
+
         //QObject::connect(tmp,&QTcpSocket::writ,this,&DirectServer::clientService);
 }
 
@@ -38,30 +56,140 @@ void DirectServer::controlService()
 {
     QTcpSocket *tmp = qobject_cast<QTcpSocket*>(sender());
     QString bb = tmp->readAll();
-
-    if(bb.indexOf("PASS"))
+    QList<QString> arg = bb.split("#");
+    arg.removeAll("");
+    qDebug()<<arg;
+    qDebug()<<arg.count();
+    if(arg[0]=="PASS")
     {
+        if(arg.count()==2)
+        {
+            qDebug()<<tmp->peerPort();
+            if(userTMP!="")
+            {
+                if(arg[1]==this->password)
+                {
+                    acceptedClients.push_back(tmp);
+                    clients.removeAll(tmp);
+                    tmp->write("Logged successfully");
+                    tmp->waitForBytesWritten(30000);
+                }
+                else
+                {
+                    tmp->write("Wrong password");
+                    tmp->waitForBytesWritten(30000);
+                }
+
+            }
+            else
+            {
+                tmp->write("Username was not provided");
+                tmp->waitForBytesWritten(30000);
+            }
+        }
+    }
+
+    if(arg[0]=="USER")
+    {
+        if(arg.count()==2)
+        {
+            if(arg[1]!=this->username)
+            {
+                userTMP = "";
+                tmp->write("No username");
+                tmp->waitForBytesWritten(30000);
+            }
+            else
+            {
+                userTMP = "jakis";
+                tmp->write("Provide password to log in");
+                tmp->waitForBytesWritten(30000);
+            }
+        }
+    }
+
+    if(arg[0]=="FNAME")
+    {
+        if(arg.count()==2)
+        {
+            qDebug()<<arg[1];
+        }
+
+    }
+    if(arg[0]=="FEXT")
+    {
+        if(arg.count()==2)
+        {
+            qDebug()<<arg[1];
+        }
+
+    }
+    if(arg[0]=="FDEF")
+    {
+        if(arg.count()==2)
+        {
+            qDebug()<<arg[1];
+        }
 
     }
 
-    QThread::sleep(6);
-    tmp->write("accept");
-    tmp->waitForBytesWritten(20000);
+    if(arg[0]=="SEND")
+    {
+        currentCMD=arg[1];
+    }
+   /* tmp->write("GO");
+    tmp->waitForBytesWritten(30000);*/
+}
+
+void DirectServer::disconnectedSocket()
+{
+    QTcpSocket *tmp = qobject_cast<QTcpSocket*>(sender());
+    tmp->close();
+    clients.removeAll(tmp);
+    acceptedClients.removeAll(tmp);
+    dataClients.removeAll(tmp);
+   // delete tmp;
+    qDebug()<<"UDALO";
 }
 
 void DirectServer::dataService()
 {
     QTcpSocket *tmp = qobject_cast<QTcpSocket*>(sender());
-    QString bb = tmp->readAll();
 
-    if(bb.indexOf("PASS"))
+
+    QDataStream ds(tmp);
+    if(currentCMD=="list")
     {
-
+       QVector<LOG> tst;
+       ds >> tst;
+       this->logs = new LOGS(tst);
+       currentCMD="";
+    }
+    if(currentCMD=="logs")
+    {
+       LOGS tst;
+       ds >> tst;
+       this->logs = new LOGS(tst);
+       currentCMD="";
     }
 
-    QThread::sleep(6);
-    tmp->write("accept");
-    tmp->waitForBytesWritten(20000);
+    tmp->write("OK");
+    tmp->waitForBytesWritten();
+
+    save();
+    logNum++;
+}
+
+bool DirectServer::isAccepted(QString sck)
+{
+    for(auto it = acceptedClients.begin();it!=acceptedClients.end();it++)
+    {
+           if((*it)->socketDescriptor()==sck.toInt())
+           {
+               return true;
+           }
+    }
+    return false;
 }
 
 int DirectServer::save()
@@ -77,35 +205,7 @@ int DirectServer::save()
 
     filePath +=fileName2+fileExt;
 
-    logs->save(filePath);
+    logs->save(filePath,'r',fs);
 
     return 0;
 }
-
-/*
-DirectThread::DirectThread(int socketDescriptor, const QString &fortune, QObject *parent)
-    : QThread(parent), socketDescriptor(socketDescriptor), text(fortune)
-{
-}
-
-void DirectThread::run()
-{
-    QTcpSocket tcpSocket;
-
-    if (!tcpSocket.setSocketDescriptor(socketDescriptor)) {
-        emit error(tcpSocket.error());
-        return;
-    }
-
-    QByteArray block;
-    QDataStream out(&block, QIODevice::ReadOnly);
-    out.setVersion(QDataStream::Qt_4_0);
-    out >> text;
-
-    qDebug()<<text;
-    text = tcpSocket.readAll();
-    qDebug()<<text;
-    tcpSocket.disconnectFromHost();
-    tcpSocket.waitForDisconnected();
-}
-*/
