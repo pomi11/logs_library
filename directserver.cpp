@@ -133,10 +133,10 @@ void DirectServer::controlService()
 
     }
 
-    if(arg[0]=="SEND")
+/*    if(arg[0]=="SEND")
     {
         currentCMD=arg[1];
-    }
+    }*/
    /* tmp->write("GO");
     tmp->waitForBytesWritten(30000);*/
 }
@@ -158,20 +158,20 @@ void DirectServer::dataService()
 
 
     QDataStream ds(tmp);
-    if(currentCMD=="list")
-    {
+   // if(currentCMD=="list")
+   // {
        QVector<LOG> tst;
        ds >> tst;
        this->logs = new LOGS(tst);
-       currentCMD="";
-    }
-    if(currentCMD=="logs")
-    {
+      // currentCMD="";
+    //}
+    /*if(currentCMD=="logs")
+    //{
        LOGS tst;
        ds >> tst;
        this->logs = new LOGS(tst);
-       currentCMD="";
-    }
+      // currentCMD="";
+    //}*/
 
     tmp->write("OK");
     tmp->waitForBytesWritten();
@@ -205,7 +205,7 @@ int DirectServer::save()
 
     filePath +=fileName2+fileExt;
 
-    logs->save(filePath,'r',fs);
+    logs->save(filePath,fs);
 
     return 0;
 }

@@ -35,9 +35,22 @@ public:
 
     int write(char mode = 'r');*/
 
+    virtual void show_sys_summary(bool val) =0;
+    virtual void show_log_number(bool val) =0;
+    virtual void show_log_type(bool val) =0;
+    virtual void show_log_date(bool val) =0;
+    virtual void show_log_header(bool val) =0;
+    virtual void show_file_date(bool val) =0;
+    virtual void show_file_descr(bool val) =0;
+
+    virtual void show_log_memory_avail(bool val) =0;
+    virtual void show_log_memory_usage(bool val) =0;
+    virtual void show_log_proc_memory_usage(bool val) =0;
+    virtual void show_log_proc_memory_max(bool val) =0;
+
     virtual std::string start_file(QString description) = 0;
-    virtual std::string sys_info(QMap<QString,QString> sysInfo) = 0;
-    virtual std::string log(QVector<QMap<QString,QString>> logs) = 0;
+    //virtual std::string sys_info(QMap<QString,QString> sysInfo) = 0;
+    virtual std::string log(QVector<QMap<QString,QMap<QString,QString>>> logs) = 0;
     virtual std::string end_file() = 0;
 
 };
@@ -47,25 +60,39 @@ class XML: public FILE_STRUCT
 private:
     QVector<QString> tags;
     //std::string file_header();
-    bool isNumLog=true, isSysSum=true,isFileDescr=true,isFileDate=true;
+    //bool isNumLog=true, isSysSum=true,isFileDescr=true,isFileDate=true;
+    bool showSystemMemAvail = false,showSystemMemUsage = false, showProcMemUsage = false, showProcMemMax = false, showSysSummary = true,
+                showLogNumber = true, showLogType = true, showLogDate = true, showLogHeader = false, showFileDate = true, showFileDescr=false;
 public:
     XML(QString header,QString footer);
     XML();
-    std::string log(QVector<QMap<QString,QString>> logs)  override;
+
+    std::string log(QVector<QMap<QString,QMap<QString,QString>>> logs)  override;
     std::string end_file() override;
     std::string start_file(QString description) override;
-    std::string sys_info(QMap<QString,QString> sysInfo) override;
+  //  std::string sys_info(QMap<QString,QString> sysInfo) override;
 
-    void show_num_log(bool enable) {isNumLog=enable;};
-    void show_file_date(bool enable) {isFileDate=enable;};
-    void show_file_descr(bool enable) {isFileDescr=enable;};
-    void show_sys_info(bool enable) {isSysSum=enable;};
+    void show_sys_summary(bool val) override {showSysSummary=val;} ;
+    void show_log_number(bool val) override  {showLogNumber=val;};
+    void show_log_type(bool val) override  {showLogType=val;};
+    void show_log_date(bool val) override {showLogDate=val;};
+    void show_log_header(bool val) override {showLogHeader=val;};
+
+    void show_log_memory_avail(bool val) override {showSystemMemAvail=val;};
+    void show_log_memory_usage(bool val) override {showSystemMemUsage=val;};
+    void show_log_proc_memory_usage(bool val) override {showProcMemUsage=val;};
+    void show_log_proc_memory_max(bool val) override {showProcMemMax=val;};
+
+   // void show_num_log(bool enable) {isNumLog=enable;};
+    void show_file_date(bool enable) override {showFileDate=enable;};
+    void show_file_descr(bool enable) override {showFileDescr=enable;};
+   // void show_sys_info(bool enable) {isSysSum=enable;};
     void set_tags(QVector<QString> list){tags=list;};
 
-    bool is_num_log() {return isNumLog;};
-    bool is_file_date() {return isFileDate;};
-    bool is_file_descr() {return isFileDescr;};
-    bool is_sys_info() {return isSysSum;};
+   // bool is_num_log() {return isNumLog;};
+   // bool is_file_date() {return isFileDate;};
+   // bool is_file_descr() {return isFileDescr;};
+    //bool is_sys_info() {return isSysSum;};
 
     QVector<QString> get_tags(){return this->tags;};
 
@@ -79,12 +106,12 @@ class TXT: public FILE_STRUCT
 public:
     TXT(QString header,QString footer);
     TXT();
-    std::string log(QVector<QMap<QString,QString>> logs)  override;
+    std::string log(QVector<QMap<QString,QMap<QString,QString>>> logs) override;
     std::string end_file() override;
     std::string start_file(QString description) override;
 };
 
-LOGS_LIBRARY_EXPORT QDataStream& operator>>(QDataStream& in,XML *& fs);
-LOGS_LIBRARY_EXPORT QDataStream& operator<<(QDataStream& out,XML &fs);
+//LOGS_LIBRARY_EXPORT QDataStream& operator>>(QDataStream& in,XML *& fs);
+//LOGS_LIBRARY_EXPORT QDataStream& operator<<(QDataStream& out,XML &fs);
 
 #endif // FILE_STRUCT_H

@@ -92,15 +92,21 @@ public:
 //    QString gather_get(QString infoName);
 //    QVector<std::pair<QString,QString>> gather_get(QVector<QString> infoNames);
     QString get_info(QString infoName);
+
     QVector<QString> get_info(QVector<QString> infoNames = QVector<QString>());
-    QMap<QString,QString> get_info_map(QVector<QString> infoNames = QVector<QString>());
+
+    QMap<QString,QString> get_info_map();
+    QMap<QString,QString> get_info_map(QVector<QString> infoNames);
+
+    void disable_all();
+
     int set_enabled(QString infoname, bool enable=true);
     int set_enabled(QVector<QString> infoNames= QVector<QString>(),bool enable=true);
     static QVector<QString> listInfo();
 };
 
 LOGS_LIBRARY_EXPORT QDataStream& operator>>(QDataStream& in,SYS_INFO &fs);
-LOGS_LIBRARY_EXPORT QDataStream& operator<<(QDataStream& out,SYS_INFO &fs);
+LOGS_LIBRARY_EXPORT QDataStream& operator<<(QDataStream& out,SYS_INFO fs);
 
 LOGS_LIBRARY_EXPORT QDataStream& operator>>(QDataStream& in,DISK_INFO &fs);
 LOGS_LIBRARY_EXPORT QDataStream& operator<<(QDataStream& out,DISK_INFO const &fs);

@@ -3,7 +3,21 @@
 
 LOGS::LOGS()
 {
+    d = new LOG();
     this->fs = new XML();
+    this->si = new SYS_INFO();
+    this->set_date_format("dd/MM/yyyy hh:mm:ss");
+  // si->disable_all();
+    LOG c;
+    c.set_message("System summarry");
+    c.set_type("SYSTEM_INFO");
+    si->set_enabled();
+    c.add_sys_info(*si);
+    logs.push_back(c);
+
+
+    d->set_type("INFO");
+    d->set_date_format(format);
 }
 
 void LOGS::add(LOG log)
@@ -13,47 +27,24 @@ void LOGS::add(LOG log)
 
 void LOGS::add(QString header,QString date,QString format,QString message)
 {
-    LOG log = LOG();
+    if(header=="")
+        header = this->header;
+
+    if(format=="")
+        format=this->format;
+
+    LOG log = *d;
+    log.set_date_format(format);
+    log.set_type(type);
     log.set_header(header);
-    log.set_date(date,format);
+    log.set_date(QDateTime::fromString(date,format));
+    //log.add_customs(customs);
     log.set_message(message);
     this->logs.push_back(log);
 }
 
 void LOGS::add(QString header,QDateTime date,QString message)
 {
-    LOG log = LOG();
-    log.set_header(header);
-    log.set_date(date);
-    log.set_date_format(this->format);
-    log.set_message(message);
-    this->logs.push_back(log);
-}
-
-void LOGS::add(QString header,QString date,QString format,QString message,QMap<QString,QString> customs)
-{
-    LOG log = LOG();
-    log.set_header(header);
-    log.set_date(date,format);
-    log.set_message(message);
-    log.add_customs(customs);
-    this->logs.push_back(log);
-}
-
-void LOGS::add(QString header,QDateTime,QString message,QMap<QString,QString> customs)
-{
-    LOG log = LOG();
-    log.set_header(header);
-    log.set_message(message);
-    log.add_customs(customs);
-    this->logs.push_back(log);
-}
-
-void LOGS::add_msg(QString message, QString type, QString header, QDateTime date, QString format, QMap<QString,QString> customs)
-{
-    if(type=="")
-        type = this->type;
-
     if(header=="")
         header = this->header;
 
@@ -62,22 +53,114 @@ void LOGS::add_msg(QString message, QString type, QString header, QDateTime date
             date = QDateTime::currentDateTime();
     }
 
+    LOG log = *d;
+    log.set_header(header);
+    log.set_date(date);
+    //log.add_customs(customs);
+    log.set_message(message);
+    this->logs.push_back(log);
+}
+/*
+void LOGS::add(QString header,QString date,QString format,QString message,QMap<QString,QString> customs)
+{
+    if(header=="")
+        header = this->header;
+
     if(format=="")
         format=this->format;
 
     if(customs.size()==0)
         customs=this->customs;
 
-    LOG log = LOG();
+    LOG log = *d;
     log.set_date_format(format);
-    log.set_type(type);
+    log.set_header(header);
+    log.set_date(QDateTime::fromString(date,format));
+    //log.add_customs(customs);
+    log.set_message(message);
+    this->logs.push_back(log);
+}
+
+void LOGS::add(QString header,QDateTime date,QString message,QMap<QString,QString> customs)
+{
+    if(header=="")
+        header = this->header;
+
+    if(date==QDateTime())
+    {
+            date = QDateTime::currentDateTime();
+    }
+
+    if(customs.size()==0)
+        customs=this->customs;
+    if(header=="")
+        header = this->header;
+
+    if(customs.size()==0)
+        customs=this->customs;
+
+    LOG log = *d;
     log.set_header(header);
     log.set_date(date);
-    log.add_customs(customs);
+    //log.add_customs(customs);
+    log.set_message(message);
+    this->logs.push_back(log);
+}
+*/
+void LOGS::add_msg(QString message)
+{
+    if(this->showProcMemMax || this->showProcMemUsage || this->showSystemMemAvail || this->showSystemMemUsage)
+    {
+      //  this->si->gather_info();
+        SYS_INFO s;// = *si;
+        s.disable_all();
+        s.gather_info();
+        s.set_enabled("proc_peak",showProcMemMax);
+        s.set_enabled("proc_curr",showProcMemUsage);
+        s.set_enabled("avail_memory",showSystemMemAvail);
+        s.set_enabled("use_memory",showSystemMemUsage);
+        d->add_sys_info(s);
+
+    }
+
+    LOG log = *d;
+    //log.add_customs(customs);
+    log.set_date(QDateTime::currentDateTime());
     log.set_message(message);
 
     logs.push_back(log);
 }
+
+void LOGS::add_msg(QString message, QString type)
+{
+    if(isCustomLogSI)
+    {
+        d->get_sys_info().gather_info();
+    }
+    else
+    if(this->showProcMemMax || this->showProcMemUsage || this->showSystemMemAvail || this->showSystemMemUsage)
+    {
+      //  this->si->gather_info();
+        SYS_INFO s;// = *si;
+        s.disable_all();
+        s.gather_info();
+        s.set_enabled("proc_peak",showProcMemMax);
+        s.set_enabled("proc_curr",showProcMemUsage);
+        s.set_enabled("avail_memory",showSystemMemAvail);
+        s.set_enabled("use_memory",showSystemMemUsage);
+        d->add_sys_info(s);
+
+    }
+
+    LOG log = *d;
+    //log.add_customs(customs);
+    log.set_type(type);
+    log.set_date(QDateTime::currentDateTime());
+    log.set_message(message);
+
+    logs.push_back(log);
+}
+
 
 void LOGS::remove(int index)
 {
@@ -303,7 +386,7 @@ QVector<LOG> LOGS::get_LOGs_by_date(QDateTime date)
     return result;
 }
 
-int LOGS::save(QString filePath, char mode, FILE_STRUCT *fileStruct) // w - zapisz bez nadpisywania(jeśli plik istnieje, robi nowy z nazwa_1), r - z nadpisywaniem, q - zapytaj, a - dopisz do istniejącego pliku
+int LOGS::save() // w - zapisz bez nadpisywania(jeśli plik istnieje, robi nowy z nazwa_1), r - z nadpisywaniem, q - zapytaj, a - dopisz do istniejącego pliku
 {
     //T toSave = T(fileName,mainHeader,footer,logs);
    /* if(fileStruct==nullptr)
@@ -311,51 +394,277 @@ int LOGS::save(QString filePath, char mode, FILE_STRUCT *fileStruct) // w - zapi
         std::cout<<"Brak struktury pliku. Uzyty zostanie domyslny";
     }
     else*/
-    if(fileStruct!=nullptr)
-        this->fs = fileStruct;
+    if(isConnected==0)
+    {
+        QVector<LOG> logs = this->get_LOGs(0);
+        return ic->send_data(logs);
+    }
 
+    /*if(fileStruct!=nullptr)
+        this->fs = fileStruct;*/
+
+    QString filePath;
+    if(this->path!="")
+        filePath+=path;
+
+    filePath+=fileName;
     QFile file(filePath);
     file.open(QFile::WriteOnly|QFile::Text);
     file.write(fs->start_file("").c_str());
-    QVector<QMap<QString,QString>> map;
+    QVector<QMap<QString,QMap<QString,QString>>> map;
+
     for(auto it = this->logs.begin();it!=this->logs.end();it++)
     {
-        map.push_back(it->get_val_map());
+        //it->add_sys_info(*this->si);
+        QMap<QString,QMap<QString,QString>> tmp;
+        tmp["basic"]=it->get_basic();
+        tmp["SYS_INFO"]=it->get_sys_info_map();
+        map.push_back(tmp);
     }
-    file.write(fs->sys_info(SYS_INFO().get_info_map()).c_str());
+   // file.write(fs->sys_info(si->get_info_map()).c_str());
     file.write(fs->log(map).c_str());
     file.write(fs->end_file().c_str());
     file.close();
     return 0;
 }
 
-void LOGS::autosave(QString filePath, char mode, FILE_STRUCT *fileStruct)
+int LOGS::save(QString filePath, FILE_STRUCT *file_struct)
 {
-    while(!stop)
+    this->path="";
+    this->fileName=filePath;
+    if(file_struct!=nullptr)
+        this->fs = file_struct;
+    return save();
+}
+
+int LOGS::save(FILE_STRUCT *file_struct)
+{
+    this->fs = file_struct;
+    return save();
+}
+
+void LOGS::autosave(QString filePath, FILE_STRUCT *fileStruct)
+{
+    if(filePath=="")
     {
-        save(filePath,mode,fileStruct);
-        QThread::sleep(autoSaveTime);
+        if(fileStruct!=nullptr)
+        {
+            while(autosaving)
+            {
+                save(fileStruct);
+                QThread::sleep(autoSaveTime);
+            }
+        }
+        else
+        {
+            while(autosaving)
+            {
+                save();
+                QThread::sleep(autoSaveTime);
+            }
+        }
+    }
+    if(filePath!="")
+    {
+        while(autosaving)
+        {
+            save(filePath,fileStruct);
+            QThread::sleep(autoSaveTime);
+        }
     }
 }
 
-void LOGS::autosave_start(QString filePath, char mode,FILE_STRUCT *fileStruct)
+int LOGS::autolog()
 {
-    auto func1 = std::bind(&LOGS::autosave,this,filePath,mode,fileStruct);
-    QtConcurrent::run(func1);
+    while(autologging)
+    {
+        LOG l;
+        if(cfg==nullptr)
+        {
+            l = *d;
+            if(this->showProcMemMax || this->showProcMemUsage || this->showSystemMemAvail || this->showSystemMemUsage)
+            {
+              //  this->si->gather_info();
+                SYS_INFO s;// = *si;
+                s.disable_all();
+                s.gather_info();
+                s.set_enabled("proc_peak",showProcMemMax);
+                s.set_enabled("proc_curr",showProcMemUsage);
+                s.set_enabled("avail_memory",showSystemMemAvail);
+                s.set_enabled("use_memory",showSystemMemUsage);
+                l.add_sys_info(s);
+
+            }
+        }
+        else
+            l = *cfg;
+        qDebug()<<"running";
+        l.get_sys_info().gather_info();
+        l.set_date(QDateTime::currentDateTime());
+
+        if(autologMessage==nullptr)
+        {
+            if(l.get_message()=="")
+            {
+                l.set_message("This is automatic log");
+            }
+        }
+        else
+        {
+            l.set_message(*autologMessage);
+        }
+        logs.push_back(l);
+        QThread::sleep(autoLogTime);
+    }
+    return 0;
+}
+
+int LOGS::autolog_start(int autoLogTime)
+{
+    this->autoLogTime=autoLogTime;
+    if(!futureLog1.isRunning())
+    {
+        autologging=true;
+        auto func1 = std::bind(&LOGS::autolog,this);
+        futureLog1 = QtConcurrent::run(func1);
+        qDebug()<<"Autolog started successfully";
+        return 0;
+    }
+    {
+        qDebug()<<"Autolog is running already!";
+        return -1;
+    }
+}
+
+int LOGS::autolog_start(LOG *cfg, SYS_INFO *si)
+{
+    *this->cfg = *cfg;
+    this->cfg->add_sys_info(*si);
+    if(!futureLog1.isRunning())
+    {
+        autologging=true;
+        return autolog_start(this->autoLogTime);
+    }
+    {
+        qDebug()<<"Autolog is running already!";
+        return -1;
+    }
+}
+
+int LOGS::autosave_start()
+{
+    if(!futureSave1.isRunning())
+    {
+        autosaving=true;
+        auto func1 = std::bind(&LOGS::autosave,this,"",nullptr);
+        futureSave1 = QtConcurrent::run(func1);
+        qDebug()<<"Autosave started successfully";
+        return 0;
+    }
+    {
+        qDebug()<<"Autosave is running already!";
+        return -1;
+    }
+}
+
+int LOGS::autosave_start(FILE_STRUCT* fs)
+{
+    if(!futureSave1.isRunning())
+    {
+        autosaving=true;
+        auto func1 = std::bind(&LOGS::autosave,this,QString(""),fs);
+        futureSave1 = QtConcurrent::run(func1);
+        qDebug()<<"Autosave started successfully";
+        return 0;
+    }
+    {
+        qDebug()<<"Autosave is running already!";
+        return -1;
+    }
+}
+
+int LOGS::autosave_start(int autoSaveTime)
+{
+    if(!futureSave1.isRunning())
+    {
+        autosaving=true;
+        this->autoSaveTime=autoSaveTime;
+        return autosave_start();
+    }
+    {
+        qDebug()<<"Autosave is running already!";
+        return -1;
+    }
+}
+
+int LOGS::autosave_start(QString filePath, FILE_STRUCT *fileStruct)
+{
+    if(!futureSave1.isRunning())
+    {
+        autosaving=true;
+        auto func1 = std::bind(&LOGS::autosave,this,filePath,fileStruct);
+        futureSave1 = QtConcurrent::run(func1);
+        qDebug()<<"Autosave started successfully";
+        return 0;
+    }
+    {
+        qDebug()<<"Autosave is running already!";
+        return -1;
+    }
+}
+
+int LOGS::autosave_start(int autoSaveTime,QString filePath, FILE_STRUCT *fileStruct)
+{
+    if(!futureSave1.isRunning())
+    {
+        autosaving=true;
+        this->autoSaveTime=autoSaveTime;
+        return autosave_start(filePath,fileStruct);
+    }
+    {
+        qDebug()<<"Autosave is running already!";
+        return -1;
+    }
 }
 
 void LOGS::autosave_stop()
 {
-    this->stop=true;
-   // this->thread->
+    qDebug()<<"stopping autosave";
+    this->autosaving=false;
+    futureSave1.cancel();
+    while(futureSave1.isRunning());
+    qDebug()<<"stoped autosave";
 }
 
-void LOGS::autosave_start(int autoSaveTime,QString filePath, char mode,FILE_STRUCT *fileStruct)
+void LOGS::autolog_stop()
 {
-    this->autoSaveTime=autoSaveTime;
-    autosave_start(filePath,mode);
+    qDebug()<<"stopping autolog";
+    this->autologging=false;
+    futureLog1.cancel();
+    while(futureLog1.isRunning());
+    qDebug()<<"stoped autolog";
 }
 
+
+
+int LOGS::connect_to_log_serv(QString host, quint16 port, QString username, QString password)
+{
+    ic = new DirectConnection(host,port,username,password);
+    isConnected = ic->connect();
+    return isConnected;
+}
+
+void LOGS::set_default_header(QString header)
+{
+    if(header!="")
+    {
+        this->fs->show_log_header(true);
+        this->header=header;
+        this->d->set_header(header);
+    }
+}
+
+/*
 QDataStream& operator>>(QDataStream& in,LOGS & fs)
 {
     QString fileName,path,mainHeader,format,footer,type;
@@ -372,9 +681,9 @@ QDataStream& operator>>(QDataStream& in,LOGS & fs)
     fs = LOGS(logs);
     fs.set_file_name(fileName);
     fs.set_file_path(path);
-    fs.set_main_header(mainHeader);
+    //fs.set_main_header(mainHeader);
     fs.set_date_format(format);
-    fs.set_footer(footer);
+    //fs.set_footer(footer);
     fs.set_default_type(type);
     return in;
 }
@@ -383,12 +692,13 @@ QDataStream& operator<<(QDataStream& out,LOGS &fs)
 {
     out<<fs.get_file_name();
     out<<fs.get_file_path();
-    out<<fs.get_main_header();
+  //  out<<fs.get_main_header();
     out<<fs.get_date_format();
-    out<<fs.get_footer();
+   // out<<fs.get_footer();
     out<<fs.get_default_type();
     out<<fs.get_LOGs(0);
 
     return out;
 }
 
+*/

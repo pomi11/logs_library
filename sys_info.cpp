@@ -110,6 +110,7 @@ SYS_INFO::SYS_INFO(QMap<QString,bool> enabledInfos,QMap<QString,QString> infos,
 int SYS_INFO::gather_sysname()
 {
     this->sysname = QSysInfo::prettyProductName();
+    return 0;
 }
 
 int SYS_INFO::gather_CPUname()
@@ -373,24 +374,26 @@ QVector<QString> SYS_INFO::get_info(QVector<QString> infoNames)
     return res;
 }
 
+QMap<QString,QString> SYS_INFO::get_info_map()
+{
+    QMap<QString,QString> res;
+
+    for(auto it = enabledInfos.begin();it!=enabledInfos.end();it++)
+        {
+        if(it.value())
+            res[it.key()]=infos[it.key()];
+        }
+    return res;
+}
+
 QMap<QString,QString> SYS_INFO::get_info_map(QVector<QString> infoNames)
 {
     QMap<QString,QString> res;
-    if(infoNames.size()==0)
-    {
-        for(auto it = infos.begin();it!=infos.end();it++)
-        {
-            res[it.key()]=it.value();
-        }
-    }
-    else
-    {
         for(auto it = infoNames.begin();it!=infoNames.end();it++)
         {
             //res.push_back(infos[*it]);
             res[*it]=infos[*it];
         }
-    }
     return res;
 }
 
@@ -407,6 +410,14 @@ int SYS_INFO::set_enabled(QVector<QString> infoNames,bool enable)
         enabledInfos[*it] = enable;
     }
     return 0;
+}
+
+void SYS_INFO::disable_all()
+{
+    for(auto it = enabledInfos.begin();it!=enabledInfos.end();it++)
+    {
+        it.value()=false;
+    }
 }
 
 QVector<QString> SYS_INFO::listInfo()
@@ -472,7 +483,7 @@ QDataStream& operator>>(QDataStream& in,SYS_INFO & fs)
     return in;
 }
 
-QDataStream& operator<<(QDataStream& out,SYS_INFO &fs)
+QDataStream& operator<<(QDataStream& out,SYS_INFO fs)
 {
     out<<fs.get_enabled_infos();
     out<<fs.get_info_map();

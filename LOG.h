@@ -5,6 +5,7 @@
 #include <QDateTime>
 #include <QMap>
 #include <QDataStream>
+#include "sys_info.h"
 
 
 class LOGS_LIBRARY_EXPORT LOG
@@ -12,23 +13,36 @@ class LOGS_LIBRARY_EXPORT LOG
 private:
     QString header,message,type,format;
     QDateTime date;
+    SYS_INFO si;
    // QVector<std::pair<QString,QString>> vCustoms;
-    QMap<QString,QString> map;
+    //QMap<QString,QString> basic,sysInfo,watcher,customs;
 
 public:
     LOG();
     LOG(QDateTime date) {this->date=date;};
     LOG(QString header,QString message,QMap<QString,QString> custom);
-    void set_message(QString message)   {this->message=message; map["message"]=message;};
+    void set_message(QString message)   {this->message=message;};// basic["message"]=message;};
     //void set_customs(QVector<std::pair<QString,QString>> custom) {vCustoms=custom;};
-    void add_custom(QString tag, QString message);
-    void add_customs(QMap<QString,QString> custom);
+   // void add_custom(QString tag, QString message);
+   // void add_customs(QMap<QString,QString> custom);
+
+    void add_sys_info(SYS_INFO si){this->si=si;};
+  //  void add_sys_info(QMap<QString,QString> sysInfo);
+
+    //void add_watcher(QString key,QString value);
+    //void add_watcher(QMap<QString,QString> watcher);
+
     void set_date(QString date,QString format);
-    void set_date(QDateTime date)   {this->date=date; map["date"]=this->date.toString(format);};
+    void set_date(QDateTime date)   {this->date=date;};// basic["date"]=this->date.toString(format);};
     void set_date_format(QString format) {this->format=format;};
-    void set_header(QString header) {this->header=header; map["header"]=header;};
-    void set_type(QString type) {this->type=type; map["type"]=type;};
-    QMap<QString,QString> get_val_map() {return map;};
+    void set_header(QString header) {this->header=header;};// basic["header"]=header;};
+    void set_type(QString type) {this->type=type;};// basic["type"]=type;};
+
+    QMap<QString,QString> get_basic();
+    QMap<QString,QString> get_sys_info_map();
+
+    SYS_INFO get_sys_info() {return si;};
+
     QString get_message() {return this->message;};
     QString get_date(QString format);
     QDateTime get_date();

@@ -103,8 +103,8 @@ int DirectConnection::send_data(QVector<LOG> &log)
         return isConnected;
     }
 
-    controlSocket->write("SEND#list");
-    controlSocket->waitForBytesWritten(30000);
+    //controlSocket->write("SEND#list");
+    //controlSocket->waitForBytesWritten(30000);
 
     dataSocket = new QTcpSocket();
     dataSocket->connectToHost(this->server,11718);
@@ -137,7 +137,7 @@ int DirectConnection::send_data(QVector<LOG> &log)
     dataSocket->close();
     return 0;
 }
-
+/*
 int DirectConnection::send_data(LOGS &log)
 {
     if(isConnected!=0)
@@ -178,7 +178,7 @@ int DirectConnection::send_data(LOGS &log)
     dataSocket->disconnectFromHost();
     dataSocket->close();
     return 0;
-}
+}*/
 
 int DirectConnection::close()
 {
