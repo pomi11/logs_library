@@ -1,0 +1,218 @@
+\hypertarget{class_i_connector}{}\doxysection{I\+Connector Class Reference}
+\label{class_i_connector}\index{IConnector@{IConnector}}
+
+
+Interfejs I\+Connectror.  
+
+
+
+
+{\ttfamily \#include $<$iconnector.\+h$>$}
+
+Inheritance diagram for I\+Connector\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_i_connector}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual int \mbox{\hyperlink{class_i_connector_a9f4e2623b1d2569e0a4bbc73a7079c39}{connect}} ()=0
+\begin{DoxyCompactList}\small\item\em umozliwia utworzenie polaczenia sieciowego, uzywa wczesniej ustawionych danych \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{class_i_connector_a2d5fca905c714c280e2b5abf6ed2ccf6}{connect}} (Q\+String host, quint16 port=1616, Q\+String user=\char`\"{}\char`\"{}, Q\+String password=\char`\"{}\char`\"{})=0
+\begin{DoxyCompactList}\small\item\em umozliwia utworzenie polaczenia sieciowego, wymaga podania przynajmniej adresu hosta \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_i_connector_a49252e40058de776c6386efd3ae99f7b}{send\+\_\+cmd}} (Q\+String cmd)=0
+\begin{DoxyCompactList}\small\item\em wysyla komende wraz z parametrami do serwera \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{class_i_connector_ab884170053b190fa6186138865d103b4}{is\+\_\+connected}} ()=0
+\begin{DoxyCompactList}\small\item\em zwraca wartosc polaczenia \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{class_i_connector_ad3b45aac6eb53481b9d59313f214c028}{send\+\_\+data}} (Q\+Vector$<$ \mbox{\hyperlink{class_l_o_g}{L\+OG}} $>$ \&log)=0
+\begin{DoxyCompactList}\small\item\em wysyla logi na serwer \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_i_connector_aaf9b7c262e0eaa4baefef6937988f355}\label{class_i_connector_aaf9b7c262e0eaa4baefef6937988f355}} 
+virtual void \mbox{\hyperlink{class_i_connector_aaf9b7c262e0eaa4baefef6937988f355}{close}} ()=0
+\begin{DoxyCompactList}\small\item\em zamyka i usuwa polaczenie \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual int \mbox{\hyperlink{class_i_connector_a20c62ddc54c08096f5f792fdbf8f10e6}{decode\+\_\+response}} (Q\+String response)=0
+\begin{DoxyCompactList}\small\item\em przetwarza odpowiedz serwera tekstowa na typ int \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interfejs I\+Connectror. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_i_connector_a9f4e2623b1d2569e0a4bbc73a7079c39}\label{class_i_connector_a9f4e2623b1d2569e0a4bbc73a7079c39}} 
+\index{IConnector@{IConnector}!connect@{connect}}
+\index{connect@{connect}!IConnector@{IConnector}}
+\doxysubsubsection{\texorpdfstring{connect()}{connect()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily virtual int I\+Connector\+::connect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+umozliwia utworzenie polaczenia sieciowego, uzywa wczesniej ustawionych danych 
+
+jesli uzytkownik i/lub haslo nie zostaly wczesniej podane, a serwer ich wymaga, ustanawia polaczenie bez logowania \begin{DoxyReturn}{Returns}
+0 -\/ polaczono i zalogowano 
+
+1 -\/ podany uzytkownik zostal odrzucony przez serwer 
+
+2 -\/ podany uzytkownik zostal zaakceptowany, serwer czeka na haslo 
+
+3 -\/ podane haslo jest nieprawidlowe 
+
+4 -\/ uzytkownik nie zostal podany 
+
+-\/1 -\/ blad polaczenia 
+
+-\/2 -\/ brak hosta 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_direct_connection_accaeaae2a68708930bf41ab7bdc8e6d8}{Direct\+Connection}}.
+
+\mbox{\Hypertarget{class_i_connector_a2d5fca905c714c280e2b5abf6ed2ccf6}\label{class_i_connector_a2d5fca905c714c280e2b5abf6ed2ccf6}} 
+\index{IConnector@{IConnector}!connect@{connect}}
+\index{connect@{connect}!IConnector@{IConnector}}
+\doxysubsubsection{\texorpdfstring{connect()}{connect()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily virtual int I\+Connector\+::connect (\begin{DoxyParamCaption}\item[{Q\+String}]{host,  }\item[{quint16}]{port = {\ttfamily 1616},  }\item[{Q\+String}]{user = {\ttfamily \char`\"{}\char`\"{}},  }\item[{Q\+String}]{password = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+umozliwia utworzenie polaczenia sieciowego, wymaga podania przynajmniej adresu hosta 
+
+pozostale parametry sa opcjonalne
+
+jesli host nie uzywa domyslnych ustawien, konieczne jest ich podanie, w przeciwnym wypadku polaczenie nie dojdzie do skutku 
+\begin{DoxyParams}{Parameters}
+{\em host} & -\/ adres hosta \\
+\hline
+{\em port} & -\/ adres portu hosta, domyslnie 1616 \\
+\hline
+{\em user} & -\/ nazwa uzytkownika, domyslnie brak \\
+\hline
+{\em password} & -\/ haslo, domyslnie brak \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 -\/ polaczono i zalogowano 
+
+1 -\/ podany uzytkownik zostal odrzucony przez serwer 
+
+2 -\/ podany uzytkownik zostal zaakceptowany, serwer czeka na haslo 
+
+3 -\/ podane haslo jest nieprawidlowe 
+
+4 -\/ uzytkownik nie zostal podany 
+
+-\/1 -\/ blad polaczenia 
+
+-\/2 -\/ brak hosta 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_i_connector_a9f4e2623b1d2569e0a4bbc73a7079c39}{connect}} 
+\end{DoxySeeAlso}
+
+
+Implemented in \mbox{\hyperlink{class_direct_connection_ab99f4bcbb70ec0d8293dfd9516e8341a}{Direct\+Connection}}.
+
+\mbox{\Hypertarget{class_i_connector_a20c62ddc54c08096f5f792fdbf8f10e6}\label{class_i_connector_a20c62ddc54c08096f5f792fdbf8f10e6}} 
+\index{IConnector@{IConnector}!decode\_response@{decode\_response}}
+\index{decode\_response@{decode\_response}!IConnector@{IConnector}}
+\doxysubsubsection{\texorpdfstring{decode\_response()}{decode\_response()}}
+{\footnotesize\ttfamily virtual int I\+Connector\+::decode\+\_\+response (\begin{DoxyParamCaption}\item[{Q\+String}]{response }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+przetwarza odpowiedz serwera tekstowa na typ int 
+
+
+\begin{DoxyParams}{Parameters}
+{\em response} & -\/ tekstowa odpowiedz serwera \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ zwraca liczbowa reprezentacje odpowiedzi serwera 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_direct_connection_a4969044c16ee62cdc11ad9bbc09b69f7}{Direct\+Connection}}.
+
+\mbox{\Hypertarget{class_i_connector_ab884170053b190fa6186138865d103b4}\label{class_i_connector_ab884170053b190fa6186138865d103b4}} 
+\index{IConnector@{IConnector}!is\_connected@{is\_connected}}
+\index{is\_connected@{is\_connected}!IConnector@{IConnector}}
+\doxysubsubsection{\texorpdfstring{is\_connected()}{is\_connected()}}
+{\footnotesize\ttfamily virtual int I\+Connector\+::is\+\_\+connected (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+zwraca wartosc polaczenia 
+
+\begin{DoxyReturn}{Returns}
+0 -\/ polaczono i zalogowano 
+
+1 -\/ podany uzytkownik zostal odrzucony przez serwer 
+
+2 -\/ podany uzytkownik zostal zaakceptowany, serwer czeka na haslo 
+
+3 -\/ podane haslo jest nieprawidlowe 
+
+4 -\/ uzytkownik nie zostal podany 
+
+-\/1 -\/ blad polaczenia 
+
+-\/2 -\/ brak hosta
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_i_connector_a9f4e2623b1d2569e0a4bbc73a7079c39}{connect}} 
+\end{DoxySeeAlso}
+
+
+Implemented in \mbox{\hyperlink{class_direct_connection_aea610fcc7082c6b405b6b474aa2b7dc9}{Direct\+Connection}}.
+
+\mbox{\Hypertarget{class_i_connector_a49252e40058de776c6386efd3ae99f7b}\label{class_i_connector_a49252e40058de776c6386efd3ae99f7b}} 
+\index{IConnector@{IConnector}!send\_cmd@{send\_cmd}}
+\index{send\_cmd@{send\_cmd}!IConnector@{IConnector}}
+\doxysubsubsection{\texorpdfstring{send\_cmd()}{send\_cmd()}}
+{\footnotesize\ttfamily virtual void I\+Connector\+::send\+\_\+cmd (\begin{DoxyParamCaption}\item[{Q\+String}]{cmd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+wysyla komende wraz z parametrami do serwera 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cmd} & -\/ komenda i parametry w formie napisu Q\+String \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_direct_connection_ad4af4b5bc2bb9ee2e48ac1af43023059}{Direct\+Connection}}.
+
+\mbox{\Hypertarget{class_i_connector_ad3b45aac6eb53481b9d59313f214c028}\label{class_i_connector_ad3b45aac6eb53481b9d59313f214c028}} 
+\index{IConnector@{IConnector}!send\_data@{send\_data}}
+\index{send\_data@{send\_data}!IConnector@{IConnector}}
+\doxysubsubsection{\texorpdfstring{send\_data()}{send\_data()}}
+{\footnotesize\ttfamily virtual int I\+Connector\+::send\+\_\+data (\begin{DoxyParamCaption}\item[{Q\+Vector$<$ \mbox{\hyperlink{class_l_o_g}{L\+OG}} $>$ \&}]{log }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+wysyla logi na serwer 
+
+
+\begin{DoxyParams}{Parameters}
+{\em log} & -\/ vector logow do wyslania \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 -\/ zakonczono pomyslnie 1 -\/ nie udalo sie polaczyc z serwerem na port danych 2 -\/ wystapil problem z przesylaniem danych 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_direct_connection_addf647ab916b2fcf5796f2a691847a18}{Direct\+Connection}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Programowanie/\+Projekty/\+C++/logs\+\_\+library/iconnector.\+h\end{DoxyCompactItemize}

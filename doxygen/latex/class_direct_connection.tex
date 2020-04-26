@@ -1,0 +1,339 @@
+\hypertarget{class_direct_connection}{}\doxysection{Direct\+Connection Class Reference}
+\label{class_direct_connection}\index{DirectConnection@{DirectConnection}}
+
+
+Implementacja \mbox{\hyperlink{class_i_connector}{I\+Connector}} do polaczenia z serwerem z tej biblioteki.  
+
+
+
+
+{\ttfamily \#include $<$iconnector.\+h$>$}
+
+Inheritance diagram for Direct\+Connection\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_direct_connection}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_direct_connection_a070486ccefdbdf08294bcd9f3b6be70b}\label{class_direct_connection_a070486ccefdbdf08294bcd9f3b6be70b}} 
+\mbox{\hyperlink{class_direct_connection_a070486ccefdbdf08294bcd9f3b6be70b}{Direct\+Connection}} ()
+\begin{DoxyCompactList}\small\item\em konstruktor bezparametrowy, ustawia domyslne wartosci pol \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_direct_connection_ae3f6d94e1da53b4f44153f4855fec084}{Direct\+Connection}} (Q\+String host)
+\begin{DoxyCompactList}\small\item\em konstruktor z parametrem host \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_direct_connection_acc3653a625095422ba8ef75d8547e18f}{Direct\+Connection}} (Q\+String host, quint16 port)
+\begin{DoxyCompactList}\small\item\em konstruktor z dwoma parametrami -\/ host, port \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_direct_connection_a366e10aa5710fee042bc0692939a6a6f}{Direct\+Connection}} (Q\+String host, quint16 port, Q\+String user)
+\begin{DoxyCompactList}\small\item\em konstruktor z trzema parametrami -\/ host, port, user \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_direct_connection_a033e84ae6503d3acb8aef4879524d662}{Direct\+Connection}} (Q\+String host, quint16 port, Q\+String user, Q\+String password)
+\begin{DoxyCompactList}\small\item\em konstruktor z trzema parametrami -\/ host, port, user, password \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_direct_connection_aea610fcc7082c6b405b6b474aa2b7dc9}{is\+\_\+connected}} () override
+\begin{DoxyCompactList}\small\item\em zwraca wartosc polaczenia \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_direct_connection_accaeaae2a68708930bf41ab7bdc8e6d8}{connect}} () override
+\begin{DoxyCompactList}\small\item\em umozliwia utworzenie polaczenia sieciowego, uzywa wczesniej ustawionych danych \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_direct_connection_ab99f4bcbb70ec0d8293dfd9516e8341a}{connect}} (Q\+String host, quint16 port=1616, Q\+String user=\char`\"{}\char`\"{}, Q\+String password=\char`\"{}\char`\"{}) override
+\begin{DoxyCompactList}\small\item\em umozliwia utworzenie polaczenia sieciowego, wymaga podania przynajmniej adresu hosta \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_direct_connection_ad4af4b5bc2bb9ee2e48ac1af43023059}{send\+\_\+cmd}} (Q\+String cmd) override
+\begin{DoxyCompactList}\small\item\em wysyla komende wraz z parametrami do serwera \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_direct_connection_a76e59dd31474f0736a7f37d53bcfe789}\label{class_direct_connection_a76e59dd31474f0736a7f37d53bcfe789}} 
+void \mbox{\hyperlink{class_direct_connection_a76e59dd31474f0736a7f37d53bcfe789}{close}} () override
+\begin{DoxyCompactList}\small\item\em zamyka i usuwa polaczenie \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{class_direct_connection_addf647ab916b2fcf5796f2a691847a18}{send\+\_\+data}} (Q\+Vector$<$ \mbox{\hyperlink{class_l_o_g}{L\+OG}} $>$ \&log) override
+\begin{DoxyCompactList}\small\item\em wysyla logi na serwer \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_direct_connection_a31692321ce2b667fece6c71da35747d3}{set\+\_\+control\+\_\+port}} (quint16 port)
+\begin{DoxyCompactList}\small\item\em ustawia port, na ktorym odbywac sie ma komunikacja z serwerem \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_direct_connection_a99a07bbaf0724810e88861fafe9f1db5}{set\+\_\+data\+\_\+port}} (quint16 port)
+\begin{DoxyCompactList}\small\item\em ustawia port, na ktorym odbywac sie ma transfer danych do serwera \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_direct_connection_a4969044c16ee62cdc11ad9bbc09b69f7}{decode\+\_\+response}} (Q\+String response) override
+\begin{DoxyCompactList}\small\item\em przetwarza odpowiedz serwera tekstowa na typ int \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementacja \mbox{\hyperlink{class_i_connector}{I\+Connector}} do polaczenia z serwerem z tej biblioteki. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_direct_connection_ae3f6d94e1da53b4f44153f4855fec084}\label{class_direct_connection_ae3f6d94e1da53b4f44153f4855fec084}} 
+\index{DirectConnection@{DirectConnection}!DirectConnection@{DirectConnection}}
+\index{DirectConnection@{DirectConnection}!DirectConnection@{DirectConnection}}
+\doxysubsubsection{\texorpdfstring{DirectConnection()}{DirectConnection()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily Direct\+Connection\+::\+Direct\+Connection (\begin{DoxyParamCaption}\item[{Q\+String}]{host }\end{DoxyParamCaption})}
+
+
+
+konstruktor z parametrem host 
+
+wywoluje konstruktor bezparametrowy, a nastepnie ustawia adres hosta 
+\begin{DoxyParams}{Parameters}
+{\em host} & -\/ adres hosta \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_direct_connection_acc3653a625095422ba8ef75d8547e18f}\label{class_direct_connection_acc3653a625095422ba8ef75d8547e18f}} 
+\index{DirectConnection@{DirectConnection}!DirectConnection@{DirectConnection}}
+\index{DirectConnection@{DirectConnection}!DirectConnection@{DirectConnection}}
+\doxysubsubsection{\texorpdfstring{DirectConnection()}{DirectConnection()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily Direct\+Connection\+::\+Direct\+Connection (\begin{DoxyParamCaption}\item[{Q\+String}]{host,  }\item[{quint16}]{port }\end{DoxyParamCaption})}
+
+
+
+konstruktor z dwoma parametrami -\/ host, port 
+
+wywoluje konstruktor bezparametrowy, a nastepnie ustawia adres i port hosta 
+\begin{DoxyParams}{Parameters}
+{\em host} & -\/ adres hosta \\
+\hline
+{\em port} & -\/ port hosta \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_direct_connection_a366e10aa5710fee042bc0692939a6a6f}\label{class_direct_connection_a366e10aa5710fee042bc0692939a6a6f}} 
+\index{DirectConnection@{DirectConnection}!DirectConnection@{DirectConnection}}
+\index{DirectConnection@{DirectConnection}!DirectConnection@{DirectConnection}}
+\doxysubsubsection{\texorpdfstring{DirectConnection()}{DirectConnection()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily Direct\+Connection\+::\+Direct\+Connection (\begin{DoxyParamCaption}\item[{Q\+String}]{host,  }\item[{quint16}]{port,  }\item[{Q\+String}]{user }\end{DoxyParamCaption})}
+
+
+
+konstruktor z trzema parametrami -\/ host, port, user 
+
+wywoluje konstruktor bezparametrowy, a nastepnie ustawia adres i port hosta oraz nazwe uzytkownika 
+\begin{DoxyParams}{Parameters}
+{\em host} & -\/ adres hosta \\
+\hline
+{\em port} & -\/ port hosta \\
+\hline
+{\em user} & -\/ nazwa uzytkownika \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_direct_connection_a033e84ae6503d3acb8aef4879524d662}\label{class_direct_connection_a033e84ae6503d3acb8aef4879524d662}} 
+\index{DirectConnection@{DirectConnection}!DirectConnection@{DirectConnection}}
+\index{DirectConnection@{DirectConnection}!DirectConnection@{DirectConnection}}
+\doxysubsubsection{\texorpdfstring{DirectConnection()}{DirectConnection()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily Direct\+Connection\+::\+Direct\+Connection (\begin{DoxyParamCaption}\item[{Q\+String}]{host,  }\item[{quint16}]{port,  }\item[{Q\+String}]{user,  }\item[{Q\+String}]{password }\end{DoxyParamCaption})}
+
+
+
+konstruktor z trzema parametrami -\/ host, port, user, password 
+
+wywoluje konstruktor bezparametrowy, a nastepnie ustawia adres i port hosta oraz nazwe i haslo uzytkownika 
+\begin{DoxyParams}{Parameters}
+{\em host} & -\/ adres hosta \\
+\hline
+{\em port} & -\/ port hosta \\
+\hline
+{\em user} & -\/ nazwa uzytkownika \\
+\hline
+{\em password} & -\/ haslo uzytkownika \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_direct_connection_accaeaae2a68708930bf41ab7bdc8e6d8}\label{class_direct_connection_accaeaae2a68708930bf41ab7bdc8e6d8}} 
+\index{DirectConnection@{DirectConnection}!connect@{connect}}
+\index{connect@{connect}!DirectConnection@{DirectConnection}}
+\doxysubsubsection{\texorpdfstring{connect()}{connect()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int Direct\+Connection\+::connect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+umozliwia utworzenie polaczenia sieciowego, uzywa wczesniej ustawionych danych 
+
+jesli uzytkownik i/lub haslo nie zostaly wczesniej podane, a serwer ich wymaga, ustanawia polaczenie bez logowania \begin{DoxyReturn}{Returns}
+0 -\/ polaczono i zalogowano 
+
+1 -\/ podany uzytkownik zostal odrzucony przez serwer 
+
+2 -\/ podany uzytkownik zostal zaakceptowany, serwer czeka na haslo 
+
+3 -\/ podane haslo jest nieprawidlowe 
+
+4 -\/ uzytkownik nie zostal podany 
+
+-\/1 -\/ blad polaczenia 
+
+-\/2 -\/ brak hosta 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_connector_a9f4e2623b1d2569e0a4bbc73a7079c39}{I\+Connector}}.
+
+\mbox{\Hypertarget{class_direct_connection_ab99f4bcbb70ec0d8293dfd9516e8341a}\label{class_direct_connection_ab99f4bcbb70ec0d8293dfd9516e8341a}} 
+\index{DirectConnection@{DirectConnection}!connect@{connect}}
+\index{connect@{connect}!DirectConnection@{DirectConnection}}
+\doxysubsubsection{\texorpdfstring{connect()}{connect()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily int Direct\+Connection\+::connect (\begin{DoxyParamCaption}\item[{Q\+String}]{host,  }\item[{quint16}]{port = {\ttfamily 1616},  }\item[{Q\+String}]{user = {\ttfamily \char`\"{}\char`\"{}},  }\item[{Q\+String}]{password = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+umozliwia utworzenie polaczenia sieciowego, wymaga podania przynajmniej adresu hosta 
+
+pozostale parametry sa opcjonalne
+
+jesli host nie uzywa domyslnych ustawien, konieczne jest ich podanie, w przeciwnym wypadku polaczenie nie dojdzie do skutku 
+\begin{DoxyParams}{Parameters}
+{\em host} & -\/ adres hosta \\
+\hline
+{\em port} & -\/ adres portu hosta, domyslnie 1616 \\
+\hline
+{\em user} & -\/ nazwa uzytkownika, domyslnie brak \\
+\hline
+{\em password} & -\/ haslo, domyslnie brak \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 -\/ polaczono i zalogowano 
+
+1 -\/ podany uzytkownik zostal odrzucony przez serwer 
+
+2 -\/ podany uzytkownik zostal zaakceptowany, serwer czeka na haslo 
+
+3 -\/ podane haslo jest nieprawidlowe 
+
+4 -\/ uzytkownik nie zostal podany 
+
+-\/1 -\/ blad polaczenia 
+
+-\/2 -\/ brak hosta 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_direct_connection_accaeaae2a68708930bf41ab7bdc8e6d8}{connect}} 
+\end{DoxySeeAlso}
+
+
+Implements \mbox{\hyperlink{class_i_connector_a2d5fca905c714c280e2b5abf6ed2ccf6}{I\+Connector}}.
+
+\mbox{\Hypertarget{class_direct_connection_a4969044c16ee62cdc11ad9bbc09b69f7}\label{class_direct_connection_a4969044c16ee62cdc11ad9bbc09b69f7}} 
+\index{DirectConnection@{DirectConnection}!decode\_response@{decode\_response}}
+\index{decode\_response@{decode\_response}!DirectConnection@{DirectConnection}}
+\doxysubsubsection{\texorpdfstring{decode\_response()}{decode\_response()}}
+{\footnotesize\ttfamily int Direct\+Connection\+::decode\+\_\+response (\begin{DoxyParamCaption}\item[{Q\+String}]{response }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+przetwarza odpowiedz serwera tekstowa na typ int 
+
+
+\begin{DoxyParams}{Parameters}
+{\em response} & -\/ tekstowa odpowiedz serwera \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ zwraca liczbowa reprezentacje odpowiedzi serwera 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_connector_a20c62ddc54c08096f5f792fdbf8f10e6}{I\+Connector}}.
+
+\mbox{\Hypertarget{class_direct_connection_aea610fcc7082c6b405b6b474aa2b7dc9}\label{class_direct_connection_aea610fcc7082c6b405b6b474aa2b7dc9}} 
+\index{DirectConnection@{DirectConnection}!is\_connected@{is\_connected}}
+\index{is\_connected@{is\_connected}!DirectConnection@{DirectConnection}}
+\doxysubsubsection{\texorpdfstring{is\_connected()}{is\_connected()}}
+{\footnotesize\ttfamily int Direct\+Connection\+::is\+\_\+connected (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+zwraca wartosc polaczenia 
+
+\begin{DoxyReturn}{Returns}
+0 -\/ polaczono i zalogowano 
+
+1 -\/ podany uzytkownik zostal odrzucony przez serwer 
+
+2 -\/ podany uzytkownik zostal zaakceptowany, serwer czeka na haslo 
+
+3 -\/ podane haslo jest nieprawidlowe 
+
+4 -\/ uzytkownik nie zostal podany 
+
+-\/1 -\/ blad polaczenia 
+
+-\/2 -\/ brak hosta
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_direct_connection_accaeaae2a68708930bf41ab7bdc8e6d8}{connect}} 
+\end{DoxySeeAlso}
+
+
+Implements \mbox{\hyperlink{class_i_connector_ab884170053b190fa6186138865d103b4}{I\+Connector}}.
+
+\mbox{\Hypertarget{class_direct_connection_ad4af4b5bc2bb9ee2e48ac1af43023059}\label{class_direct_connection_ad4af4b5bc2bb9ee2e48ac1af43023059}} 
+\index{DirectConnection@{DirectConnection}!send\_cmd@{send\_cmd}}
+\index{send\_cmd@{send\_cmd}!DirectConnection@{DirectConnection}}
+\doxysubsubsection{\texorpdfstring{send\_cmd()}{send\_cmd()}}
+{\footnotesize\ttfamily void Direct\+Connection\+::send\+\_\+cmd (\begin{DoxyParamCaption}\item[{Q\+String}]{cmd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+wysyla komende wraz z parametrami do serwera 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cmd} & -\/ komenda i parametry w formie napisu Q\+String \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_i_connector_a49252e40058de776c6386efd3ae99f7b}{I\+Connector}}.
+
+\mbox{\Hypertarget{class_direct_connection_addf647ab916b2fcf5796f2a691847a18}\label{class_direct_connection_addf647ab916b2fcf5796f2a691847a18}} 
+\index{DirectConnection@{DirectConnection}!send\_data@{send\_data}}
+\index{send\_data@{send\_data}!DirectConnection@{DirectConnection}}
+\doxysubsubsection{\texorpdfstring{send\_data()}{send\_data()}}
+{\footnotesize\ttfamily int Direct\+Connection\+::send\+\_\+data (\begin{DoxyParamCaption}\item[{Q\+Vector$<$ \mbox{\hyperlink{class_l_o_g}{L\+OG}} $>$ \&}]{log }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+wysyla logi na serwer 
+
+
+\begin{DoxyParams}{Parameters}
+{\em log} & -\/ vector logow do wyslania \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 -\/ zakonczono pomyslnie 1 -\/ nie udalo sie polaczyc z serwerem na port danych 2 -\/ wystapil problem z przesylaniem danych 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_connector_ad3b45aac6eb53481b9d59313f214c028}{I\+Connector}}.
+
+\mbox{\Hypertarget{class_direct_connection_a31692321ce2b667fece6c71da35747d3}\label{class_direct_connection_a31692321ce2b667fece6c71da35747d3}} 
+\index{DirectConnection@{DirectConnection}!set\_control\_port@{set\_control\_port}}
+\index{set\_control\_port@{set\_control\_port}!DirectConnection@{DirectConnection}}
+\doxysubsubsection{\texorpdfstring{set\_control\_port()}{set\_control\_port()}}
+{\footnotesize\ttfamily void Direct\+Connection\+::set\+\_\+control\+\_\+port (\begin{DoxyParamCaption}\item[{quint16}]{port }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ustawia port, na ktorym odbywac sie ma komunikacja z serwerem 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & -\/ port serwera \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_direct_connection_a99a07bbaf0724810e88861fafe9f1db5}\label{class_direct_connection_a99a07bbaf0724810e88861fafe9f1db5}} 
+\index{DirectConnection@{DirectConnection}!set\_data\_port@{set\_data\_port}}
+\index{set\_data\_port@{set\_data\_port}!DirectConnection@{DirectConnection}}
+\doxysubsubsection{\texorpdfstring{set\_data\_port()}{set\_data\_port()}}
+{\footnotesize\ttfamily void Direct\+Connection\+::set\+\_\+data\+\_\+port (\begin{DoxyParamCaption}\item[{quint16}]{port }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ustawia port, na ktorym odbywac sie ma transfer danych do serwera 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & danych serwera \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Programowanie/\+Projekty/\+C++/logs\+\_\+library/iconnector.\+h\item 
+D\+:/\+Programowanie/\+Projekty/\+C++/logs\+\_\+library/iconnector.\+cpp\end{DoxyCompactItemize}

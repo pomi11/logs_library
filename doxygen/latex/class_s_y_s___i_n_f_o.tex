@@ -1,0 +1,431 @@
+\hypertarget{class_s_y_s___i_n_f_o}{}\doxysection{S\+Y\+S\+\_\+\+I\+N\+FO Class Reference}
+\label{class_s_y_s___i_n_f_o}\index{SYS\_INFO@{SYS\_INFO}}
+
+
+Klasa do zbierania informacji o systemie.  
+
+
+
+
+{\ttfamily \#include $<$sys\+\_\+info.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_s_y_s___i_n_f_o_abc474e226da128e9b8824ca9da9a92e2}\label{class_s_y_s___i_n_f_o_abc474e226da128e9b8824ca9da9a92e2}} 
+\mbox{\hyperlink{class_s_y_s___i_n_f_o_abc474e226da128e9b8824ca9da9a92e2}{S\+Y\+S\+\_\+\+I\+N\+FO}} ()
+\begin{DoxyCompactList}\small\item\em konstruktor bezparametrowy \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_s_y_s___i_n_f_o_a94da733b1cd9ddcad85af17407af7eae}{S\+Y\+S\+\_\+\+I\+N\+FO}} (Q\+Map$<$ Q\+String, bool $>$ enabled\+Infos, Q\+Map$<$ Q\+String, Q\+String $>$ infos, Q\+String sysname, Q\+String C\+P\+Uname, Q\+String arch, Q\+String username, int cores, quint64 max\+Memory, quint64 avail\+Memory, quint64 use\+Memory, quint64 proc\+Peak, quint64 proc\+Curr, Q\+Vector$<$ \mbox{\hyperlink{struct_d_i_s_k___i_n_f_o}{D\+I\+S\+K\+\_\+\+I\+N\+FO}} $>$ disks)
+\begin{DoxyCompactList}\small\item\em konstruktor tworzacy obiekt \mbox{\hyperlink{class_s_y_s___i_n_f_o}{S\+Y\+S\+\_\+\+I\+N\+FO}} z danymi od uzytkownika \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{class_s_y_s___i_n_f_o_a065edbb3274e693c32557567388d7eba}{get\+\_\+sysname}} () const
+\begin{DoxyCompactList}\small\item\em zwraca nazwe systemu \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{class_s_y_s___i_n_f_o_a4624072a2aaad5e543e56dbee88b7364}{get\+\_\+cpuname}} () const
+\begin{DoxyCompactList}\small\item\em zwraca nazwe procesora \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{class_s_y_s___i_n_f_o_a3ec55690080ad042a69f56cb5beba641}{get\+\_\+arch}} () const
+\begin{DoxyCompactList}\small\item\em zwraca architekture systemu \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{class_s_y_s___i_n_f_o_aa5252a50152b8c7d48a17e64d34a8612}{get\+\_\+username}} () const
+\begin{DoxyCompactList}\small\item\em zwraca nazwe uzytkownika \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_s_y_s___i_n_f_o_a57961b39f259c016dff2ca2b5c5fde8a}{get\+\_\+cores}} () const
+\begin{DoxyCompactList}\small\item\em zwraca liczbe rdzeni procesora \end{DoxyCompactList}\item 
+Q\+Map$<$ Q\+String, bool $>$ \mbox{\hyperlink{class_s_y_s___i_n_f_o_a785fab071c63c0a8b81ad6ea3f6cf778}{get\+\_\+enabled\+\_\+infos}} ()
+\begin{DoxyCompactList}\small\item\em zwraca mape nazw informacji i wartosci, czy sa monitorowane \end{DoxyCompactList}\item 
+unsigned long long int \mbox{\hyperlink{class_s_y_s___i_n_f_o_ac0f2f902b0f2969773fc6618c35dce61}{get\+\_\+max\+\_\+memory}} () const
+\begin{DoxyCompactList}\small\item\em zwraca ilosc pamieci zainstalowanej w systemie \end{DoxyCompactList}\item 
+unsigned long long int \mbox{\hyperlink{class_s_y_s___i_n_f_o_a76569ae3a7d9ab4ab3e115809ace5608}{get\+\_\+avail\+\_\+memory}} () const
+\begin{DoxyCompactList}\small\item\em zwraca ilosc pamieci wolnej w systemie \end{DoxyCompactList}\item 
+unsigned long long int \mbox{\hyperlink{class_s_y_s___i_n_f_o_a1cff59575206c8282d57f1ce88e512d1}{get\+\_\+use\+\_\+memory}} () const
+\begin{DoxyCompactList}\small\item\em zwraca ilosc pamieci zajetej w systemie \end{DoxyCompactList}\item 
+unsigned long long int \mbox{\hyperlink{class_s_y_s___i_n_f_o_a8423629e323744e3bf1fd6deb84d5896}{get\+\_\+proc\+\_\+peak}} () const
+\begin{DoxyCompactList}\small\item\em zwraca maksymalna ilosc pamieci jaka potrzebowal proces logujacy \end{DoxyCompactList}\item 
+unsigned long long int \mbox{\hyperlink{class_s_y_s___i_n_f_o_ade849fdf12190d0304ded7a5bc52308c}{get\+\_\+proc\+\_\+curr}} () const
+\begin{DoxyCompactList}\small\item\em zwraca ilosc pamieci jaka obecnie uzywa proces logujacy \end{DoxyCompactList}\item 
+Q\+Vector$<$ \mbox{\hyperlink{struct_d_i_s_k___i_n_f_o}{D\+I\+S\+K\+\_\+\+I\+N\+FO}} $>$ \mbox{\hyperlink{class_s_y_s___i_n_f_o_ab0b1821e9d5f8cdc81515023149a6816}{get\+\_\+disks\+\_\+info}} () const
+\begin{DoxyCompactList}\small\item\em zwraca liste dyskow \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_s_y_s___i_n_f_o_a929c9b759c26a6db65585b9b3ef314b8}\label{class_s_y_s___i_n_f_o_a929c9b759c26a6db65585b9b3ef314b8}} 
+void \mbox{\hyperlink{class_s_y_s___i_n_f_o_a929c9b759c26a6db65585b9b3ef314b8}{gather\+\_\+sysname}} ()
+\begin{DoxyCompactList}\small\item\em aktualizuje informacje o nazwie systemu \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_s_y_s___i_n_f_o_a3c3e1da2744301e532cc9f1f8e74a991}\label{class_s_y_s___i_n_f_o_a3c3e1da2744301e532cc9f1f8e74a991}} 
+void \mbox{\hyperlink{class_s_y_s___i_n_f_o_a3c3e1da2744301e532cc9f1f8e74a991}{gather\+\_\+\+C\+P\+Uname}} ()
+\begin{DoxyCompactList}\small\item\em aktualizuje informacje o nazwie procesora \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_s_y_s___i_n_f_o_acd628086a2e4b57437df04caba533f7f}\label{class_s_y_s___i_n_f_o_acd628086a2e4b57437df04caba533f7f}} 
+void \mbox{\hyperlink{class_s_y_s___i_n_f_o_acd628086a2e4b57437df04caba533f7f}{gather\+\_\+arch}} ()
+\begin{DoxyCompactList}\small\item\em aktualizuje informacje o architekturze systemu \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_s_y_s___i_n_f_o_ab5676ba27ef2f4ba818edffe69221336}\label{class_s_y_s___i_n_f_o_ab5676ba27ef2f4ba818edffe69221336}} 
+void \mbox{\hyperlink{class_s_y_s___i_n_f_o_ab5676ba27ef2f4ba818edffe69221336}{gather\+\_\+username}} ()
+\begin{DoxyCompactList}\small\item\em aktualizuje informacje o nazwie uzytkownika \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_s_y_s___i_n_f_o_ac774eb43a52a459d59fb8f1b2a6c5422}\label{class_s_y_s___i_n_f_o_ac774eb43a52a459d59fb8f1b2a6c5422}} 
+void \mbox{\hyperlink{class_s_y_s___i_n_f_o_ac774eb43a52a459d59fb8f1b2a6c5422}{gather\+\_\+cores}} ()
+\begin{DoxyCompactList}\small\item\em aktualizuje informacje o liczbie rdzeni \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_s_y_s___i_n_f_o_ac8b7902bc5a38dadbeab69619da52437}\label{class_s_y_s___i_n_f_o_ac8b7902bc5a38dadbeab69619da52437}} 
+void \mbox{\hyperlink{class_s_y_s___i_n_f_o_ac8b7902bc5a38dadbeab69619da52437}{gather\+\_\+max\+\_\+memory}} ()
+\begin{DoxyCompactList}\small\item\em aktualizuje informacje o ilosci pamieci zainstalowanej w systemie \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_s_y_s___i_n_f_o_ab0f1a8105326098955f0edd2fe65df67}\label{class_s_y_s___i_n_f_o_ab0f1a8105326098955f0edd2fe65df67}} 
+void \mbox{\hyperlink{class_s_y_s___i_n_f_o_ab0f1a8105326098955f0edd2fe65df67}{gather\+\_\+avail\+\_\+memory}} ()
+\begin{DoxyCompactList}\small\item\em aktualizuje informacje o ilosci wolnej pamieci w systemie \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_s_y_s___i_n_f_o_a5ccd767b13d924b38f628a8d3c2634ff}\label{class_s_y_s___i_n_f_o_a5ccd767b13d924b38f628a8d3c2634ff}} 
+void \mbox{\hyperlink{class_s_y_s___i_n_f_o_a5ccd767b13d924b38f628a8d3c2634ff}{gather\+\_\+use\+\_\+memory}} ()
+\begin{DoxyCompactList}\small\item\em aktualizuje informacje o ilosci uzytej pamieci w systemie \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_s_y_s___i_n_f_o_af8f3afe04e370b857e3560a19a577ac5}\label{class_s_y_s___i_n_f_o_af8f3afe04e370b857e3560a19a577ac5}} 
+void \mbox{\hyperlink{class_s_y_s___i_n_f_o_af8f3afe04e370b857e3560a19a577ac5}{gather\+\_\+proc\+\_\+peak}} ()
+\begin{DoxyCompactList}\small\item\em aktualizuje informacje o maksymalnej ilosci uzytej pamieci przez proces logujacy \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_s_y_s___i_n_f_o_adc5450ac1ae3eae12265d2d863f2e4ea}\label{class_s_y_s___i_n_f_o_adc5450ac1ae3eae12265d2d863f2e4ea}} 
+void \mbox{\hyperlink{class_s_y_s___i_n_f_o_adc5450ac1ae3eae12265d2d863f2e4ea}{gather\+\_\+proc\+\_\+curr}} ()
+\begin{DoxyCompactList}\small\item\em aktualizuje informacje o obecnym uzyciu pamieci przez procesor logujacy \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_s_y_s___i_n_f_o_aca7429436032591864f448404e8eddb8}\label{class_s_y_s___i_n_f_o_aca7429436032591864f448404e8eddb8}} 
+void \mbox{\hyperlink{class_s_y_s___i_n_f_o_aca7429436032591864f448404e8eddb8}{gather\+\_\+disks\+\_\+info}} ()
+\begin{DoxyCompactList}\small\item\em aktualizuje informacje o dyskach w systemie \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_s_y_s___i_n_f_o_a8572eb04c9114ad39fd838c3315b3077}\label{class_s_y_s___i_n_f_o_a8572eb04c9114ad39fd838c3315b3077}} 
+void \mbox{\hyperlink{class_s_y_s___i_n_f_o_a8572eb04c9114ad39fd838c3315b3077}{gather\+\_\+info}} ()
+\begin{DoxyCompactList}\small\item\em aktualizuje wszystkie informacje o systemie \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{class_s_y_s___i_n_f_o_a9a133f28f654b3d489341d0f228804c3}{get\+\_\+info}} (Q\+String info\+Name)
+\begin{DoxyCompactList}\small\item\em zwraca wartosc podanej informacji o systemie \end{DoxyCompactList}\item 
+Q\+Vector$<$ Q\+String $>$ \mbox{\hyperlink{class_s_y_s___i_n_f_o_adeb7f94cf076e373ebb5a120fec609ab}{get\+\_\+info}} (Q\+Vector$<$ Q\+String $>$ info\+Names=Q\+Vector$<$ Q\+String $>$())
+\begin{DoxyCompactList}\small\item\em zwraca liste wartosci informacji o systemie \end{DoxyCompactList}\item 
+Q\+Map$<$ Q\+String, Q\+String $>$ \mbox{\hyperlink{class_s_y_s___i_n_f_o_aef61210412d373c588af878a00dbb195}{get\+\_\+info\+\_\+map}} ()
+\begin{DoxyCompactList}\small\item\em zwraca mape nazw informacji i ich wartosci \end{DoxyCompactList}\item 
+Q\+Map$<$ Q\+String, Q\+String $>$ \mbox{\hyperlink{class_s_y_s___i_n_f_o_ac10fae5d300fd398e85fdeced4d700e6}{get\+\_\+info\+\_\+map}} (Q\+Vector$<$ Q\+String $>$ info\+Names)
+\begin{DoxyCompactList}\small\item\em zwraca mape nazw informacji i ich wartosci \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_s_y_s___i_n_f_o_a99dd8e7b19addf64bb11fbf0337e4d1b}\label{class_s_y_s___i_n_f_o_a99dd8e7b19addf64bb11fbf0337e4d1b}} 
+void \mbox{\hyperlink{class_s_y_s___i_n_f_o_a99dd8e7b19addf64bb11fbf0337e4d1b}{disable\+\_\+all}} ()
+\begin{DoxyCompactList}\small\item\em wylacza wszystkie informacje \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_s_y_s___i_n_f_o_ad931302a866f692d10afb270ef6f7d18}{set\+\_\+enabled}} (Q\+String infoname, bool enable=true)
+\begin{DoxyCompactList}\small\item\em wlacza lub wylacza informacje \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_s_y_s___i_n_f_o_a742e0137b58fd83c45f320cad6afba16}{set\+\_\+enabled}} (Q\+Vector$<$ Q\+String $>$ info\+Names=Q\+Vector$<$ Q\+String $>$(), bool enable=true)
+\begin{DoxyCompactList}\small\item\em wlacza lub wylacza informacje \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static Q\+Vector$<$ Q\+String $>$ \mbox{\hyperlink{class_s_y_s___i_n_f_o_a2fc222bc01c31817ef6218575f131a29}{list\+Info}} ()
+\begin{DoxyCompactList}\small\item\em zwraca liste dostepnych informacji \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Klasa do zbierania informacji o systemie. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_s_y_s___i_n_f_o_a94da733b1cd9ddcad85af17407af7eae}\label{class_s_y_s___i_n_f_o_a94da733b1cd9ddcad85af17407af7eae}} 
+\index{SYS\_INFO@{SYS\_INFO}!SYS\_INFO@{SYS\_INFO}}
+\index{SYS\_INFO@{SYS\_INFO}!SYS\_INFO@{SYS\_INFO}}
+\doxysubsubsection{\texorpdfstring{SYS\_INFO()}{SYS\_INFO()}}
+{\footnotesize\ttfamily S\+Y\+S\+\_\+\+I\+N\+F\+O\+::\+S\+Y\+S\+\_\+\+I\+N\+FO (\begin{DoxyParamCaption}\item[{Q\+Map$<$ Q\+String, bool $>$}]{enabled\+Infos,  }\item[{Q\+Map$<$ Q\+String, Q\+String $>$}]{infos,  }\item[{Q\+String}]{sysname,  }\item[{Q\+String}]{C\+P\+Uname,  }\item[{Q\+String}]{arch,  }\item[{Q\+String}]{username,  }\item[{int}]{cores,  }\item[{quint64}]{max\+Memory,  }\item[{quint64}]{avail\+Memory,  }\item[{quint64}]{use\+Memory,  }\item[{quint64}]{proc\+Peak,  }\item[{quint64}]{proc\+Curr,  }\item[{Q\+Vector$<$ \mbox{\hyperlink{struct_d_i_s_k___i_n_f_o}{D\+I\+S\+K\+\_\+\+I\+N\+FO}} $>$}]{disks }\end{DoxyParamCaption})}
+
+
+
+konstruktor tworzacy obiekt \mbox{\hyperlink{class_s_y_s___i_n_f_o}{S\+Y\+S\+\_\+\+I\+N\+FO}} z danymi od uzytkownika 
+
+
+\begin{DoxyParams}{Parameters}
+{\em enabled\+Infos} & -\/ mapa nazw informacji i wartorsci, czy maja byc zbierane \\
+\hline
+{\em infos} & -\/ mapa nazw informacji i ich wartosci \\
+\hline
+{\em sysname} & -\/ nazwa systemu \\
+\hline
+{\em C\+P\+Uname} & -\/ nazwa procesora \\
+\hline
+{\em arch} & -\/ architektura systemu \\
+\hline
+{\em username} & -\/ nazwa uzytkownika \\
+\hline
+{\em cores} & -\/ liczba rdzeni \\
+\hline
+{\em max\+Memory} & -\/ zainstalowana pamiec w systemie \\
+\hline
+{\em avail\+Memory} & -\/ wolna pamiec w systemie \\
+\hline
+{\em use\+Memory} & -\/ ilosc uzytej pamieci \\
+\hline
+{\em proc\+Peak} & -\/ maksymalna ilosc pamieci jakiej potrzebowal proces logujacy \\
+\hline
+{\em proc\+Curr} & -\/ obecna ilosc pamieci uzywanej przez proces logujacy \\
+\hline
+{\em disks} & -\/ lista dyskow \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_s_y_s___i_n_f_o_a3ec55690080ad042a69f56cb5beba641}\label{class_s_y_s___i_n_f_o_a3ec55690080ad042a69f56cb5beba641}} 
+\index{SYS\_INFO@{SYS\_INFO}!get\_arch@{get\_arch}}
+\index{get\_arch@{get\_arch}!SYS\_INFO@{SYS\_INFO}}
+\doxysubsubsection{\texorpdfstring{get\_arch()}{get\_arch()}}
+{\footnotesize\ttfamily Q\+String S\+Y\+S\+\_\+\+I\+N\+F\+O\+::get\+\_\+arch (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+zwraca architekture systemu 
+
+\begin{DoxyReturn}{Returns}
+Q\+String -\/ architektura systemu 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_s_y_s___i_n_f_o_a76569ae3a7d9ab4ab3e115809ace5608}\label{class_s_y_s___i_n_f_o_a76569ae3a7d9ab4ab3e115809ace5608}} 
+\index{SYS\_INFO@{SYS\_INFO}!get\_avail\_memory@{get\_avail\_memory}}
+\index{get\_avail\_memory@{get\_avail\_memory}!SYS\_INFO@{SYS\_INFO}}
+\doxysubsubsection{\texorpdfstring{get\_avail\_memory()}{get\_avail\_memory()}}
+{\footnotesize\ttfamily unsigned long long int S\+Y\+S\+\_\+\+I\+N\+F\+O\+::get\+\_\+avail\+\_\+memory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+zwraca ilosc pamieci wolnej w systemie 
+
+\begin{DoxyReturn}{Returns}
+unsigned long long int -\/ ilosc pamieci w B 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_s_y_s___i_n_f_o_a57961b39f259c016dff2ca2b5c5fde8a}\label{class_s_y_s___i_n_f_o_a57961b39f259c016dff2ca2b5c5fde8a}} 
+\index{SYS\_INFO@{SYS\_INFO}!get\_cores@{get\_cores}}
+\index{get\_cores@{get\_cores}!SYS\_INFO@{SYS\_INFO}}
+\doxysubsubsection{\texorpdfstring{get\_cores()}{get\_cores()}}
+{\footnotesize\ttfamily int S\+Y\+S\+\_\+\+I\+N\+F\+O\+::get\+\_\+cores (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+zwraca liczbe rdzeni procesora 
+
+\begin{DoxyReturn}{Returns}
+int -\/ liczba rdzeni 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_s_y_s___i_n_f_o_a4624072a2aaad5e543e56dbee88b7364}\label{class_s_y_s___i_n_f_o_a4624072a2aaad5e543e56dbee88b7364}} 
+\index{SYS\_INFO@{SYS\_INFO}!get\_cpuname@{get\_cpuname}}
+\index{get\_cpuname@{get\_cpuname}!SYS\_INFO@{SYS\_INFO}}
+\doxysubsubsection{\texorpdfstring{get\_cpuname()}{get\_cpuname()}}
+{\footnotesize\ttfamily Q\+String S\+Y\+S\+\_\+\+I\+N\+F\+O\+::get\+\_\+cpuname (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+zwraca nazwe procesora 
+
+\begin{DoxyReturn}{Returns}
+Q\+String -\/ nazwa procesora 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_s_y_s___i_n_f_o_ab0b1821e9d5f8cdc81515023149a6816}\label{class_s_y_s___i_n_f_o_ab0b1821e9d5f8cdc81515023149a6816}} 
+\index{SYS\_INFO@{SYS\_INFO}!get\_disks\_info@{get\_disks\_info}}
+\index{get\_disks\_info@{get\_disks\_info}!SYS\_INFO@{SYS\_INFO}}
+\doxysubsubsection{\texorpdfstring{get\_disks\_info()}{get\_disks\_info()}}
+{\footnotesize\ttfamily Q\+Vector$<$\mbox{\hyperlink{struct_d_i_s_k___i_n_f_o}{D\+I\+S\+K\+\_\+\+I\+N\+FO}}$>$ S\+Y\+S\+\_\+\+I\+N\+F\+O\+::get\+\_\+disks\+\_\+info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+zwraca liste dyskow 
+
+\begin{DoxyReturn}{Returns}
+Q\+Vector$<$\+D\+I\+S\+K\+\_\+\+I\+N\+F\+O$>$ -\/ lista dyskow 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{struct_d_i_s_k___i_n_f_o}{D\+I\+S\+K\+\_\+\+I\+N\+FO}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{class_s_y_s___i_n_f_o_a785fab071c63c0a8b81ad6ea3f6cf778}\label{class_s_y_s___i_n_f_o_a785fab071c63c0a8b81ad6ea3f6cf778}} 
+\index{SYS\_INFO@{SYS\_INFO}!get\_enabled\_infos@{get\_enabled\_infos}}
+\index{get\_enabled\_infos@{get\_enabled\_infos}!SYS\_INFO@{SYS\_INFO}}
+\doxysubsubsection{\texorpdfstring{get\_enabled\_infos()}{get\_enabled\_infos()}}
+{\footnotesize\ttfamily Q\+Map$<$Q\+String,bool$>$ S\+Y\+S\+\_\+\+I\+N\+F\+O\+::get\+\_\+enabled\+\_\+infos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+zwraca mape nazw informacji i wartosci, czy sa monitorowane 
+
+\begin{DoxyReturn}{Returns}
+Q\+Map$<$\+Q\+String,boo$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_s_y_s___i_n_f_o_a9a133f28f654b3d489341d0f228804c3}\label{class_s_y_s___i_n_f_o_a9a133f28f654b3d489341d0f228804c3}} 
+\index{SYS\_INFO@{SYS\_INFO}!get\_info@{get\_info}}
+\index{get\_info@{get\_info}!SYS\_INFO@{SYS\_INFO}}
+\doxysubsubsection{\texorpdfstring{get\_info()}{get\_info()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Q\+String S\+Y\+S\+\_\+\+I\+N\+F\+O\+::get\+\_\+info (\begin{DoxyParamCaption}\item[{Q\+String}]{info\+Name }\end{DoxyParamCaption})}
+
+
+
+zwraca wartosc podanej informacji o systemie 
+
+
+\begin{DoxyParams}{Parameters}
+{\em info\+Name} & -\/ nazwa informacji, ktorej wartosc ma byc zwrocona \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Q\+String -\/ wartosc informacji w postaci napisu 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_s_y_s___i_n_f_o_adeb7f94cf076e373ebb5a120fec609ab}\label{class_s_y_s___i_n_f_o_adeb7f94cf076e373ebb5a120fec609ab}} 
+\index{SYS\_INFO@{SYS\_INFO}!get\_info@{get\_info}}
+\index{get\_info@{get\_info}!SYS\_INFO@{SYS\_INFO}}
+\doxysubsubsection{\texorpdfstring{get\_info()}{get\_info()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Q\+Vector$<$ Q\+String $>$ S\+Y\+S\+\_\+\+I\+N\+F\+O\+::get\+\_\+info (\begin{DoxyParamCaption}\item[{Q\+Vector$<$ Q\+String $>$}]{info\+Names = {\ttfamily QVector$<$QString$>$()} }\end{DoxyParamCaption})}
+
+
+
+zwraca liste wartosci informacji o systemie 
+
+jesli nie podano parametru wejsciowego -\/ zwracana sa wszystkie informacje, ktore zostaly oznaczone jako wlaczone 
+\begin{DoxyParams}{Parameters}
+{\em info\+Names} & -\/ Q\+Vector$<$\+Q\+String$>$ -\/ lista nazw informacji potrzebnych. Wartosci zwracane sa w takiej samej kolejnosci jak podane nazwy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Q\+Vector$<$\+Q\+String$>$ -\/ lista wartosci 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_s_y_s___i_n_f_o_ad931302a866f692d10afb270ef6f7d18}{set\+\_\+enabled}} 
+
+\mbox{\hyperlink{class_s_y_s___i_n_f_o_a99dd8e7b19addf64bb11fbf0337e4d1b}{disable\+\_\+all}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{class_s_y_s___i_n_f_o_aef61210412d373c588af878a00dbb195}\label{class_s_y_s___i_n_f_o_aef61210412d373c588af878a00dbb195}} 
+\index{SYS\_INFO@{SYS\_INFO}!get\_info\_map@{get\_info\_map}}
+\index{get\_info\_map@{get\_info\_map}!SYS\_INFO@{SYS\_INFO}}
+\doxysubsubsection{\texorpdfstring{get\_info\_map()}{get\_info\_map()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Q\+Map$<$ Q\+String, Q\+String $>$ S\+Y\+S\+\_\+\+I\+N\+F\+O\+::get\+\_\+info\+\_\+map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+zwraca mape nazw informacji i ich wartosci 
+
+zwracana sa wszystkie informacje, ktore zostaly oznaczone jako wlaczone \begin{DoxyReturn}{Returns}
+Q\+Map$<$\+Q\+String,\+Q\+String$>$ -\/ mapa nazw i ich wartosci 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_s_y_s___i_n_f_o_ac10fae5d300fd398e85fdeced4d700e6}\label{class_s_y_s___i_n_f_o_ac10fae5d300fd398e85fdeced4d700e6}} 
+\index{SYS\_INFO@{SYS\_INFO}!get\_info\_map@{get\_info\_map}}
+\index{get\_info\_map@{get\_info\_map}!SYS\_INFO@{SYS\_INFO}}
+\doxysubsubsection{\texorpdfstring{get\_info\_map()}{get\_info\_map()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Q\+Map$<$ Q\+String, Q\+String $>$ S\+Y\+S\+\_\+\+I\+N\+F\+O\+::get\+\_\+info\+\_\+map (\begin{DoxyParamCaption}\item[{Q\+Vector$<$ Q\+String $>$}]{info\+Names }\end{DoxyParamCaption})}
+
+
+
+zwraca mape nazw informacji i ich wartosci 
+
+
+\begin{DoxyParams}{Parameters}
+{\em info\+Names} & -\/ lista nazw informacji do pobrania \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Q\+Map$<$\+Q\+String,\+Q\+String$>$ -\/ mapa nazw i ich wartosci 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_s_y_s___i_n_f_o_ac0f2f902b0f2969773fc6618c35dce61}\label{class_s_y_s___i_n_f_o_ac0f2f902b0f2969773fc6618c35dce61}} 
+\index{SYS\_INFO@{SYS\_INFO}!get\_max\_memory@{get\_max\_memory}}
+\index{get\_max\_memory@{get\_max\_memory}!SYS\_INFO@{SYS\_INFO}}
+\doxysubsubsection{\texorpdfstring{get\_max\_memory()}{get\_max\_memory()}}
+{\footnotesize\ttfamily unsigned long long int S\+Y\+S\+\_\+\+I\+N\+F\+O\+::get\+\_\+max\+\_\+memory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+zwraca ilosc pamieci zainstalowanej w systemie 
+
+\begin{DoxyReturn}{Returns}
+unsigned long long int -\/ ilosc pamieci w B 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_s_y_s___i_n_f_o_ade849fdf12190d0304ded7a5bc52308c}\label{class_s_y_s___i_n_f_o_ade849fdf12190d0304ded7a5bc52308c}} 
+\index{SYS\_INFO@{SYS\_INFO}!get\_proc\_curr@{get\_proc\_curr}}
+\index{get\_proc\_curr@{get\_proc\_curr}!SYS\_INFO@{SYS\_INFO}}
+\doxysubsubsection{\texorpdfstring{get\_proc\_curr()}{get\_proc\_curr()}}
+{\footnotesize\ttfamily unsigned long long int S\+Y\+S\+\_\+\+I\+N\+F\+O\+::get\+\_\+proc\+\_\+curr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+zwraca ilosc pamieci jaka obecnie uzywa proces logujacy 
+
+\begin{DoxyReturn}{Returns}
+unsigned long long int -\/ ilosc pamieci w B 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_s_y_s___i_n_f_o_a8423629e323744e3bf1fd6deb84d5896}\label{class_s_y_s___i_n_f_o_a8423629e323744e3bf1fd6deb84d5896}} 
+\index{SYS\_INFO@{SYS\_INFO}!get\_proc\_peak@{get\_proc\_peak}}
+\index{get\_proc\_peak@{get\_proc\_peak}!SYS\_INFO@{SYS\_INFO}}
+\doxysubsubsection{\texorpdfstring{get\_proc\_peak()}{get\_proc\_peak()}}
+{\footnotesize\ttfamily unsigned long long int S\+Y\+S\+\_\+\+I\+N\+F\+O\+::get\+\_\+proc\+\_\+peak (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+zwraca maksymalna ilosc pamieci jaka potrzebowal proces logujacy 
+
+\begin{DoxyReturn}{Returns}
+unsigned long long int -\/ ilosc pamieci w B 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_s_y_s___i_n_f_o_a065edbb3274e693c32557567388d7eba}\label{class_s_y_s___i_n_f_o_a065edbb3274e693c32557567388d7eba}} 
+\index{SYS\_INFO@{SYS\_INFO}!get\_sysname@{get\_sysname}}
+\index{get\_sysname@{get\_sysname}!SYS\_INFO@{SYS\_INFO}}
+\doxysubsubsection{\texorpdfstring{get\_sysname()}{get\_sysname()}}
+{\footnotesize\ttfamily Q\+String S\+Y\+S\+\_\+\+I\+N\+F\+O\+::get\+\_\+sysname (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+zwraca nazwe systemu 
+
+\begin{DoxyReturn}{Returns}
+Q\+String -\/ nazwa systemu 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_s_y_s___i_n_f_o_a1cff59575206c8282d57f1ce88e512d1}\label{class_s_y_s___i_n_f_o_a1cff59575206c8282d57f1ce88e512d1}} 
+\index{SYS\_INFO@{SYS\_INFO}!get\_use\_memory@{get\_use\_memory}}
+\index{get\_use\_memory@{get\_use\_memory}!SYS\_INFO@{SYS\_INFO}}
+\doxysubsubsection{\texorpdfstring{get\_use\_memory()}{get\_use\_memory()}}
+{\footnotesize\ttfamily unsigned long long int S\+Y\+S\+\_\+\+I\+N\+F\+O\+::get\+\_\+use\+\_\+memory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+zwraca ilosc pamieci zajetej w systemie 
+
+\begin{DoxyReturn}{Returns}
+unsigned long long int -\/ ilosc pamieci w B 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_s_y_s___i_n_f_o_aa5252a50152b8c7d48a17e64d34a8612}\label{class_s_y_s___i_n_f_o_aa5252a50152b8c7d48a17e64d34a8612}} 
+\index{SYS\_INFO@{SYS\_INFO}!get\_username@{get\_username}}
+\index{get\_username@{get\_username}!SYS\_INFO@{SYS\_INFO}}
+\doxysubsubsection{\texorpdfstring{get\_username()}{get\_username()}}
+{\footnotesize\ttfamily Q\+String S\+Y\+S\+\_\+\+I\+N\+F\+O\+::get\+\_\+username (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+zwraca nazwe uzytkownika 
+
+\begin{DoxyReturn}{Returns}
+Q\+String -\/ nazwa uzytkownika 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_s_y_s___i_n_f_o_a2fc222bc01c31817ef6218575f131a29}\label{class_s_y_s___i_n_f_o_a2fc222bc01c31817ef6218575f131a29}} 
+\index{SYS\_INFO@{SYS\_INFO}!listInfo@{listInfo}}
+\index{listInfo@{listInfo}!SYS\_INFO@{SYS\_INFO}}
+\doxysubsubsection{\texorpdfstring{listInfo()}{listInfo()}}
+{\footnotesize\ttfamily Q\+Vector$<$ Q\+String $>$ S\+Y\+S\+\_\+\+I\+N\+F\+O\+::list\+Info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+zwraca liste dostepnych informacji 
+
+\begin{DoxyReturn}{Returns}
+Q\+Vector$<$\+Q\+String$>$ -\/ lista nazw informacji 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_s_y_s___i_n_f_o_ad931302a866f692d10afb270ef6f7d18}\label{class_s_y_s___i_n_f_o_ad931302a866f692d10afb270ef6f7d18}} 
+\index{SYS\_INFO@{SYS\_INFO}!set\_enabled@{set\_enabled}}
+\index{set\_enabled@{set\_enabled}!SYS\_INFO@{SYS\_INFO}}
+\doxysubsubsection{\texorpdfstring{set\_enabled()}{set\_enabled()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void S\+Y\+S\+\_\+\+I\+N\+F\+O\+::set\+\_\+enabled (\begin{DoxyParamCaption}\item[{Q\+String}]{infoname,  }\item[{bool}]{enable = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+wlacza lub wylacza informacje 
+
+
+\begin{DoxyParams}{Parameters}
+{\em infoname} & -\/ nazwa informacji \\
+\hline
+{\em enable} & -\/ true -\/ wlacza, false -\/ wylacza \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_s_y_s___i_n_f_o_a742e0137b58fd83c45f320cad6afba16}\label{class_s_y_s___i_n_f_o_a742e0137b58fd83c45f320cad6afba16}} 
+\index{SYS\_INFO@{SYS\_INFO}!set\_enabled@{set\_enabled}}
+\index{set\_enabled@{set\_enabled}!SYS\_INFO@{SYS\_INFO}}
+\doxysubsubsection{\texorpdfstring{set\_enabled()}{set\_enabled()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void S\+Y\+S\+\_\+\+I\+N\+F\+O\+::set\+\_\+enabled (\begin{DoxyParamCaption}\item[{Q\+Vector$<$ Q\+String $>$}]{info\+Names = {\ttfamily QVector$<$QString$>$()},  }\item[{bool}]{enable = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+wlacza lub wylacza informacje 
+
+
+\begin{DoxyParams}{Parameters}
+{\em info\+Names} & -\/ lista nazw informacji, jesli nie podano, wszystkie informacje zostana wlaczone \\
+\hline
+{\em enable} & -\/ true -\/ wlacza, false -\/ wylacza \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Programowanie/\+Projekty/\+C++/logs\+\_\+library/sys\+\_\+info.\+h\item 
+D\+:/\+Programowanie/\+Projekty/\+C++/logs\+\_\+library/sys\+\_\+info.\+cpp\end{DoxyCompactItemize}
