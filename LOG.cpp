@@ -1,41 +1,30 @@
-#include "log.h"
+#include "LOG.h"
 
 LOG::LOG()
 {
+    type = "INFO";
     date=QDateTime::currentDateTime();
     format="dd.MM.yyyy hh:mm:ss";
     si.disable_all();
 }
 
-LOG::LOG(QString header,QString message,QMap<QString,QString> custom)
+LOG::LOG(QDateTime date)
+    :LOG()
 {
-    date=QDateTime::currentDateTime();
+    this->date=date;
+}
+
+LOG::LOG(QString header,QString message)
+    :LOG()//,QMap<QString,QString> custom)
+{
     this->header=header;
     this->message=message;
-    format="dd.MM.yyyy hh:mm:ss";
-    si.disable_all();
-    //this->add_customs(custom);
-    //si = nullptr;
 }
-
-/*void LOG::add_custom(QString tag, QString message)
-{
-   // customs[tag]=message;
-}
-
-void LOG::add_customs(QMap<QString,QString> custom)
-{
-    for(auto it = custom.begin();it!=custom.end();it++)
-    {
-   //     customs[it.key()]=it.value();
-    }
-}*/
 
 void LOG::set_date(QString date,QString format)
 {
     this->format=format;
     this->date=QDateTime::fromString((date),format);
-   // basic["date"]=this->date.toString(format);
 }
 
 QString LOG::get_date(QString format)
@@ -70,8 +59,6 @@ QDataStream& operator>>(QDataStream& in,LOG & fs)
 {
     QString header,message,type,format;
     QDateTime date;
-   // QVector<std::pair<QString,QString>> vCustoms;
-   // QMap<QString,QString> map;
     SYS_INFO si;
     in>>header;
     in>>message;
@@ -98,7 +85,7 @@ QDataStream& operator<<(QDataStream& out,LOG &fs)
     out<<fs.get_type();
     out<<fs.get_date_format();
     out<<fs.get_date();
-    out<<fs.get_sys_info();
+    out<<(*fs.get_sys_info());
 
     return out;
 }

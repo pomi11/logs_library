@@ -4,6 +4,10 @@ DirectConnection::DirectConnection()
 {
     controlSocket = new QTcpSocket();
     dataSocket = new QTcpSocket();
+
+    isConnected = -1;
+    controlPort = 1616;
+    dataPort = 11718;
 }
 
 DirectConnection::DirectConnection(QString host)
@@ -33,6 +37,8 @@ DirectConnection::DirectConnection(QString host,quint16 port,QString user,QStrin
 
 int DirectConnection::connect()
 {
+    if(server=="")
+        return -2;
     controlSocket->connectToHost(server,controlPort);
     qDebug()<<controlSocket->waitForConnected(2000);
     qDebug()<<controlSocket->waitForReadyRead(30000);
@@ -66,14 +72,14 @@ int DirectConnection::connect(QString host,quint16 port,QString user,QString pas
     return this->connect();
 }
 
-int DirectConnection::send_cmd(QString cmd)
+void DirectConnection::send_cmd(QString cmd)
 {
     controlSocket->write(cmd.toStdString().c_str());
     controlSocket->waitForBytesWritten(30000);
     controlSocket->waitForReadyRead();
     serverResponse = controlSocket->readAll();
 
-    return 0;
+   // return 0;
 }
 
 int DirectConnection::decode_response(QString response)
@@ -103,11 +109,8 @@ int DirectConnection::send_data(QVector<LOG> &log)
         return isConnected;
     }
 
-    //controlSocket->write("SEND#list");
-    //controlSocket->waitForBytesWritten(30000);
-
     dataSocket = new QTcpSocket();
-    dataSocket->connectToHost(this->server,11718);
+    dataSocket->connectToHost(this->server,this->dataPort);
     dataSocket->write(serverNo.toStdString().c_str());
     dataSocket->waitForBytesWritten();
     dataSocket->waitForReadyRead();
@@ -123,7 +126,6 @@ int DirectConnection::send_data(QVector<LOG> &log)
 
     ds << log;
 
-    //dataSocket->waitForBytesWritten();
     dataSocket->waitForReadyRead();
     serverResponse = dataSocket->readAll();
 
@@ -137,52 +139,9 @@ int DirectConnection::send_data(QVector<LOG> &log)
     dataSocket->close();
     return 0;
 }
-/*
-int DirectConnection::send_data(LOGS &log)
-{
-    if(isConnected!=0)
-    {
-        return isConnected;
-    }
 
-    controlSocket->write("SEND#logs");
-    controlSocket->waitForBytesWritten(30000);
-
-    dataSocket = new QTcpSocket();
-    dataSocket->connectToHost(this->server,11718);
-    dataSocket->write(serverNo.toStdString().c_str());
-    dataSocket->waitForBytesWritten();
-    dataSocket->waitForReadyRead();
-    serverResponse = dataSocket->readAll();
-
-    if(serverResponse!="JUUPUI")
-    {
-        qDebug()<<serverResponse;
-        return 1;
-    }
-
-    QDataStream ds(dataSocket);
-
-    ds << log;
-
-    //dataSocket->waitForBytesWritten();
-    dataSocket->waitForReadyRead();
-    serverResponse = dataSocket->readAll();
-
-    if(serverResponse!="OK")
-    {
-        return 2;
-        qDebug()<<"TEST"<<serverResponse;
-    }
-
-    dataSocket->disconnectFromHost();
-    dataSocket->close();
-    return 0;
-}*/
-
-int DirectConnection::close()
+void DirectConnection::close()
 {
     controlSocket->disconnectFromHost();
     controlSocket->close();
-    return 0;
 }

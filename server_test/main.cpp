@@ -23,8 +23,8 @@ int main(int argc, char *argv[])
     DirectServer *ds = new DirectServer();
     ds->set_pwd("test");
     ds->set_user("jakis");
-    ds->set_save_dir("D:\\");
-    ds->set_file_name("nowy.xml");
+  //  ds->set_save_dir("D:\\");
+ //   ds->set_file_name("nowy.xml");
 
     return a.exec();
 }

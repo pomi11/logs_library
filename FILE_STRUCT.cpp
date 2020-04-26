@@ -1,4 +1,4 @@
-#include "file_struct.h"
+#include "FILE_STRUCT.h"
 #include <QFile>
 
 XML::XML()
@@ -6,10 +6,10 @@ XML::XML()
 
 }
 
-XML::XML(QString, QString)
+/*XML::XML(QString, QString)
 {
 
-}
+}*/
 
 std::string XML::start_file(QString description)
 {
@@ -113,7 +113,7 @@ std::string XML::end_file()
     return result.toStdString();
 }
 
-TXT::TXT()
+/*TXT::TXT()
 {
 
 }
@@ -137,37 +137,4 @@ std::string TXT::log(QVector<QMap<QString,QMap<QString,QString>>> logs)
 std::string TXT::end_file()
 {
     return "to jest endTXT";
-}
-/*
-QDataStream& operator>>(QDataStream& in,XML *& fs)
-{
-
-    //std::string s_login, s_fileName,s_path,s_mainHeader,s_header,s_format,s_footer,s_type;
-    QVector<QString> tags;
-    bool isNumLog,isSysSum,isFileDescr,isFileDate;
-    in >>tags;
-    in>>isNumLog;
-    in>>isSysSum;
-    in>>isFileDescr;
-    in>>isFileDate;
-    // qDebug()<<fullPath;
-    fs = new XML();
-    fs->set_tags(tags);
-    fs->show_num_log(isNumLog);
-    fs->show_sys_info(isSysSum);
-    fs->show_file_descr(isFileDescr);
-    fs->show_file_date(isFileDate);
-
-    return in;
-}
-
-QDataStream& operator<<(QDataStream& out,XML &fs)
-{
-    out<<fs.get_tags();
-    out<<fs.is_num_log();
-    out<<fs.is_sys_info();
-    out<<fs.is_file_descr();
-    out<<fs.is_file_date();
-    return out;
-}
-*/
+}*/

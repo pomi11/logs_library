@@ -3,11 +3,31 @@
 
 LOGS::LOGS()
 {
+    autoSaveTime = 10;
+    autoLogTime = 10;
+    threadNum = 0;
+
+    autosaving = false;
+    autologging =false;
+    showSystemMemAvail = false;
+    showSystemMemUsage = false;
+    showProcMemUsage = false;
+    showProcMemMax = false;
+    showSysSummary = true;
+    showLogNumber = true;
+    showLogType = true;
+    showLogDate = true;
+    showLogHeader = false;
+    isCustomLogSI = false;
+
+    isConnected=-1;
+    cfg = nullptr;
+
     d = new LOG();
     this->fs = new XML();
     this->si = new SYS_INFO();
     this->set_date_format("dd/MM/yyyy hh:mm:ss");
-  // si->disable_all();
+    autologMessage=nullptr;
     LOG c;
     c.set_message("System summarry");
     c.set_type("SYSTEM_INFO");
@@ -60,58 +80,11 @@ void LOGS::add(QString header,QDateTime date,QString message)
     log.set_message(message);
     this->logs.push_back(log);
 }
-/*
-void LOGS::add(QString header,QString date,QString format,QString message,QMap<QString,QString> customs)
-{
-    if(header=="")
-        header = this->header;
 
-    if(format=="")
-        format=this->format;
-
-    if(customs.size()==0)
-        customs=this->customs;
-
-    LOG log = *d;
-    log.set_date_format(format);
-    log.set_header(header);
-    log.set_date(QDateTime::fromString(date,format));
-    //log.add_customs(customs);
-    log.set_message(message);
-    this->logs.push_back(log);
-}
-
-void LOGS::add(QString header,QDateTime date,QString message,QMap<QString,QString> customs)
-{
-    if(header=="")
-        header = this->header;
-
-    if(date==QDateTime())
-    {
-            date = QDateTime::currentDateTime();
-    }
-
-    if(customs.size()==0)
-        customs=this->customs;
-    if(header=="")
-        header = this->header;
-
-    if(customs.size()==0)
-        customs=this->customs;
-
-    LOG log = *d;
-    log.set_header(header);
-    log.set_date(date);
-    //log.add_customs(customs);
-    log.set_message(message);
-    this->logs.push_back(log);
-}
-*/
 void LOGS::add_msg(QString message)
 {
     if(this->showProcMemMax || this->showProcMemUsage || this->showSystemMemAvail || this->showSystemMemUsage)
     {
-      //  this->si->gather_info();
         SYS_INFO s;// = *si;
         s.disable_all();
         s.gather_info();
@@ -124,7 +97,6 @@ void LOGS::add_msg(QString message)
     }
 
     LOG log = *d;
-    //log.add_customs(customs);
     log.set_date(QDateTime::currentDateTime());
     log.set_message(message);
 
@@ -135,12 +107,11 @@ void LOGS::add_msg(QString message, QString type)
 {
     if(isCustomLogSI)
     {
-        d->get_sys_info().gather_info();
+        d->get_sys_info()->gather_info();
     }
     else
     if(this->showProcMemMax || this->showProcMemUsage || this->showSystemMemAvail || this->showSystemMemUsage)
     {
-      //  this->si->gather_info();
         SYS_INFO s;// = *si;
         s.disable_all();
         s.gather_info();
@@ -386,22 +357,13 @@ QVector<LOG> LOGS::get_LOGs_by_date(QDateTime date)
     return result;
 }
 
-int LOGS::save() // w - zapisz bez nadpisywania(jeśli plik istnieje, robi nowy z nazwa_1), r - z nadpisywaniem, q - zapytaj, a - dopisz do istniejącego pliku
+int LOGS::save()
 {
-    //T toSave = T(fileName,mainHeader,footer,logs);
-   /* if(fileStruct==nullptr)
-    {
-        std::cout<<"Brak struktury pliku. Uzyty zostanie domyslny";
-    }
-    else*/
     if(isConnected==0)
     {
         QVector<LOG> logs = this->get_LOGs(0);
         return ic->send_data(logs);
     }
-
-    /*if(fileStruct!=nullptr)
-        this->fs = fileStruct;*/
 
     QString filePath;
     if(this->path!="")
@@ -409,7 +371,8 @@ int LOGS::save() // w - zapisz bez nadpisywania(jeśli plik istnieje, robi nowy 
 
     filePath+=fileName;
     QFile file(filePath);
-    file.open(QFile::WriteOnly|QFile::Text);
+    if(!file.open(QFile::WriteOnly|QFile::Text))
+        return 1;
     file.write(fs->start_file("").c_str());
     QVector<QMap<QString,QMap<QString,QString>>> map;
 
@@ -499,7 +462,7 @@ int LOGS::autolog()
         else
             l = *cfg;
         qDebug()<<"running";
-        l.get_sys_info().gather_info();
+        l.get_sys_info()->gather_info();
         l.set_date(QDateTime::currentDateTime());
 
         if(autologMessage==nullptr)

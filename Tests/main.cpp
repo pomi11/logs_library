@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
 
    // QString d = "test";
     LOGS c;
-    int g = 0;
+ /*   int g = 0;
     //RealWatcher<QString> asd(&d);
     RealWatcher<int> asd(&g);
     QString da = QString("d");
@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
     int h = 0;
     int gh = 0;
     int xd = 0;
-    c.watch(da,&g/*,&asd*/);
+    c.watch(da,&g/*,&asd*//*);
     c.watch(dd,&h);
     c.watch(dd1,&gh);
     c.watch(dd2,&xd);
@@ -57,7 +57,14 @@ int main(int argc, char *argv[])
 
     c.save("D:\\s.xml");
 
+*/
+    c.add_msg("test");
+    c.add_msg("test2");
+    c.add_msg("test3");
 
+    c.connect_to_log_serv("localhost",1616,"jakis","test");
+
+    c.save();
     return a.exec();
 }
 
