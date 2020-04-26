@@ -4,7 +4,7 @@
 #include <QDebug>
 #include <thread>
 #include <typeinfo>
-
+/*
 template<class T>
 class LOGS_LIBRARY_EXPORT RealWatcher
 {
@@ -23,7 +23,6 @@ private:
     int set_val(T val)
     {
         lastVal = val;
-        return 0;
     }
 
     void set_watched(bool val) {isWatched = val;};
@@ -31,18 +30,21 @@ private:
     T get_value() {return lastVal;};
 };
 
-
+*/
 class LOGS_LIBRARY_EXPORT Watcher// : public QObject
 {
 //Q_OBJECT
 private:
     std::thread *th;//=nullptr;
-    std::thread *th2;//=nullptr;
+   // std::thread *th2;//=nullptr;
     bool stop;// = false;
 public:
+    /**
+     * @brief konstruktor bezparametrowy
+     */
     Watcher(){};
 
-    template<typename T> int watch(T* as, RealWatcher<T> *rw)
+/*    template<typename T> int watch(T* as, RealWatcher<T> *rw)
     {
         //T* currval = as;
         T lastVal = *as;
@@ -51,19 +53,34 @@ public:
         {
             if(*as!=lastVal)
             {
-               // *tmp = *currval;
                 rw->set_val(*as);
             }
         }
 
         rw->set_watched(false);
         return 0;
-    };
+    };*/
 
+    /**
+     * @brief przypisuje wskaznik na watek
+     * @param th - wskaznik na watek
+     */
     void set_first_thread(std::thread *th){this->th=th;};
-    void set_second_thread(std::thread *th){this->th2=th;};
+
+    /*
+    void set_second_thread(std::thread *th){this->th2=th;};*/
+
+    /**
+     * @brief zatrzymuje proces monitorowania
+     */
     void stopWatch(){stop = true;}
-    bool is_running(){return !stop;};
+
+    /**
+     * @brief zwraca informacje, czy proces trwa
+     * @return true - proces jest wciaz uruchomiony
+     * @return false - proces sie zakonczyl
+     */
+    bool is_running(){return !stop; delete this->th; th = nullptr;};
 };
 
 #endif // WATCHER_H

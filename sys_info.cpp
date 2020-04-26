@@ -107,13 +107,12 @@ SYS_INFO::SYS_INFO(QMap<QString,bool> enabledInfos,QMap<QString,QString> infos,
     }
 }
 
-int SYS_INFO::gather_sysname()
+void SYS_INFO::gather_sysname()
 {
     this->sysname = QSysInfo::prettyProductName();
-    return 0;
 }
 
-int SYS_INFO::gather_CPUname()
+void SYS_INFO::gather_CPUname()
 {
     /* do zmiany! */
         char CPUname[0x40];
@@ -136,16 +135,14 @@ int SYS_INFO::gather_CPUname()
                 memcpy(CPUname + 32, CPUInfo, sizeof(CPUInfo));
         }
         this->CPUname = CPUname;
-    return 0;
 }
 
-int SYS_INFO::gather_arch()
+void SYS_INFO::gather_arch()
 {
     this->arch = QSysInfo::currentCpuArchitecture();
-    return 0;
 }
 
-int SYS_INFO::gather_username()
+void SYS_INFO::gather_username()
 {
 #ifdef __WIN32
     char  lpBuffer[1024];
@@ -157,10 +154,9 @@ int SYS_INFO::gather_username()
 #ifdef __linux__
     this->username = getlogin();
 #endif
-    return 0;
 }
 
-int SYS_INFO::gather_cores()
+void SYS_INFO::gather_cores()
 {
 #ifdef __WIN32
     SYSTEM_INFO lps;
@@ -171,10 +167,9 @@ int SYS_INFO::gather_cores()
 #ifdef __linux__
     this->cores = get_nprocs();
 #endif
-    return 0;
 }
 
-int SYS_INFO::gather_max_memory()
+void SYS_INFO::gather_max_memory()
 {
 #ifdef __WIN32
     MEMORYSTATUSEX statex;
@@ -189,10 +184,9 @@ int SYS_INFO::gather_max_memory()
     sysinfo(&info);
     this->maxMemory = info.totalram;
 #endif
-    return 0;
 }
 
-int SYS_INFO::gather_avail_memory()
+void SYS_INFO::gather_avail_memory()
 {
 #ifdef __WIN32
     MEMORYSTATUSEX statex;
@@ -206,18 +200,16 @@ int SYS_INFO::gather_avail_memory()
     QString cmd = "cat /proc/meminfo | grep \"memavailable:\" -i | grep -Eo \"[0-9]{0,256}\"";
     this->availMemory = QString::fromStdString(exec_cmd(cmd)).toLong()*1024;
 #endif
-    return 0;
 }
 
-int SYS_INFO::gather_use_memory()
+void SYS_INFO::gather_use_memory()
 {
     gather_max_memory();
     gather_avail_memory();
     this->useMemory = this->maxMemory-this->availMemory;
-    return 0;
 }
 
-int SYS_INFO::gather_proc_peak()
+void SYS_INFO::gather_proc_peak()
 {
 #ifdef __WIN32
     PROCESS_MEMORY_COUNTERS PMCE;
@@ -232,10 +224,9 @@ int SYS_INFO::gather_proc_peak()
     getrusage(RUSAGE_SELF,&str);
     this->procPeak = str.ru_maxrss;
 #endif
-    return 0;
 }
 
-int SYS_INFO::gather_proc_curr()
+void SYS_INFO::gather_proc_curr()
 {
 #ifdef __WIN32
     //sprawdzić, może poprawić
@@ -258,10 +249,9 @@ int SYS_INFO::gather_proc_curr()
     cmd+="/status | grep \"vmrss\" -i | grep -Eo \"[0-9]{0,256}\"";
     this->procCurr = QString::fromStdString(exec_cmd(cmd)).toLong();
 #endif
-    return 0;
 }
 
-int SYS_INFO::gather_disks_info()
+void SYS_INFO::gather_disks_info()
 {
 
     int number=0;
@@ -292,10 +282,9 @@ int SYS_INFO::gather_disks_info()
             }
         }
     }
-    return 0;
 }
 
-int SYS_INFO::gather_info()
+void SYS_INFO::gather_info()
 {
     if(enabledInfos["sysname"])
         gather_sysname();
@@ -329,24 +318,7 @@ int SYS_INFO::gather_info()
 
     if(enabledInfos["proc_curr"])
         gather_proc_curr();
-    return 0;
 }
-
-/*QString SYS_INFO::gather_get(QString infoName)
-{
-    if(infoName=="sysname")
-    {
-        gather_sysname();
-        return get_sysname();
-    }
-
-    return " ";
-}*/
-
-/*QVector<std::pair<QString,QString>> SYS_INFO::gather_get(QVector<QString> infoNames)
-{
-    return QVector<std::pair<QString,QString>>();
-}*/
 
 QString SYS_INFO::get_info(QString infoName)
 {
@@ -397,19 +369,17 @@ QMap<QString,QString> SYS_INFO::get_info_map(QVector<QString> infoNames)
     return res;
 }
 
-int SYS_INFO::set_enabled(QString infoname, bool enable)
+void SYS_INFO::set_enabled(QString infoname, bool enable)
 {
     enabledInfos[infoname] = enable;
-    return 0;
 }
 
-int SYS_INFO::set_enabled(QVector<QString> infoNames,bool enable)
+void SYS_INFO::set_enabled(QVector<QString> infoNames,bool enable)
 {
     for(auto it = infoNames.begin();it!=infoNames.end();it++)
     {
         enabledInfos[*it] = enable;
     }
-    return 0;
 }
 
 void SYS_INFO::disable_all()

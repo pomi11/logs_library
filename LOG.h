@@ -158,16 +158,18 @@ public:
  * @param fs - referencja do obiektu LOG, do którego zapisywane sa dane
  * @return QDataStream
  * @see    <a href="https://doc.qt.io/qt-5/qdatastream.html">QDataStream</a>
+ * @see   LOG
  */
 LOGS_LIBRARY_EXPORT QDataStream& operator>>(QDataStream& in,LOG &fs);
 
 /**
- * @brief operator>> odpowiada za wysylanie danych do wyjscia QDataStream
+ * @brief operator<< odpowiada za wysylanie danych do wyjscia QDataStream
  * @brief umozliwia przesylanie typu LOG przez siec przy wykorzystaniu QDataStream
  * @param out - referencja do obiektu QDataStream, do ktorego wysylane sa dane
  * @param fs - referencja do obiektu LOG, z którego wysylane sa dane
  * @return QDataStream
  * @see    <a href="https://doc.qt.io/qt-5/qdatastream.html">QDataStream</a>
+ * @see   LOG
  */
 LOGS_LIBRARY_EXPORT QDataStream& operator<<(QDataStream& out,LOG &fs);
 
@@ -178,16 +180,18 @@ LOGS_LIBRARY_EXPORT QDataStream& operator<<(QDataStream& out,LOG &fs);
  * @param list - referencja do obiektu QVector<LOG>, do którego zapisywane sa dane
  * @return QDataStream
  * @see    <a href="https://doc.qt.io/qt-5/qdatastream.html">QDataStream</a>
+ * @see   LOG
  */
 LOGS_LIBRARY_EXPORT QDataStream& operator>>(QDataStream& in,QVector<LOG> &list);
 
 /**
- * @brief operator>> odpowiada za wysylanie danych do wyjscia QDataStream
+ * @brief operator<< odpowiada za wysylanie danych do wyjscia QDataStream
  * @brief umozliwia przesylanie typu QVector<LOG> przez siec przy wykorzystaniu QDataStream
  * @param out - referencja do obiektu QDataStream, do ktorego wysylane sa dane
  * @param list - referencja do obiektu QVector<LOG>, z którego wysylane sa dane
  * @return QDataStream
  * @see    <a href="https://doc.qt.io/qt-5/qdatastream.html">QDataStream</a>
+ * @see   LOG
  */
 LOGS_LIBRARY_EXPORT QDataStream& operator<<(QDataStream& out,QVector<LOG> const &list);
 

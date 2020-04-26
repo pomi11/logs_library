@@ -369,6 +369,8 @@ int LOGS::save()
     if(this->path!="")
         filePath+=path;
 
+    if(fileName=="")
+        fileName=QDir::homePath()+"\\log.xml";
     filePath+=fileName;
     QFile file(filePath);
     if(!file.open(QFile::WriteOnly|QFile::Text))
@@ -627,7 +629,7 @@ void LOGS::set_default_header(QString header)
     }
 }
 
-void LOGS::stop_watch(QString &name)
+void LOGS::stop_watch(QString name)
 {
     Watcher * dd = nullptr;
     qDebug()<<"T";
@@ -637,42 +639,3 @@ void LOGS::stop_watch(QString &name)
     if(dd!=nullptr)
         watches[name]->stopWatch();
 }
-
-/*
-QDataStream& operator>>(QDataStream& in,LOGS & fs)
-{
-    QString fileName,path,mainHeader,format,footer,type;
-    QVector<LOG> logs;
-    //int autoSaveTime;
-
-    in>>fileName;
-    in>>path;
-    in>>mainHeader;
-    in>>format;
-    in>>footer;
-    in>>type;
-    in>>logs;
-    fs = LOGS(logs);
-    fs.set_file_name(fileName);
-    fs.set_file_path(path);
-    //fs.set_main_header(mainHeader);
-    fs.set_date_format(format);
-    //fs.set_footer(footer);
-    fs.set_default_type(type);
-    return in;
-}
-
-QDataStream& operator<<(QDataStream& out,LOGS &fs)
-{
-    out<<fs.get_file_name();
-    out<<fs.get_file_path();
-  //  out<<fs.get_main_header();
-    out<<fs.get_date_format();
-   // out<<fs.get_footer();
-    out<<fs.get_default_type();
-    out<<fs.get_LOGs(0);
-
-    return out;
-}
-
-*/

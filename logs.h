@@ -37,6 +37,9 @@ private:
     std::mutex mtx;
 
     void autosave(QString filePath, FILE_STRUCT *file_struct = nullptr);
+    int autolog();
+    template<typename T> void watching(T *val, QString name/*,RealWatcher<T> *rw*/,Watcher *w);
+    template<typename T> QString decode_type(T *val, int &errorcode);
 public:
     /**
      * @brief kontruktor bezparametrowy
@@ -441,49 +444,92 @@ public:
      */
     int autosave_start(QString filePath, FILE_STRUCT *file_struct = nullptr);
 
-
     /**
-     * @brief autolog
-     * @return
+     * @brief rozpoczyna automatyczne logowanie
+     * @brief dodaje nowe wpisy do listy logow
+     * @param autoLogTime - czas pomiedzy utworzeniem kolejnych logow
+     * @return 0 - jesli wszystko jest ok
+     * @return -1 - jesli autolog jest juz uruchomiony
      */
-    int autolog();
+    int autolog_start(int autoLogTime= 10);
 
     /**
-     * @brief autolog_start
-     * @param autoSaveTime
-     * @return
-     */
-    int autolog_start(int autoSaveTime= 10);
-
-    /**
-     * @brief autolog_start
-     * @param cfg
-     * @param si
-     * @return
+     * @brief rozpoczyna automatyczne logowanie
+     * @brief dodaje nowe wpisy do listy logow
+     * @param cfg - wskaznik na obiekt LOG, pobierana jest z niego konfiguracja pojedynczego logu
+     * @param si - wskaznik na obiekt SYS_INFO, domyslnie nullptr, jesli podano - jest bazowym obiektem o informacjach o systemie
+     * @return 0 - jesli wszystko jest ok
+     * @return -1 - jesli autolog jest juz uruchomiony
      */
     int autolog_start(LOG *cfg, SYS_INFO *si = nullptr);
 
-
+    /**
+     * @brief ustawia wskaznik na wiadomosc, ktora ma byc automatycznie dodawana
+     * @brief zamysl tego jest, ze podczas autologowania, funkcja pobiera wartosc na jaka wskazuje
+     * @brief tak, ze w przypadku zmiany wartosci, nowa zostanie zapisana
+     * @param m - wskaznik do wiadomosci
+     */
     void set_autolog_message(QString *m){autologMessage = m;};
 
-
+    /**
+     * @brief zatrzymuje autosave
+     */
     void autosave_stop();
+
+    /**
+     * @brief zatrzymuje autologowanie
+     */
     void autolog_stop();
 
+    /**
+     * @brief ustawia czas, co ile ma byc wykonany autosave
+     * @param time - czas w sekundach
+     */
     void set_autosave_time(int time) {this->autoSaveTime=time;};
+
+    /**
+     * @brief ustawia czas, co ile ma byc wykonany autolog
+     * @param time - czas w sekundach
+     */
     void set_autolog_time(int time) {this->autoLogTime=time;};
 
+    /**
+     * @brief ustawia domyslne polaczenie sieciowe
+     * @param conn - wskaznik do obiektu implementujacego interfejs IConnector
+     * @see   IConnector
+     */
     void set_connection(IConnector *conn) {this->ic = conn;isConnected=ic->is_connected();};
+
+    /**
+     * @brief laczy sie do serwera uzywajac domyslnego polaczenia
+     * @brief domyslnym polaczeniem jest polaczenie DirectConnection
+     * @param host - adres hosta
+     * @param port - port hosta
+     * @param username - nazwa uzytkownika
+     * @param password - haslo uzytkownika
+     * @return  0 - polaczono i zalogowano
+     * @return  1 - podany uzytkownik zostal odrzucony przez serwer
+     * @return  2 - podany uzytkownik zostal zaakceptowany, serwer czeka na haslo
+     * @return  3 - podane haslo jest nieprawidlowe
+     * @return  4 - uzytkownik nie zostal podany
+     * @return -1 - blad polaczenia
+     * @return -2 - brak hosta
+     * @see IConnector
+     * @see DirectConnection
+     */
     int connect_to_log_serv(QString host,quint16 port,QString username="",QString password="");
 
-    void stop_watch(QString &name);
+    /**
+     * @brief zatrzymuje monitorowanie zmiennej
+     * @param name - nazwa zmiennej
+     */
+    void stop_watch(QString name);
 
-    template<typename T> void watch(QString &name, T *val/*,RealWatcher<T> *rw*/);
-    template<typename T> void watching2(T *val, QString name/*,RealWatcher<T> *rw*/,Watcher *w);
-    template<typename T> void save_watching(T val, QString result);
-    template<typename T> void watching(RealWatcher<T> *rw, QString *result);
-
-    template<typename T> QString decode_type(T *val, int &errorcode);
+    /** @brief rozpoczyna monitorowanie zmiennej
+     *  @param name - nazwa zmiennej
+     *  @param val  - wskaznik na zmienna
+     */
+    template<typename T> void watch(QString name, T *val/*,RealWatcher<T> *rw*/);
 };
 
 template<template<typename> class C> void LOGS::add(C<LOG> log)
@@ -494,7 +540,7 @@ template<template<typename> class C> void LOGS::add(C<LOG> log)
     }
 }
 
-template<typename T> void LOGS::watch(QString &name, T *val/*,RealWatcher<T> *rw*/)
+template<typename T> void LOGS::watch(QString name, T *val/*,RealWatcher<T> *rw*/)
 {
     Watcher *tmp = new Watcher();
     this->watches[name]=tmp;
@@ -502,14 +548,14 @@ template<typename T> void LOGS::watch(QString &name, T *val/*,RealWatcher<T> *rw
     QString helper = watchesValues[name] = decode_type(val,res);
     this->add_msg("starting watching value "+name+" = "+helper);
 
-    std::thread *tx=new std::thread(&LOGS::watching2<T>,this,val,name/*,rw*/,tmp);
-    tmp->set_second_thread(tx);
+    std::thread *tx=new std::thread(&LOGS::watching<T>,this,val,name/*,rw*/,tmp);
+    tmp->set_first_thread(tx);
 
     QThread::sleep(2);
     qDebug()<<"Watching started";
 };
 
-template<typename T> void LOGS::watching2(T *val, QString name,/*RealWatcher<T> *rw,*/Watcher *w)
+template<typename T> void LOGS::watching(T *val, QString name,/*RealWatcher<T> *rw,*/Watcher *w)
 {
     LOG tmp = *d;
     QVector<LOG> threadLogs;
@@ -571,8 +617,26 @@ template<typename T> QString LOGS::decode_type(T *val, int &errorcode)
     errorcode=-1;
     return "Cannot conver variable!";
 }
-
+/**
+ * @brief operator>> odpowiada za odbieranie danych z wejscia QDataStream
+ * @brief umozliwia przesylanie typu LOGS przez siec przy wykorzystaniu QDataStream
+ * @param in - referencja do obiektu QDataStream, z ktorego pobierane sa dane
+ * @param fs - referencja do obiektu LOGS, do którego zapisywane sa dane
+ * @return QDataStream
+ * @see    <a href="https://doc.qt.io/qt-5/qdatastream.html">QDataStream</a>
+ * @see   LOGS
+ */
 LOGS_LIBRARY_EXPORT QDataStream& operator>>(QDataStream& in,LOGS &fs);
+
+/**
+ * @brief operator<< odpowiada za wysylanie danych do wyjscia QDataStream
+ * @brief umozliwia przesylanie typu LOGS przez siec przy wykorzystaniu QDataStream
+ * @param out - referencja do obiektu QDataStream, do ktorego wysylane sa dane
+ * @param fs - referencja do obiektu LOGS, z którego wysylane sa dane
+ * @return QDataStream
+ * @see    <a href="https://doc.qt.io/qt-5/qdatastream.html">QDataStream</a>
+ * @see   LOGS
+ */
 LOGS_LIBRARY_EXPORT QDataStream& operator<<(QDataStream& out,LOGS &fs);
 
 #endif // LOGS_H

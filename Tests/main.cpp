@@ -62,7 +62,27 @@ int main(int argc, char *argv[])
     c.add_msg("test2");
     c.add_msg("test3");
 
-    c.connect_to_log_serv("localhost",1616,"jakis","test");
+    int asd = 10;
+    int g = 11;
+    int cde = 22;
+    c.watch("asd",&asd);
+    c.watch("asd1",&g);
+    c.watch("asd2",&cde);
+    while(1)
+    {
+        if(asd==59)
+        {
+            c.stop_watch("asd");
+            c.stop_watch("asd1");
+            c.stop_watch("asd2");
+            break;
+        }
+        asd++;
+        g++;
+        cde++;
+    }
+
+    //c.connect_to_log_serv("localhost",1616,"jakis","test");
 
     c.save();
     return a.exec();
