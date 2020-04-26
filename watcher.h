@@ -37,7 +37,9 @@ class LOGS_LIBRARY_EXPORT Watcher// : public QObject
 private:
     std::thread *th;//=nullptr;
    // std::thread *th2;//=nullptr;
+    QVariant *value;
     bool stop;// = false;
+    bool additionalConversion;
 public:
     /**
      * @brief konstruktor bezparametrowy
@@ -81,6 +83,27 @@ public:
      * @return false - proces sie zakonczyl
      */
     bool is_running(){return !stop; delete this->th; th = nullptr;};
+
+    template<typename T> void set_value(T val)
+    {
+        this->value = new QVariant(val);
+    }
+
+    QString get_value()
+    {
+        QString res;
+        //potrzebna konwersja typu float
+        //jednoczesnie trzeba zablokowac bledna konwersje z typu char
+        if(additionalConversion)
+        {
+            res = QString::number(qvariant_cast<float>(*value));
+        }
+        else
+            res = value->toString();
+        return res;
+    }
+
+    void set_add_conversion(bool val) {this->additionalConversion=val;};
 };
 
 #endif // WATCHER_H

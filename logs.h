@@ -543,10 +543,17 @@ template<template<typename> class C> void LOGS::add(C<LOG> log)
 template<typename T> void LOGS::watch(QString name, T *val/*,RealWatcher<T> *rw*/)
 {
     Watcher *tmp = new Watcher();
+    tmp->set_value(*val);
+
+    //potrzebna dodatkowa konwersja typu float
+    //jednoczesnie trzeba zablokowac konwersje char na float
+    if(tmp->get_value().toFloat() && !std::is_convertible<T,std::string>())
+    {
+        tmp->set_add_conversion(true);
+    }
+
     this->watches[name]=tmp;
-    int res = 0;
-    QString helper = watchesValues[name] = decode_type(val,res);
-    this->add_msg("starting watching value "+name+" = "+helper);
+    this->add_msg("starting watching value "+name+" = "+tmp->get_value());
 
     std::thread *tx=new std::thread(&LOGS::watching<T>,this,val,name/*,rw*/,tmp);
     tmp->set_first_thread(tx);
@@ -563,13 +570,12 @@ template<typename T> void LOGS::watching(T *val, QString name,/*RealWatcher<T> *
 
     while(w->is_running())
     {
-        int t=*val;
+        T t=*val;
         if(t!=lastVal)
         {
-            int c =1;
             lastVal = t;
-            this->watchesValues[name]=decode_type(&lastVal,c);
-            tmp.set_message("value changed :"+name+" on "+watchesValues[name]);
+            w->set_value(lastVal);
+            tmp.set_message("value changed :"+name+" on "+w->get_value());
             tmp.set_date(QDateTime::currentDateTime());
             threadLogs.push_back(tmp);
 
@@ -582,41 +588,45 @@ template<typename T> void LOGS::watching(T *val, QString name,/*RealWatcher<T> *
         }
     }
 };
-
+/*
 template<typename T> QString LOGS::decode_type(T *val, int &errorcode)
 {
     if(std::is_convertible<T,int>())
     {
         errorcode=0;
         //int d = static_cast<T>(val);
-        int *ds = reinterpret_cast<int*>(val);
-        QString res = QString::number(*ds);
+        T *ds = reinterpret_cast<T*>(val);
+
+        QString res ="s";// = QString::number(*ds);
         return res;
     }
-    /*
-    if(std::cout<<std::is_convertible<T,QString>())
+
+    if(std::is_convertible<T,QString>())
     {
         errorcode=0;
-        return QString(val);
+        QString *ds = reinterpret_cast<QString*>(val);
+        return *ds;
     }
 
-    if(std::cout<<std::is_convertible<T,std::string>())
+    if(std::is_convertible<T,std::string>())
     {
         errorcode=0;
-        return QString::fromStdString(val);
+        std::string *ds = reinterpret_cast<std::string*>(val);
+        QString res = QString::fromStdString(*ds);
+        return res;
     }
 
-    if(std::cout<<std::is_convertible<T,char*>())
+    if(std::is_convertible<T,char*>())
     {
         errorcode=0;
-        char *plik = "asd";
-        std::string as = std::string(plik);
+        char **plik = reinterpret_cast<char**>(val);
+        std::string as = std::string(*plik);
         return QString::fromStdString(as);
-    }*/
+    }
 
     errorcode=-1;
     return "Cannot conver variable!";
-}
+}*/
 /**
  * @brief operator>> odpowiada za odbieranie danych z wejscia QDataStream
  * @brief umozliwia przesylanie typu LOGS przez siec przy wykorzystaniu QDataStream

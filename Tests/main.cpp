@@ -58,31 +58,35 @@ int main(int argc, char *argv[])
     c.save("D:\\s.xml");
 
 */
-    c.add_msg("test");
+   c.add_msg("test");
     c.add_msg("test2");
     c.add_msg("test3");
 
     int asd = 10;
-    int g = 11;
-    int cde = 22;
-    c.watch("asd",&asd);
-    c.watch("asd1",&g);
-    c.watch("asd2",&cde);
+    double g = 11.23;
+    float cde = -22.333;
+    QString xd = "w";
+    c.watch("INT",&asd);
+    c.watch("DOUBLE",&g);
+    c.watch("FLOAT",&cde);
+    c.watch("QSTRING",&xd);
     while(1)
     {
+       // qDebug()<<asd;
         if(asd==59)
         {
-            c.stop_watch("asd");
-            c.stop_watch("asd1");
-            c.stop_watch("asd2");
+            c.stop_watch("INT");
+            c.stop_watch("DOUBLE");
+            c.stop_watch("FLOAT");
+            c.stop_watch("QSTRING");
             break;
         }
         asd++;
         g++;
-        cde++;
+        cde+=1;
+        xd = "Everybody down"+QString::number(g)+QString::number(asd)+QString::number(cde);
     }
 
-    //c.connect_to_log_serv("localhost",1616,"jakis","test");
 
     c.save();
     return a.exec();
