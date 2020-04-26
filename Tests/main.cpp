@@ -1,121 +1,63 @@
 #include <QCoreApplication>
 #include "logs.h"
-//#include "iconnector.h"
 #include <QTcpSocket>
-//#include "../sys_info.h"
-//#include "directserver.h"
-//#include "datastreamextension.h"
+//#include <watcher.h>
 
-
-/*#ifdef __WIN32
-    #include <sysinfoapi.h>
-    #include <windef.h>
-    #include <winbase.h>
-    #include <psapi.h>
-#endif
-*/
-#ifdef __linux__
-    #include <unistd.h>
-    #include <sys/time.h>
-    #include <sys/resource.h>
-    #include <proc_service.h>
-    #include <sys/sysinfo.h>
-    #include <stdio.h>
-#endif
+/*#include <../boost/convert.hpp>
+#include <../boost/convert/lexical_cast.hpp>
+#include <../boost/convert/base.hpp>
+#include <../boost/cast.hpp>
+#include <string>*/
 
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
-    LOGS log;
-    log.set_default_type("INFORMATION");
-    log.set_file_name("testowy.xml");
-    log.set_file_path("D:\\");
-    log.set_date_format("dd-MM-yy hh:mm:ss");
-    log.set_default_type("NORMAL");
-    log.set_default_header("TO JEST NAGLOWEK");
-    log.show_log_proc_memory_usage(true);
-    log.show_log_type(true);
-    log.show_file_date(true);
-    log.show_log_header(true);
-    log.show_log_memory_avail(true);
-    log.show_log_memory_usage(true);
-    log.show_log_proc_memory_max(true);
-    log.show_log_date(true);
-    log.show_log_number(true);
-    log.show_sys_summary(true);
-    //log.show
-    /*log.add_msg("test1");
-    log.add_msg("test2");
-    log.add_msg("test3");
-    log.add_msg("test3");
-    log.add_msg("test4","ERROR");
-    SYS_INFO si;
-    log.set_custom_log_sys_info(si);
-    log.add_msg("test4","WARNING");
-    LOG l;
-    l.set_message("WAZNY");
-    l.set_type("TAKISOBIEWAZNYMOCNOZEAZROZWALAMOZG");
-    QList<LOG> sz;
-    for(int i=0;i<10;i++)
+
+   // QString d = "test";
+    LOGS c;
+    int g = 0;
+    //RealWatcher<QString> asd(&d);
+    RealWatcher<int> asd(&g);
+    QString da = QString("d");
+    QString dd = QString("ds");
+    QString dd1 = QString("ds1");
+    QString dd2 = QString("ds2");
+    int h = 0;
+    int gh = 0;
+    int xd = 0;
+    c.watch(da,&g/*,&asd*/);
+    c.watch(dd,&h);
+    c.watch(dd1,&gh);
+    c.watch(dd2,&xd);
+   // QString dob = "asd";
+
+    //boost::conv
+   // qDebug()<<"?";
+   while(1)
     {
-        sz.push_back(l);
+        Sleep(1);
+       // c.add_msg("testfasdfasdfsadfsdafasdfasdfdsafasdfsadfasdfasdfasdfasdfasdfsadfsad");
+        //qDebug()<<"asd";
+        if(g==100)
+        {
+            c.stop_watch(da);
+            c.stop_watch(dd);
+            c.stop_watch(dd1);
+            c.stop_watch(dd2);
+            break;
+        }
+        g+=1;
+        h+=1;
+        gh++;
+        xd++;
     }
 
-    log.add(sz);*/
-    //log.add("header",QDateTime::currentDateTime(),"test");
-    //log.add("header",QDateTime::currentDateTime(),"test2");
-    //log.add("header",QDateTime::currentDateTime(),"test3");
-    //log.add("header",QDateTime::currentDateTime(),"test4");
+   // QThread::sleep(4);
+    qDebug()<<"and..."<<c.get_LOGs(0).count();
 
-    int i =0;
-    QTcpSocket s,s2;
-    DirectConnection dc;
-    log.autosave_start(1);
-    SYS_INFO si;
-    si.set_enabled();
-    si.gather_info();
-    //log.set_custom_log_sys_info(si);
-    QString cccc = "To jest log "+QString::number(i);
-    log.set_autolog_message(&cccc);
-    log.autolog_start(1);
-    log.connect_to_log_serv("localhost",1616,"jakis","test");
-    log.save();
-
-   /* dc.send_data(log);
-    log.add("header",QDateTime::currentDateTime(),"test5");
-    log.add("header",QDateTime::currentDateTime(),"test6");
-    QVector<LOG> logi = log.get_LOGs(0);
-   // dc.send_data(logi);
-    dc.close();*/
+    c.save("D:\\s.xml");
 
 
-
-    QFile f("D:\\d.xml");
-    f.open(QFile::WriteOnly | QFile::Text);
-
-    f.write("test");
-    f.write("dalej\nasdasd");
-    f.write("powinnybyc2");
-    f.close();
-    unsigned long long int is=0;
-    while(1)
-    {
-        cccc = "To jest log "+QString::number(i);
-        Sleep(500);
-        if(is==10)
-        {
-            log.autolog_stop();
-            log.autosave_stop();
-        }
-        else
-        {
-            log.add_msg("WIADOMOSC RECZNA");
-            qDebug()<<is;
-        }
-        is++;
-        i++;
-    }
-    qDebug()<<"KONIEC!";
     return a.exec();
 }
 

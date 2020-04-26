@@ -7,7 +7,6 @@
 #include <QDataStream>
 #include "sys_info.h"
 
-
 class LOGS_LIBRARY_EXPORT LOG
 {
 private:
@@ -16,6 +15,8 @@ private:
     SYS_INFO si;
    // QVector<std::pair<QString,QString>> vCustoms;
     //QMap<QString,QString> basic,sysInfo,watcher,customs;
+
+
 
 public:
     LOG();

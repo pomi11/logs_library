@@ -664,6 +664,17 @@ void LOGS::set_default_header(QString header)
     }
 }
 
+void LOGS::stop_watch(QString &name)
+{
+    Watcher * dd = nullptr;
+    qDebug()<<"T";
+    if(watches.count()>0)
+        dd = watches[name];
+
+    if(dd!=nullptr)
+        watches[name]->stopWatch();
+}
+
 /*
 QDataStream& operator>>(QDataStream& in,LOGS & fs)
 {

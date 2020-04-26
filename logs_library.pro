@@ -22,7 +22,8 @@ SOURCES += \
     iconnector.cpp \
     log.cpp \
     logs.cpp \
-    sys_info.cpp
+    sys_info.cpp \
+    watcher.cpp
 
 HEADERS += \
     directserver.h \
@@ -32,7 +33,8 @@ HEADERS += \
     logs.h \
     logs_library_global.h \
     logs_library.h \
-    sys_info.h
+    sys_info.h \
+    watcher.h
 
 TRANSLATIONS += \
     logs_library_pl_PL.ts
