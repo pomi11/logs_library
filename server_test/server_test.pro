@@ -23,7 +23,11 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../release/ -llogs_library
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../debug/ -llogs_library
-else:unix: LIBS += -L$$PWD/../ -llogs_library
 
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../debug_win/release/ -llogs_library
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../debug_win/debug/ -llogs_library
+else:unix: LIBS += -L$$PWD/../debug_linux/ -llogs_library
+
+INCLUDEPATH += $$PWD/../
+DEPENDPATH += $$PWD/../

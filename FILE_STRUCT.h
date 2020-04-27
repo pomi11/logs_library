@@ -100,6 +100,10 @@ public:
     virtual std::string end_file() = 0;
 };
 
+/**
+ * @brief Implementacja interjesu FILE_STRUCT
+ * @brief Generuje plik xml
+ */
 class XML: public FILE_STRUCT
 {
 private:
@@ -109,7 +113,7 @@ private:
 public:
    // XML(QString header,QString footer);
     XML();
-
+    virtual ~XML(){};
     std::string log(QVector<QMap<QString,QMap<QString,QString>>> logs)  override;
     std::string end_file() override;
     std::string start_file(QString description) override;

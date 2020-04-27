@@ -3,6 +3,7 @@
 
 LOGS::LOGS()
 {
+    this->ic = nullptr;
     autoSaveTime = 10;
     autoLogTime = 10;
     threadNum = 0;
@@ -24,8 +25,10 @@ LOGS::LOGS()
     cfg = nullptr;
 
     d = new LOG();
+
     this->fs = new XML();
     this->si = new SYS_INFO();
+
     this->set_date_format("dd/MM/yyyy hh:mm:ss");
     autologMessage=nullptr;
     LOG c;
@@ -362,7 +365,8 @@ int LOGS::save()
     if(isConnected==0)
     {
         QVector<LOG> logs = this->get_LOGs(0);
-        return ic->send_data(logs);
+        int w = ic->send_data(logs);
+        return w;
     }
 
     QString filePath;
@@ -370,7 +374,7 @@ int LOGS::save()
         filePath+=path;
 
     if(fileName=="")
-        fileName=QDir::homePath()+"\\log.xml";
+        fileName=QDir::toNativeSeparators(QDir::homePath()+"/log.xml");
     filePath+=fileName;
     QFile file(filePath);
     if(!file.open(QFile::WriteOnly|QFile::Text))
@@ -632,10 +636,16 @@ void LOGS::set_default_header(QString header)
 void LOGS::stop_watch(QString name)
 {
     Watcher * dd = nullptr;
-    qDebug()<<"T";
+
     if(watches.count()>0)
         dd = watches[name];
 
     if(dd!=nullptr)
         watches[name]->stopWatch();
+
+    while(watches[name]->is_running());
+    delete dd;
+    dd = nullptr;
+    watches[name] = nullptr;
+    qDebug()<<"stop watching";
 }

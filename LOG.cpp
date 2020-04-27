@@ -78,7 +78,7 @@ QDataStream& operator>>(QDataStream& in,LOG & fs)
     return in;
 }
 
-QDataStream& operator<<(QDataStream& out,LOG &fs)
+QDataStream& operator<<(QDataStream& out, LOG fs)
 {
     out<<fs.get_header();
     out<<fs.get_message();
@@ -93,6 +93,7 @@ QDataStream& operator<<(QDataStream& out,LOG &fs)
 QDataStream& operator>>(QDataStream& in,QVector<LOG> &list)
 {
     int a = 0;
+
     in >> a;
     for(int i=0;i<a;i++)
     {
@@ -103,11 +104,11 @@ QDataStream& operator>>(QDataStream& in,QVector<LOG> &list)
     return in;
 }
 
-QDataStream& operator<<(QDataStream& out,QVector<LOG> const &list)
+QDataStream& operator<<(QDataStream& out,QVector<LOG> list)
 {
     out<<list.size();
-    for(LOG d : list)
-        out<<d;
+    for(int i=0;i<list.size();i++)
+        out<<list[i];
     return out;
 
 }

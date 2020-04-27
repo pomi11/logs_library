@@ -5,7 +5,7 @@ DirectServer::DirectServer():
     QObject()
 {
     logNum = 0;
-    saveDir = QDir::homePath() +"\\";
+    saveDir = QDir::toNativeSeparators(QDir::homePath() +"/");
     fileName = "client_log.xml";
     logs = nullptr;
     fe = FILE_EXT::NUMBERS;
@@ -42,6 +42,7 @@ void DirectServer::newDataConn()
     QString tst = tmp->readAll();
     if(isAccepted(tst))
     {
+        ds = new QDataStream(tmp);
         QObject::connect(tmp,&QTcpSocket::readyRead,this,&DirectServer::dataService);
         QObject::connect(tmp,&QTcpSocket::disconnected,this,&DirectServer::disconnectedSocket);
         tmp->write("JUUPUI");
@@ -149,18 +150,24 @@ void DirectServer::disconnectedSocket()
 
 void DirectServer::dataService()
 {
+    qDebug()<<"tt";
     QTcpSocket *tmp = qobject_cast<QTcpSocket*>(sender());
+    while(tmp->waitForReadyRead(10));
+    *ds >> tst;
 
-    QDataStream ds(tmp);
-    QVector<LOG> tst;
-    ds >> tst;
     this->logs = new LOGS(tst);
 
-    tmp->write("OK");
-    tmp->waitForBytesWritten();
+  //  while(tmp->bytesAvailable())
+   // {
 
-    save();
-    logNum++;
+     //   qDebug()<<tmp->bytesAvailable();
+     //   qDebug()<<tmp->readAll();
+        tmp->write("OK");
+        tmp->waitForBytesWritten();
+
+       save();
+       logNum++;
+    //}
 }
 
 bool DirectServer::isAccepted(QString sck)

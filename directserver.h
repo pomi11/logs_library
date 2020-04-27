@@ -29,10 +29,12 @@ private:
     LOGS *logs;
     FILE_STRUCT *fs;
     FILE_EXT fe;
+    QVector<LOG> tst;
     QString currentCMD;
     int save();
     bool isAccepted(QString sck);
     qint16 controlPort,dataPort;
+    QDataStream *ds;
 public:
     /**
      * @brief konstruktor bezparametrowy

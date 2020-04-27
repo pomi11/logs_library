@@ -58,9 +58,52 @@ int main(int argc, char *argv[])
     c.save("D:\\s.xml");
 
 */
+    c.connect_to_log_serv("localhost",1616,"jakis","test");
    c.add_msg("test");
     c.add_msg("test2");
     c.add_msg("test3");
+    c.add_msg("test");
+     c.add_msg("test2");
+     c.add_msg("test3");
+     c.add_msg("test");
+      c.add_msg("test2");
+      c.add_msg("test3");
+      c.add_msg("test");
+       c.add_msg("test2");
+       c.add_msg("test3");
+       c.add_msg("test");
+        c.add_msg("test2");
+        c.add_msg("test3");
+        c.add_msg("test");
+         c.add_msg("test2");
+         c.add_msg("test3");
+         c.add_msg("test");
+          c.add_msg("test2");
+          c.add_msg("test3");
+          c.add_msg("test");
+           c.add_msg("test2");
+           c.add_msg("test3");
+           c.add_msg("test");
+            c.add_msg("test2");
+            c.add_msg("test3");
+            c.add_msg("test");
+             c.add_msg("test2");
+             c.add_msg("test3");
+             c.add_msg("test");
+              c.add_msg("test2");
+              c.add_msg("test3");
+              c.add_msg("test");
+               c.add_msg("test2");
+               c.add_msg("test3");
+               c.add_msg("test");
+                c.add_msg("test2");
+                c.add_msg("test3");
+                c.add_msg("test");
+                 c.add_msg("test2");
+                 c.add_msg("test3");
+                 c.add_msg("test");
+                  c.add_msg("test2");
+                  c.add_msg("test3");
 
     int asd = 10;
     double g = 11.23;
@@ -72,7 +115,7 @@ int main(int argc, char *argv[])
     c.watch("QSTRING",&xd);
     while(1)
     {
-       // qDebug()<<asd;
+        Sleep(1);
         if(asd==59)
         {
             c.stop_watch("INT");
@@ -89,6 +132,8 @@ int main(int argc, char *argv[])
 
 
     c.save();
+    qDebug()<<"koniec";
+    //return 0;
     return a.exec();
 }
 

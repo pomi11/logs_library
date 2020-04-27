@@ -25,7 +25,7 @@ SYS_INFO::SYS_INFO()
     infos["avail_memory"]=QString::number(this->availMemory);
     infos["use_memory"]=QString::number(this->useMemory);
     infos["proc_peak"]=QString::number(this->procPeak);
-    infos["proc_curr"]=QString::number(this->procCurr);
+    infos["proc_curr"]=QString::number(this->procCurr);// here?
     QString tmp,tmp2;
     for(auto it = disks.begin();it!=disks.end();it++)
     {
@@ -196,15 +196,23 @@ void SYS_INFO::gather_avail_memory()
     this->availMemory = statex.ullAvailPhys;
 #endif
 #ifdef __linux__
-    // do POPRAWY!
-    QString cmd = "cat /proc/meminfo | grep \"memavailable:\" -i | grep -Eo \"[0-9]{0,256}\"";
-    this->availMemory = QString::fromStdString(exec_cmd(cmd)).toLong()*1024;
+    std::ifstream file("/proc/meminfo");
+    std::string info;
+    unsigned long long int memoryKB;
+    while(file>>info)
+    {
+        if(info=="MemAvailable:")
+            file >> memoryKB;
+    }
+
+    file.close();
+    this->availMemory = memoryKB*1024;
 #endif
 }
 
 void SYS_INFO::gather_use_memory()
 {
-    gather_max_memory();
+     gather_max_memory();
     gather_avail_memory();
     this->useMemory = this->maxMemory-this->availMemory;
 }
@@ -244,10 +252,22 @@ void SYS_INFO::gather_proc_curr()
     char mypid[6];   // ex. 34567
     sprintf(mypid, "%d", currID);
     //std::cout<<"\ncurrent PID = "<<mypid<<"\n";
-    QString cmd = "cat /proc/";
+    std::string cmd = "/proc/";
     cmd+=mypid;
-    cmd+="/status | grep \"vmrss\" -i | grep -Eo \"[0-9]{0,256}\"";
-    this->procCurr = QString::fromStdString(exec_cmd(cmd)).toLong();
+    cmd+="/status";// | grep \"vmrss\" -i | grep -Eo \"[0-9]{0,256}\"";
+    std::ifstream file(cmd);
+    std::string info;
+    unsigned long long int vmrss = 0;
+    while(file>>info)
+    {
+        if(info=="VmRSS:")
+            file >> vmrss;
+    }
+
+    file.close();
+    this->procCurr = vmrss;
+
+
 #endif
 }
 
@@ -270,7 +290,7 @@ void SYS_INFO::gather_disks_info()
                 #ifdef __linux__
                    if(storage.device().contains("tmpfs"))
                    continue;
-                di.name=storage.device().toStdString();
+                di.name=storage.device();
                 #endif
 
                 di.number=number;
@@ -489,7 +509,7 @@ QDataStream& operator>>(QDataStream& in,DISK_INFO & fs)
     return in;
 }
 
-QDataStream& operator<<(QDataStream& out,DISK_INFO const &fs)
+QDataStream& operator<<(QDataStream& out,DISK_INFO const fs)
 {
     out<<fs.name;
     out<<fs.number;

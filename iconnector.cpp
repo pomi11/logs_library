@@ -124,19 +124,27 @@ int DirectConnection::send_data(QVector<LOG> &log)
 
     QDataStream ds(dataSocket);
 
+  //  qDebug()<<"asdsa"<<ds;
     ds << log;
+    if(dataSocket->bytesToWrite())
+    {
 
-    dataSocket->waitForReadyRead();
+        qDebug()<<dataSocket->bytesAvailable();
+    }
+    //qDebug()<<"asdsa"<<ds;
+  //  while(dataSocket->bytesToWrite()>0)
+    dataSocket->waitForBytesWritten();
+    dataSocket->waitForReadyRead(999999999);
     serverResponse = dataSocket->readAll();
-
+    //qDebug()<<"asdsa"<<ds;
     if(serverResponse!="OK")
     {
         return 2;
         qDebug()<<"TEST"<<serverResponse;
     }
 
-    dataSocket->disconnectFromHost();
-    dataSocket->close();
+   // dataSocket->disconnectFromHost();
+   // dataSocket->close();
     return 0;
 }
 

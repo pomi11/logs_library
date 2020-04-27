@@ -31,20 +31,29 @@ private:
 };
 
 */
+/**
+ * @brief Klasa do monitorowania zmiennych
+ */
 class LOGS_LIBRARY_EXPORT Watcher// : public QObject
 {
 //Q_OBJECT
 private:
     std::thread *th;//=nullptr;
    // std::thread *th2;//=nullptr;
-    QVariant *value;
-    bool stop;// = false;
-    bool additionalConversion;
+    QVariant *value = nullptr;
+    bool stop = false;// = false;
+    bool additionalConversion = false;
 public:
     /**
      * @brief konstruktor bezparametrowy
      */
-    Watcher(){};
+    Watcher(){value = nullptr;};
+
+    ~Watcher()
+    {
+        delete value;
+        delete th;
+    };
 
 /*    template<typename T> int watch(T* as, RealWatcher<T> *rw)
     {
@@ -75,17 +84,26 @@ public:
     /**
      * @brief zatrzymuje proces monitorowania
      */
-    void stopWatch(){stop = true;}
-
+    void stopWatch()
+    {
+        stop = true;
+        th->join();
+        delete this->th;
+        delete this->value;
+        this->value = nullptr;
+        th = nullptr;
+    }
     /**
      * @brief zwraca informacje, czy proces trwa
      * @return true - proces jest wciaz uruchomiony
      * @return false - proces sie zakonczyl
      */
-    bool is_running(){return !stop; delete this->th; th = nullptr;};
+    bool is_running(){return !stop;};
 
     template<typename T> void set_value(T val)
     {
+        if(this->value!=nullptr)
+            delete this->value;
         this->value = new QVariant(val);
     }
 

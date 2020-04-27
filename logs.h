@@ -46,6 +46,18 @@ public:
      */
     LOGS();
 
+    ~LOGS()
+    {
+        if(ic!=nullptr)
+            delete (DirectConnection*) ic;
+        if(fs !=nullptr)
+            delete (XML*) fs;
+        if(d!=nullptr)
+            delete d;
+        if(si!=nullptr)
+            delete si;
+    };
+
     /**
      * @brief konstruktor z parametrem
      * @brief wykonuje najpierw konstruktor bezparametrowy, a nastepnie ustawia zmienna

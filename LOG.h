@@ -117,7 +117,7 @@ public:
      * @brief zwraca wiadomosc logu w formie napisu
      * @return QString - wiadomosc
      */
-    QString get_message() {return this->message;};
+    QString get_message()  {return this->message;};
 
     /**
      * @brief zwraca date logu w formie napisu w podanym formacie
@@ -171,7 +171,7 @@ LOGS_LIBRARY_EXPORT QDataStream& operator>>(QDataStream& in,LOG &fs);
  * @see    <a href="https://doc.qt.io/qt-5/qdatastream.html">QDataStream</a>
  * @see   LOG
  */
-LOGS_LIBRARY_EXPORT QDataStream& operator<<(QDataStream& out,LOG &fs);
+LOGS_LIBRARY_EXPORT QDataStream& operator<<(QDataStream& out,LOG fs);
 
 /**
  * @brief operator>> odpowiada za odbieranie danych z wejscia QDataStream
@@ -193,6 +193,6 @@ LOGS_LIBRARY_EXPORT QDataStream& operator>>(QDataStream& in,QVector<LOG> &list);
  * @see    <a href="https://doc.qt.io/qt-5/qdatastream.html">QDataStream</a>
  * @see   LOG
  */
-LOGS_LIBRARY_EXPORT QDataStream& operator<<(QDataStream& out,QVector<LOG> const &list);
+LOGS_LIBRARY_EXPORT QDataStream& operator<<(QDataStream& out,QVector<LOG> list);
 
 #endif // LOG_H

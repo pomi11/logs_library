@@ -26,6 +26,7 @@
     #include <sys/sysinfo.h>
     #include <stdio.h>
     #include <unistd.h>
+    #include <fstream>
 #endif
 
 /**
@@ -311,6 +312,6 @@ LOGS_LIBRARY_EXPORT QDataStream& operator>>(QDataStream& in,DISK_INFO &fs);
  * @see    <a href="https://doc.qt.io/qt-5/qdatastream.html">QDataStream</a>
  * @see   LOG
  */
-LOGS_LIBRARY_EXPORT QDataStream& operator<<(QDataStream& out,DISK_INFO const &fs);
+LOGS_LIBRARY_EXPORT QDataStream& operator<<(QDataStream& out,DISK_INFO const fs);
 
 #endif // SYSTEM_INFO_H

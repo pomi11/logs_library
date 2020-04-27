@@ -18,18 +18,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     directserver.cpp \
-    file_struct.cpp \
+    FILE_STRUCT.cpp \
     iconnector.cpp \
-    log.cpp \
+    LOG.cpp \
     logs.cpp \
     sys_info.cpp \
     watcher.cpp
 
 HEADERS += \
     directserver.h \
-    file_struct.h \
+    FILE_STRUCT.h \
     iconnector.h \
-    log.h \
+    LOG.h \
     logs.h \
     logs_library_global.h \
     logs_library.h \
@@ -44,11 +44,13 @@ unix {
     target.path = /usr/lib
 }
 !isEmpty(target.path): INSTALLS += target
-LIBS += -lpsapi
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../build-logs_library-Nienazwany-Debug/release/ -llogs_library
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../build-logs_library-Nienazwany-Debug/debug/ -llogs_library
-else:unix: LIBS += -L$$PWD/../build-logs_library-Nienazwany-Debug/ -llogs_library
+win32:CONFIG(release, debug|release): LIBS += -lpsapi
+else:win32:CONFIG(debug, debug|release): LIBS += -lpsapi
+
+#win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../build-logs_library-Nienazwany-Debug/release/ -llogs_library
+#else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../build-logs_library-Nienazwany-Debug/debug/ -llogs_library
+#else:unix: LIBS += -L$$PWD/../build-logs_library-Nienazwany-Debug/ -llogs_library
 
 INCLUDEPATH += $$PWD/../
 DEPENDPATH += $$PWD/../
