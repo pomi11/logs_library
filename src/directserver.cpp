@@ -1,4 +1,4 @@
-#include "directserver.h"
+#include "include/directserver.h"
 #include <QCoreApplication>
 
 DirectServer::DirectServer():

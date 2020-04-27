@@ -1,4 +1,4 @@
-#include "FILE_STRUCT.h"
+#include "include/FILE_STRUCT.h"
 #include <QFile>
 
 XML::XML()
