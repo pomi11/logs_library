@@ -1,0 +1,258 @@
+\hypertarget{class_direct_server}{}\doxysection{Direct\+Server Class Reference}
+\label{class_direct_server}\index{DirectServer@{DirectServer}}
+
+
+Klasa serwera.  
+
+
+
+
+{\ttfamily \#include $<$directserver.\+h$>$}
+
+Inheritance diagram for Direct\+Server\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_direct_server}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_direct_server_a5dd2197b3b2e1e47320d793991b384e2}{control\+Service}} ()
+\begin{DoxyCompactList}\small\item\em slot Qt, wywolywany w przypadku przyjscia sygnalu -\/ instrkukcji sterujacej od klienta \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_direct_server_a3d27a7678e06fdd08513249753198acf}{data\+Service}} ()
+\begin{DoxyCompactList}\small\item\em slot Qt, wywolywany w przypadku przyjscia sygnalu -\/ danych od klienta \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_direct_server_a89ed5544b6140872f371f556c08dbddf}{disconnected\+Socket}} ()
+\begin{DoxyCompactList}\small\item\em slot Qt, wywolywany w przypadku przyjscia sygnalu -\/ rozlaczenia sie klienta \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_direct_server_a84efc5c761551747994ef435de1679f7}{new\+Control\+Conn}} ()
+\begin{DoxyCompactList}\small\item\em slot Qt, wywolywany w przypadku przyjscia sygnalu -\/ rozpoczecia polaczenia klienta \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_direct_server_ae0c312a8f1c56cdcfb0b7b26b43bfb8f}{new\+Data\+Conn}} ()
+\begin{DoxyCompactList}\small\item\em slot Qt, wywolywany w przypadku przyjscia sygnalu -\/ rozpoczecia polaczenia klienta w celu przeslania danych \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_direct_server_a93af7cb9a5525fcb1550f8c4ad3ad7de}\label{class_direct_server_a93af7cb9a5525fcb1550f8c4ad3ad7de}} 
+\mbox{\hyperlink{class_direct_server_a93af7cb9a5525fcb1550f8c4ad3ad7de}{Direct\+Server}} ()
+\begin{DoxyCompactList}\small\item\em konstruktor bezparametrowy \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_direct_server_a81e51bb57937b0891392c1ba2f80ce94}{set\+\_\+save\+\_\+dir}} (Q\+String dir)
+\begin{DoxyCompactList}\small\item\em ustawia folder zapisu \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_direct_server_a4531ed24e67c30ac3e6390079c7f98d3}{set\+\_\+user}} (Q\+String username)
+\begin{DoxyCompactList}\small\item\em ustawia nazwe uzytkownika \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_direct_server_afe476c852b361c050f4a33b81c2a05b4}{set\+\_\+pwd}} (Q\+String pwd)
+\begin{DoxyCompactList}\small\item\em ustawia haslo \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_direct_server_ab859f39bb2fc8e703fcb9cf3930f2450}{set\+\_\+file\+\_\+name}} (Q\+String file)
+\begin{DoxyCompactList}\small\item\em ustawia nazwe pliku \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_direct_server_afd0e2f055a33c21fc9f2da2c7decfc01}{set\+\_\+file\+\_\+struct}} (\mbox{\hyperlink{class_f_i_l_e___s_t_r_u_c_t}{F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+CT}} $\ast$file\+Struct)
+\begin{DoxyCompactList}\small\item\em ustawia generator pliku \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_direct_server_a0a4ce3939ce648f0ee7b0e4fefc9ec37}{set\+\_\+file\+\_\+ext}} (F\+I\+L\+E\+\_\+\+E\+XT fe)
+\begin{DoxyCompactList}\small\item\em ustawia rozszerzenie nazwy pliku generowanego \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_direct_server_adaf83e13a63bc14ae4a15488e90028a0}{set\+\_\+control\+\_\+port}} (quint16 port)
+\begin{DoxyCompactList}\small\item\em ustawia port, na ktory beda przychodzily komendy sterujace komunikacja \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_direct_server_af27e572c2cedbfefa90ba5345cbf1851}{set\+\_\+data\+\_\+port}} (quint16 port)
+\begin{DoxyCompactList}\small\item\em ustawia port, na ktory beda przychodzily dane od klienta \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_f_i_l_e___s_t_r_u_c_t}{F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+CT}} $\ast$ \mbox{\hyperlink{class_direct_server_a8e8039402e3c626fc10f985dfdf2db87}{get\+\_\+file\+\_\+struct}} ()
+\begin{DoxyCompactList}\small\item\em zwraca generator pliku \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Klasa serwera. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_direct_server_a5dd2197b3b2e1e47320d793991b384e2}\label{class_direct_server_a5dd2197b3b2e1e47320d793991b384e2}} 
+\index{DirectServer@{DirectServer}!controlService@{controlService}}
+\index{controlService@{controlService}!DirectServer@{DirectServer}}
+\doxysubsubsection{\texorpdfstring{controlService}{controlService}}
+{\footnotesize\ttfamily void Direct\+Server\+::control\+Service (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+slot Qt, wywolywany w przypadku przyjscia sygnalu -\/ instrkukcji sterujacej od klienta 
+
+obsluguje instrukcje \mbox{\Hypertarget{class_direct_server_a3d27a7678e06fdd08513249753198acf}\label{class_direct_server_a3d27a7678e06fdd08513249753198acf}} 
+\index{DirectServer@{DirectServer}!dataService@{dataService}}
+\index{dataService@{dataService}!DirectServer@{DirectServer}}
+\doxysubsubsection{\texorpdfstring{dataService}{dataService}}
+{\footnotesize\ttfamily void Direct\+Server\+::data\+Service (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+slot Qt, wywolywany w przypadku przyjscia sygnalu -\/ danych od klienta 
+
+obsluguje przychodzace dane \mbox{\Hypertarget{class_direct_server_a89ed5544b6140872f371f556c08dbddf}\label{class_direct_server_a89ed5544b6140872f371f556c08dbddf}} 
+\index{DirectServer@{DirectServer}!disconnectedSocket@{disconnectedSocket}}
+\index{disconnectedSocket@{disconnectedSocket}!DirectServer@{DirectServer}}
+\doxysubsubsection{\texorpdfstring{disconnectedSocket}{disconnectedSocket}}
+{\footnotesize\ttfamily void Direct\+Server\+::disconnected\+Socket (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+slot Qt, wywolywany w przypadku przyjscia sygnalu -\/ rozlaczenia sie klienta 
+
+zamyka i usuwa nieaktywne socekty \mbox{\Hypertarget{class_direct_server_a8e8039402e3c626fc10f985dfdf2db87}\label{class_direct_server_a8e8039402e3c626fc10f985dfdf2db87}} 
+\index{DirectServer@{DirectServer}!get\_file\_struct@{get\_file\_struct}}
+\index{get\_file\_struct@{get\_file\_struct}!DirectServer@{DirectServer}}
+\doxysubsubsection{\texorpdfstring{get\_file\_struct()}{get\_file\_struct()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_f_i_l_e___s_t_r_u_c_t}{F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+CT}}$\ast$ Direct\+Server\+::get\+\_\+file\+\_\+struct (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+zwraca generator pliku 
+
+\begin{DoxyReturn}{Returns}
+F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+C\+T$\ast$ -\/ wskaznik do obiektu \mbox{\hyperlink{class_f_i_l_e___s_t_r_u_c_t}{F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+CT}} 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_f_i_l_e___s_t_r_u_c_t}{F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+CT}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{class_direct_server_a84efc5c761551747994ef435de1679f7}\label{class_direct_server_a84efc5c761551747994ef435de1679f7}} 
+\index{DirectServer@{DirectServer}!newControlConn@{newControlConn}}
+\index{newControlConn@{newControlConn}!DirectServer@{DirectServer}}
+\doxysubsubsection{\texorpdfstring{newControlConn}{newControlConn}}
+{\footnotesize\ttfamily void Direct\+Server\+::new\+Control\+Conn (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+slot Qt, wywolywany w przypadku przyjscia sygnalu -\/ rozpoczecia polaczenia klienta 
+
+obsluguje polaczenie \mbox{\Hypertarget{class_direct_server_ae0c312a8f1c56cdcfb0b7b26b43bfb8f}\label{class_direct_server_ae0c312a8f1c56cdcfb0b7b26b43bfb8f}} 
+\index{DirectServer@{DirectServer}!newDataConn@{newDataConn}}
+\index{newDataConn@{newDataConn}!DirectServer@{DirectServer}}
+\doxysubsubsection{\texorpdfstring{newDataConn}{newDataConn}}
+{\footnotesize\ttfamily void Direct\+Server\+::new\+Data\+Conn (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+slot Qt, wywolywany w przypadku przyjscia sygnalu -\/ rozpoczecia polaczenia klienta w celu przeslania danych 
+
+obsluguje polaczenie \mbox{\Hypertarget{class_direct_server_adaf83e13a63bc14ae4a15488e90028a0}\label{class_direct_server_adaf83e13a63bc14ae4a15488e90028a0}} 
+\index{DirectServer@{DirectServer}!set\_control\_port@{set\_control\_port}}
+\index{set\_control\_port@{set\_control\_port}!DirectServer@{DirectServer}}
+\doxysubsubsection{\texorpdfstring{set\_control\_port()}{set\_control\_port()}}
+{\footnotesize\ttfamily void Direct\+Server\+::set\+\_\+control\+\_\+port (\begin{DoxyParamCaption}\item[{quint16}]{port }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ustawia port, na ktory beda przychodzily komendy sterujace komunikacja 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & -\/ numer portu \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_direct_server_af27e572c2cedbfefa90ba5345cbf1851}\label{class_direct_server_af27e572c2cedbfefa90ba5345cbf1851}} 
+\index{DirectServer@{DirectServer}!set\_data\_port@{set\_data\_port}}
+\index{set\_data\_port@{set\_data\_port}!DirectServer@{DirectServer}}
+\doxysubsubsection{\texorpdfstring{set\_data\_port()}{set\_data\_port()}}
+{\footnotesize\ttfamily void Direct\+Server\+::set\+\_\+data\+\_\+port (\begin{DoxyParamCaption}\item[{quint16}]{port }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ustawia port, na ktory beda przychodzily dane od klienta 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & -\/ numer portu \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_direct_server_a0a4ce3939ce648f0ee7b0e4fefc9ec37}\label{class_direct_server_a0a4ce3939ce648f0ee7b0e4fefc9ec37}} 
+\index{DirectServer@{DirectServer}!set\_file\_ext@{set\_file\_ext}}
+\index{set\_file\_ext@{set\_file\_ext}!DirectServer@{DirectServer}}
+\doxysubsubsection{\texorpdfstring{set\_file\_ext()}{set\_file\_ext()}}
+{\footnotesize\ttfamily void Direct\+Server\+::set\+\_\+file\+\_\+ext (\begin{DoxyParamCaption}\item[{F\+I\+L\+E\+\_\+\+E\+XT}]{fe }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ustawia rozszerzenie nazwy pliku generowanego 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fe} & -\/ typ rozszerzenia(data, numer lub brak rozszrzenia) \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+F\+I\+L\+E\+\_\+\+E\+XT 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{class_direct_server_ab859f39bb2fc8e703fcb9cf3930f2450}\label{class_direct_server_ab859f39bb2fc8e703fcb9cf3930f2450}} 
+\index{DirectServer@{DirectServer}!set\_file\_name@{set\_file\_name}}
+\index{set\_file\_name@{set\_file\_name}!DirectServer@{DirectServer}}
+\doxysubsubsection{\texorpdfstring{set\_file\_name()}{set\_file\_name()}}
+{\footnotesize\ttfamily void Direct\+Server\+::set\+\_\+file\+\_\+name (\begin{DoxyParamCaption}\item[{Q\+String}]{file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ustawia nazwe pliku 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & -\/ nazwa pliku \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_direct_server_afd0e2f055a33c21fc9f2da2c7decfc01}\label{class_direct_server_afd0e2f055a33c21fc9f2da2c7decfc01}} 
+\index{DirectServer@{DirectServer}!set\_file\_struct@{set\_file\_struct}}
+\index{set\_file\_struct@{set\_file\_struct}!DirectServer@{DirectServer}}
+\doxysubsubsection{\texorpdfstring{set\_file\_struct()}{set\_file\_struct()}}
+{\footnotesize\ttfamily void Direct\+Server\+::set\+\_\+file\+\_\+struct (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_f_i_l_e___s_t_r_u_c_t}{F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+CT}} $\ast$}]{file\+Struct }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ustawia generator pliku 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Struct} & -\/ wskaznik na generator pliku \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_f_i_l_e___s_t_r_u_c_t}{F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+CT}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{class_direct_server_afe476c852b361c050f4a33b81c2a05b4}\label{class_direct_server_afe476c852b361c050f4a33b81c2a05b4}} 
+\index{DirectServer@{DirectServer}!set\_pwd@{set\_pwd}}
+\index{set\_pwd@{set\_pwd}!DirectServer@{DirectServer}}
+\doxysubsubsection{\texorpdfstring{set\_pwd()}{set\_pwd()}}
+{\footnotesize\ttfamily void Direct\+Server\+::set\+\_\+pwd (\begin{DoxyParamCaption}\item[{Q\+String}]{pwd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ustawia haslo 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pwd} & -\/ haslo \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_direct_server_a81e51bb57937b0891392c1ba2f80ce94}\label{class_direct_server_a81e51bb57937b0891392c1ba2f80ce94}} 
+\index{DirectServer@{DirectServer}!set\_save\_dir@{set\_save\_dir}}
+\index{set\_save\_dir@{set\_save\_dir}!DirectServer@{DirectServer}}
+\doxysubsubsection{\texorpdfstring{set\_save\_dir()}{set\_save\_dir()}}
+{\footnotesize\ttfamily void Direct\+Server\+::set\+\_\+save\+\_\+dir (\begin{DoxyParamCaption}\item[{Q\+String}]{dir }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ustawia folder zapisu 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dir} & -\/ miejce na dysku, gdzie ma byc zapisany plik \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_direct_server_a4531ed24e67c30ac3e6390079c7f98d3}\label{class_direct_server_a4531ed24e67c30ac3e6390079c7f98d3}} 
+\index{DirectServer@{DirectServer}!set\_user@{set\_user}}
+\index{set\_user@{set\_user}!DirectServer@{DirectServer}}
+\doxysubsubsection{\texorpdfstring{set\_user()}{set\_user()}}
+{\footnotesize\ttfamily void Direct\+Server\+::set\+\_\+user (\begin{DoxyParamCaption}\item[{Q\+String}]{username }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ustawia nazwe uzytkownika 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & -\/ nazwa uzytkownika \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Programowanie/\+Projekty/\+C++/logs\+\_\+library/directserver.\+h\item 
+D\+:/\+Programowanie/\+Projekty/\+C++/logs\+\_\+library/directserver.\+cpp\end{DoxyCompactItemize}

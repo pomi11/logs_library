@@ -1,0 +1,332 @@
+\hypertarget{class_x_m_l}{}\doxysection{X\+ML Class Reference}
+\label{class_x_m_l}\index{XML@{XML}}
+
+
+Implementacja interjesu \mbox{\hyperlink{class_f_i_l_e___s_t_r_u_c_t}{F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+CT}}.  
+
+
+
+
+{\ttfamily \#include $<$F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+C\+T.\+h$>$}
+
+Inheritance diagram for X\+ML\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_x_m_l}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{class_x_m_l_a306c6817ff466e8df1e0690dccc2220e}{log}} (Q\+Vector$<$ Q\+Map$<$ Q\+String, Q\+Map$<$ Q\+String, Q\+String $>$$>$$>$ logs) override
+\begin{DoxyCompactList}\small\item\em generuje sekcje logow w pliku \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_x_m_l_aab79c46b08ee350df43a9a97b6f0306f}{end\+\_\+file}} () override
+\begin{DoxyCompactList}\small\item\em generuje koniec pliku \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_x_m_l_abaa91455d09fb9b0f8e6ef743a5ca13a}{start\+\_\+file}} (Q\+String description) override
+\begin{DoxyCompactList}\small\item\em generuje poczatek pliku, automatycznie generuje date, jesli jest wlaczona \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_x_m_l_a1cdca69b3465abeca82221e178302269}{show\+\_\+sys\+\_\+summary}} (bool val) override
+\begin{DoxyCompactList}\small\item\em ustawia, czy w pliku ma byc pokazane ogolne podsumowanie systemu \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_x_m_l_a482a8bdbbd09ce4358e3fcf76029fb5a}{show\+\_\+log\+\_\+number}} (bool val) override
+\begin{DoxyCompactList}\small\item\em ustawia, czy ma byc widoczny numer pojedynczego logu \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_x_m_l_aaa54d694e8d127e1f0b04f2c75422396}{show\+\_\+log\+\_\+type}} (bool val) override
+\begin{DoxyCompactList}\small\item\em ustawia, czy ma byc widoczny typ pojedynczego logu \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_x_m_l_af0057df9b3babfe37f089ad44850823f}{show\+\_\+log\+\_\+date}} (bool val) override
+\begin{DoxyCompactList}\small\item\em ustawia, czy ma byc widoczna data pojedynczego logu \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_x_m_l_afd5f77c64ec6a17cd93a9f9d77bf70f1}{show\+\_\+log\+\_\+header}} (bool val) override
+\begin{DoxyCompactList}\small\item\em ustawia, czy ma byc widoczny naglowek pojedynczego logu \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_x_m_l_aa6f0f71a0868cfd5ef4d69c422d7a3f3}{show\+\_\+log\+\_\+memory\+\_\+avail}} (bool val) override
+\begin{DoxyCompactList}\small\item\em ustawia, czy w pojedynczym logu ma byc widoczna ilosc dostepnej pamieci R\+AM \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_x_m_l_a1f6d5360a853a248b8b03dba3cf1b787}{show\+\_\+log\+\_\+memory\+\_\+usage}} (bool val) override
+\begin{DoxyCompactList}\small\item\em ustawia, czy w pojedynczym logu ma byc widoczna ilosc uzywanej pamieci R\+AM \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_x_m_l_af48ceb245208a4a45a949de5bd3c2483}{show\+\_\+log\+\_\+proc\+\_\+memory\+\_\+usage}} (bool val) override
+\begin{DoxyCompactList}\small\item\em ustawia, czy w pojedynczym logu ma byc widoczna ilosc uzywanej pamieci R\+AM przez proces logujacy \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_x_m_l_ad699f27ab05dc79f5267bd76f1adda02}{show\+\_\+log\+\_\+proc\+\_\+memory\+\_\+max}} (bool val) override
+\begin{DoxyCompactList}\small\item\em ustawia, czy w pojedynczym logu ma byc widoczna najwieksza ilosc pamieci R\+AM uzytej przez proces logujacy \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_x_m_l_a00a2b7e75b9f1b938be8c46ffee1ca64}{show\+\_\+file\+\_\+date}} (bool enable) override
+\begin{DoxyCompactList}\small\item\em ustawia, czy ma byc widoczna data utworzenia pliku \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_x_m_l_a4921d2c36188c1c4079879ddfaaea3f9}{show\+\_\+file\+\_\+descr}} (bool enable) override
+\begin{DoxyCompactList}\small\item\em ustawia, czy ma byc widoczny opis pliku \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementacja interjesu \mbox{\hyperlink{class_f_i_l_e___s_t_r_u_c_t}{F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+CT}}. 
+
+Generuje plik xml 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_x_m_l_aab79c46b08ee350df43a9a97b6f0306f}\label{class_x_m_l_aab79c46b08ee350df43a9a97b6f0306f}} 
+\index{XML@{XML}!end\_file@{end\_file}}
+\index{end\_file@{end\_file}!XML@{XML}}
+\doxysubsubsection{\texorpdfstring{end\_file()}{end\_file()}}
+{\footnotesize\ttfamily std\+::string X\+M\+L\+::end\+\_\+file (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+generuje koniec pliku 
+
+\begin{DoxyReturn}{Returns}
+std\+::string -\/ zwraca wygenerowany koniec pliku 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_f_i_l_e___s_t_r_u_c_t_a7be93da9bf6270ff1a1450e9929fedec}{F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+CT}}.
+
+\mbox{\Hypertarget{class_x_m_l_a306c6817ff466e8df1e0690dccc2220e}\label{class_x_m_l_a306c6817ff466e8df1e0690dccc2220e}} 
+\index{XML@{XML}!log@{log}}
+\index{log@{log}!XML@{XML}}
+\doxysubsubsection{\texorpdfstring{log()}{log()}}
+{\footnotesize\ttfamily std\+::string X\+M\+L\+::log (\begin{DoxyParamCaption}\item[{Q\+Vector$<$ Q\+Map$<$ Q\+String, Q\+Map$<$ Q\+String, Q\+String $>$$>$$>$}]{logs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+generuje sekcje logow w pliku 
+
+
+\begin{DoxyParams}{Parameters}
+{\em logs} & -\/ wektor map logow, jeden wpis to jedna mapa nazw sekcji L\+O\+Gu oraz mapy nazw zmiennych i ich wartosci \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::string -\/ zwraca wygenerowana sekcje logow 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_f_i_l_e___s_t_r_u_c_t_add33a81aadaa85b21426ef009552428c}{F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+CT}}.
+
+\mbox{\Hypertarget{class_x_m_l_a00a2b7e75b9f1b938be8c46ffee1ca64}\label{class_x_m_l_a00a2b7e75b9f1b938be8c46ffee1ca64}} 
+\index{XML@{XML}!show\_file\_date@{show\_file\_date}}
+\index{show\_file\_date@{show\_file\_date}!XML@{XML}}
+\doxysubsubsection{\texorpdfstring{show\_file\_date()}{show\_file\_date()}}
+{\footnotesize\ttfamily void X\+M\+L\+::show\+\_\+file\+\_\+date (\begin{DoxyParamCaption}\item[{bool}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+ustawia, czy ma byc widoczna data utworzenia pliku 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & -\/ true -\/ wlacza, false wylacza \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_f_i_l_e___s_t_r_u_c_t_aca7416ecf355df1a7a05ddfb0363909d}{F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+CT}}.
+
+\mbox{\Hypertarget{class_x_m_l_a4921d2c36188c1c4079879ddfaaea3f9}\label{class_x_m_l_a4921d2c36188c1c4079879ddfaaea3f9}} 
+\index{XML@{XML}!show\_file\_descr@{show\_file\_descr}}
+\index{show\_file\_descr@{show\_file\_descr}!XML@{XML}}
+\doxysubsubsection{\texorpdfstring{show\_file\_descr()}{show\_file\_descr()}}
+{\footnotesize\ttfamily void X\+M\+L\+::show\+\_\+file\+\_\+descr (\begin{DoxyParamCaption}\item[{bool}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+ustawia, czy ma byc widoczny opis pliku 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & -\/ true -\/ wlacza, false wylacza \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_f_i_l_e___s_t_r_u_c_t_af9f4c74f874452a47d1a62dc7e97b107}{F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+CT}}.
+
+\mbox{\Hypertarget{class_x_m_l_af0057df9b3babfe37f089ad44850823f}\label{class_x_m_l_af0057df9b3babfe37f089ad44850823f}} 
+\index{XML@{XML}!show\_log\_date@{show\_log\_date}}
+\index{show\_log\_date@{show\_log\_date}!XML@{XML}}
+\doxysubsubsection{\texorpdfstring{show\_log\_date()}{show\_log\_date()}}
+{\footnotesize\ttfamily void X\+M\+L\+::show\+\_\+log\+\_\+date (\begin{DoxyParamCaption}\item[{bool}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+ustawia, czy ma byc widoczna data pojedynczego logu 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & -\/ true -\/ wlacza, false wylacza \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_f_i_l_e___s_t_r_u_c_t_a4f0a1196f29cd24637f3d0f79811f8ed}{F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+CT}}.
+
+\mbox{\Hypertarget{class_x_m_l_afd5f77c64ec6a17cd93a9f9d77bf70f1}\label{class_x_m_l_afd5f77c64ec6a17cd93a9f9d77bf70f1}} 
+\index{XML@{XML}!show\_log\_header@{show\_log\_header}}
+\index{show\_log\_header@{show\_log\_header}!XML@{XML}}
+\doxysubsubsection{\texorpdfstring{show\_log\_header()}{show\_log\_header()}}
+{\footnotesize\ttfamily void X\+M\+L\+::show\+\_\+log\+\_\+header (\begin{DoxyParamCaption}\item[{bool}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+ustawia, czy ma byc widoczny naglowek pojedynczego logu 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & -\/ true -\/ wlacza, false wylacza \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_f_i_l_e___s_t_r_u_c_t_aa4905f0e42c677b8aaba7db71e5f3c1b}{F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+CT}}.
+
+\mbox{\Hypertarget{class_x_m_l_aa6f0f71a0868cfd5ef4d69c422d7a3f3}\label{class_x_m_l_aa6f0f71a0868cfd5ef4d69c422d7a3f3}} 
+\index{XML@{XML}!show\_log\_memory\_avail@{show\_log\_memory\_avail}}
+\index{show\_log\_memory\_avail@{show\_log\_memory\_avail}!XML@{XML}}
+\doxysubsubsection{\texorpdfstring{show\_log\_memory\_avail()}{show\_log\_memory\_avail()}}
+{\footnotesize\ttfamily void X\+M\+L\+::show\+\_\+log\+\_\+memory\+\_\+avail (\begin{DoxyParamCaption}\item[{bool}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+ustawia, czy w pojedynczym logu ma byc widoczna ilosc dostepnej pamieci R\+AM 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & -\/ true -\/ wlacza, false wylacza \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_f_i_l_e___s_t_r_u_c_t_a224e066c30fcec4b67af0c51d0cb5182}{F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+CT}}.
+
+\mbox{\Hypertarget{class_x_m_l_a1f6d5360a853a248b8b03dba3cf1b787}\label{class_x_m_l_a1f6d5360a853a248b8b03dba3cf1b787}} 
+\index{XML@{XML}!show\_log\_memory\_usage@{show\_log\_memory\_usage}}
+\index{show\_log\_memory\_usage@{show\_log\_memory\_usage}!XML@{XML}}
+\doxysubsubsection{\texorpdfstring{show\_log\_memory\_usage()}{show\_log\_memory\_usage()}}
+{\footnotesize\ttfamily void X\+M\+L\+::show\+\_\+log\+\_\+memory\+\_\+usage (\begin{DoxyParamCaption}\item[{bool}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+ustawia, czy w pojedynczym logu ma byc widoczna ilosc uzywanej pamieci R\+AM 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & -\/ true -\/ wlacza, false wylacza \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_f_i_l_e___s_t_r_u_c_t_a030b9d9d20e2d4657cfc0b29294eef41}{F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+CT}}.
+
+\mbox{\Hypertarget{class_x_m_l_a482a8bdbbd09ce4358e3fcf76029fb5a}\label{class_x_m_l_a482a8bdbbd09ce4358e3fcf76029fb5a}} 
+\index{XML@{XML}!show\_log\_number@{show\_log\_number}}
+\index{show\_log\_number@{show\_log\_number}!XML@{XML}}
+\doxysubsubsection{\texorpdfstring{show\_log\_number()}{show\_log\_number()}}
+{\footnotesize\ttfamily void X\+M\+L\+::show\+\_\+log\+\_\+number (\begin{DoxyParamCaption}\item[{bool}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+ustawia, czy ma byc widoczny numer pojedynczego logu 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & -\/ true -\/ wlacza, false wylacza \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_f_i_l_e___s_t_r_u_c_t_a1005050b8a978a544ffe7f41f7b9652d}{F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+CT}}.
+
+\mbox{\Hypertarget{class_x_m_l_ad699f27ab05dc79f5267bd76f1adda02}\label{class_x_m_l_ad699f27ab05dc79f5267bd76f1adda02}} 
+\index{XML@{XML}!show\_log\_proc\_memory\_max@{show\_log\_proc\_memory\_max}}
+\index{show\_log\_proc\_memory\_max@{show\_log\_proc\_memory\_max}!XML@{XML}}
+\doxysubsubsection{\texorpdfstring{show\_log\_proc\_memory\_max()}{show\_log\_proc\_memory\_max()}}
+{\footnotesize\ttfamily void X\+M\+L\+::show\+\_\+log\+\_\+proc\+\_\+memory\+\_\+max (\begin{DoxyParamCaption}\item[{bool}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+ustawia, czy w pojedynczym logu ma byc widoczna najwieksza ilosc pamieci R\+AM uzytej przez proces logujacy 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & -\/ true -\/ wlacza, false wylacza \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_f_i_l_e___s_t_r_u_c_t_a506ac2ffed1b1815e5e3cbaffa986fd8}{F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+CT}}.
+
+\mbox{\Hypertarget{class_x_m_l_af48ceb245208a4a45a949de5bd3c2483}\label{class_x_m_l_af48ceb245208a4a45a949de5bd3c2483}} 
+\index{XML@{XML}!show\_log\_proc\_memory\_usage@{show\_log\_proc\_memory\_usage}}
+\index{show\_log\_proc\_memory\_usage@{show\_log\_proc\_memory\_usage}!XML@{XML}}
+\doxysubsubsection{\texorpdfstring{show\_log\_proc\_memory\_usage()}{show\_log\_proc\_memory\_usage()}}
+{\footnotesize\ttfamily void X\+M\+L\+::show\+\_\+log\+\_\+proc\+\_\+memory\+\_\+usage (\begin{DoxyParamCaption}\item[{bool}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+ustawia, czy w pojedynczym logu ma byc widoczna ilosc uzywanej pamieci R\+AM przez proces logujacy 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & -\/ true -\/ wlacza, false wylacza \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_f_i_l_e___s_t_r_u_c_t_a824ea5ea7d875e23705356b275793c30}{F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+CT}}.
+
+\mbox{\Hypertarget{class_x_m_l_aaa54d694e8d127e1f0b04f2c75422396}\label{class_x_m_l_aaa54d694e8d127e1f0b04f2c75422396}} 
+\index{XML@{XML}!show\_log\_type@{show\_log\_type}}
+\index{show\_log\_type@{show\_log\_type}!XML@{XML}}
+\doxysubsubsection{\texorpdfstring{show\_log\_type()}{show\_log\_type()}}
+{\footnotesize\ttfamily void X\+M\+L\+::show\+\_\+log\+\_\+type (\begin{DoxyParamCaption}\item[{bool}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+ustawia, czy ma byc widoczny typ pojedynczego logu 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & -\/ true -\/ wlacza, false wylacza \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_f_i_l_e___s_t_r_u_c_t_aba6f2c263be6507da7617247d75b5f9d}{F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+CT}}.
+
+\mbox{\Hypertarget{class_x_m_l_a1cdca69b3465abeca82221e178302269}\label{class_x_m_l_a1cdca69b3465abeca82221e178302269}} 
+\index{XML@{XML}!show\_sys\_summary@{show\_sys\_summary}}
+\index{show\_sys\_summary@{show\_sys\_summary}!XML@{XML}}
+\doxysubsubsection{\texorpdfstring{show\_sys\_summary()}{show\_sys\_summary()}}
+{\footnotesize\ttfamily void X\+M\+L\+::show\+\_\+sys\+\_\+summary (\begin{DoxyParamCaption}\item[{bool}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+ustawia, czy w pliku ma byc pokazane ogolne podsumowanie systemu 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & -\/ true -\/ wlacza, false wylacza \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_f_i_l_e___s_t_r_u_c_t_ab4d0e28be3154fc050bfd6862c5a9e8b}{F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+CT}}.
+
+\mbox{\Hypertarget{class_x_m_l_abaa91455d09fb9b0f8e6ef743a5ca13a}\label{class_x_m_l_abaa91455d09fb9b0f8e6ef743a5ca13a}} 
+\index{XML@{XML}!start\_file@{start\_file}}
+\index{start\_file@{start\_file}!XML@{XML}}
+\doxysubsubsection{\texorpdfstring{start\_file()}{start\_file()}}
+{\footnotesize\ttfamily std\+::string X\+M\+L\+::start\+\_\+file (\begin{DoxyParamCaption}\item[{Q\+String}]{description }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+generuje poczatek pliku, automatycznie generuje date, jesli jest wlaczona 
+
+
+\begin{DoxyParams}{Parameters}
+{\em description} & -\/ opis pliku, ktory ma byc umieszczony na poczatku \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::string -\/ zwraca paczatek pliku 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_f_i_l_e___s_t_r_u_c_t_a8d78b0a41da13bcff877126fbade3b30}{F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+CT}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Programowanie/\+Projekty/\+C++/logs\+\_\+library/F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+C\+T.\+h\item 
+D\+:/\+Programowanie/\+Projekty/\+C++/logs\+\_\+library/F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+C\+T.\+cpp\end{DoxyCompactItemize}

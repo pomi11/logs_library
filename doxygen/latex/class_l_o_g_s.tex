@@ -1,0 +1,1284 @@
+\hypertarget{class_l_o_g_s}{}\doxysection{L\+O\+GS Class Reference}
+\label{class_l_o_g_s}\index{LOGS@{LOGS}}
+
+
+Kontroler logow.  
+
+
+
+
+{\ttfamily \#include $<$logs.\+h$>$}
+
+Inheritance diagram for L\+O\+GS\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_l_o_g_s}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_l_o_g_s_af5d57e68fe24911b44a670e8b71b0ae0}\label{class_l_o_g_s_af5d57e68fe24911b44a670e8b71b0ae0}} 
+\mbox{\hyperlink{class_l_o_g_s_af5d57e68fe24911b44a670e8b71b0ae0}{L\+O\+GS}} ()
+\begin{DoxyCompactList}\small\item\em kontruktor bezparametrowy \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_l_o_g_s_ab944c4a22e5bdb1daf543dc1a1f4903f}{L\+O\+GS}} (Q\+String file\+Name)
+\begin{DoxyCompactList}\small\item\em konstruktor z parametrem \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_l_o_g_s_a5af3766041629b6ab380fb8e2dea509f}{L\+O\+GS}} (Q\+String file\+Name, Q\+String path)
+\begin{DoxyCompactList}\small\item\em konstruktor z parametrami \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_l_o_g_s_aad3e111a0550db6b27f301177c8796e4}{L\+O\+GS}} (Q\+Vector$<$ \mbox{\hyperlink{class_l_o_g}{L\+OG}} $>$ logs)
+\begin{DoxyCompactList}\small\item\em konstruktor z parametrami \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_l_o_g_s_add53fcea4fc5b97c4591c1cfcfc6a255}{L\+O\+GS}} (Q\+String file\+Name, Q\+Vector$<$ \mbox{\hyperlink{class_l_o_g}{L\+OG}} $>$ logs)
+\begin{DoxyCompactList}\small\item\em konstruktor z parametrami \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_o_g_s_a1127f213e026784c77d036ce732ac695}{add}} (\mbox{\hyperlink{class_l_o_g}{L\+OG}} log)
+\begin{DoxyCompactList}\small\item\em dodaje do listy logow, log podany jako parametr \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_o_g_s_a4828182fadb7fc07dd4bbcc272f99c38}{add}} (Q\+String header, Q\+String date, Q\+String format, Q\+String message)
+\begin{DoxyCompactList}\small\item\em dodaje do listy logow nowy log utworzony z parametrow \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_o_g_s_a22730ebc1b4ec3adee41beefd67c8707}{add}} (Q\+String header, Q\+Date\+Time date, Q\+String message)
+\begin{DoxyCompactList}\small\item\em dodaje do listy logow nowy log utworzony z parametrow \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_o_g_s_ab9e0b8224c205dbaf64518939cd6edc1}{add\+\_\+msg}} (Q\+String message)
+\begin{DoxyCompactList}\small\item\em dodaje nowy log z wiadomoscia podana jako parametr \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_o_g_s_a281e4f36b822c5a9d82000dcf8fa21d6}{add\+\_\+msg}} (Q\+String message, Q\+String type)
+\begin{DoxyCompactList}\small\item\em dodaje nowy log z wiadomoscia i typem podanymi jako parametry \end{DoxyCompactList}\item 
+{\footnotesize template$<$template$<$ typename $>$ class C$>$ }\\void \mbox{\hyperlink{class_l_o_g_s_ab67cc04efceafd929a4db6c2e42458fd}{add}} (C$<$ \mbox{\hyperlink{class_l_o_g}{L\+OG}} $>$ log)
+\begin{DoxyCompactList}\small\item\em dodaje nowe logi z listy podanej jako parametr \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_o_g_s_ae2e8d4bfc6f3d6d63d920c3e8118adef}{show\+\_\+sys\+\_\+summary}} (bool val)
+\begin{DoxyCompactList}\small\item\em ustawia, czy w pliku wynikowym ma byc pokazane podsumowanie informacji o systemie \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_o_g_s_abd08563e396c38229e56bf06731f5ec1}{show\+\_\+file\+\_\+date}} (bool val)
+\begin{DoxyCompactList}\small\item\em ustawia, czy w pliku wynikowym ma byc pokazana data utworzenia pliku \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_o_g_s_a8c50e302029e52ff5fe19c7f369e75bf}{show\+\_\+log\+\_\+number}} (bool val)
+\begin{DoxyCompactList}\small\item\em ustawia, czy w pliku wynikowym ma byc wyswietlany numer pojedynczego logu \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_o_g_s_a356be055849135ac7e8680aef873fa3d}{show\+\_\+log\+\_\+type}} (bool val)
+\begin{DoxyCompactList}\small\item\em ustawia, czy w pliku wynikowym ma byc wyswietlany typ pojedynczego logu \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_o_g_s_a9efa59b4ed47977096019c734892ce7b}{show\+\_\+log\+\_\+date}} (bool val)
+\begin{DoxyCompactList}\small\item\em ustawia, czy w pliku wynikowym ma byc wyswietlana data pojedynczego logu \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_o_g_s_a4bbf7f7b3500f96be9e74997ac9f80b1}{show\+\_\+log\+\_\+header}} (bool val)
+\begin{DoxyCompactList}\small\item\em ustawia, czy w pliku wynikowym ma byc wyswietlany naglowek pojedynczego logu \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_o_g_s_ab28cdd4a5246e5815a4ee67380cf92d6}{show\+\_\+log\+\_\+memory\+\_\+avail}} (bool val)
+\begin{DoxyCompactList}\small\item\em ustawia, czy w pliku wynikowym, w pojedynczym logu ma byc wyswietlana informacja o dostepnej pamieci \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_o_g_s_a5fb41b199b438297196b4e4dadd6199b}{show\+\_\+log\+\_\+memory\+\_\+usage}} (bool val)
+\begin{DoxyCompactList}\small\item\em ustawia, czy w pliku wynikowym, w pojedynczym logu ma byc wyswietlana informacja o uzywanej pamieci \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_o_g_s_a24bc1c4603d2d3b6ab932f799940d420}{show\+\_\+log\+\_\+proc\+\_\+memory\+\_\+usage}} (bool val)
+\begin{DoxyCompactList}\small\item\em ustawia, czy w pliku wynikowym, w pojedynczym logu ma byc wyswietlana informacja o uzywanej pamieci przez proces logujacy \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_o_g_s_ae416a75c5c6347e06ce4526c7bfb3fba}{show\+\_\+log\+\_\+proc\+\_\+memory\+\_\+max}} (bool val)
+\begin{DoxyCompactList}\small\item\em ustawia, czy w pliku wynikowym, w pojedynczym logu ma byc wyswietlana informacja o najwiekszej ilosci pamieci uzytej przez proces logujacy \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_o_g_s_a9597d1f6d5cd4acd40a4d2701351a1de}{remove}} (int index)
+\begin{DoxyCompactList}\small\item\em usuwa log o podanym indexie \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_o_g_s_ab3a1aa4ba3ed2a5fc0070db5d18f296c}{remove}} (Q\+String message, bool all=true, bool first=false, bool last=false)
+\begin{DoxyCompactList}\small\item\em usuwa log lub wiele logow o podanej wiadomosci \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_o_g_s_a314533ea04264c24eecf75e88e95c026}{remove\+\_\+by\+\_\+date}} (Q\+String date, Q\+String format, bool all=true, bool first=false, bool last=false)
+\begin{DoxyCompactList}\small\item\em usuwa log lub wiele logow o podanej dacie i podanym formacie \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_o_g_s_aa30bfbe4794d6b276be5712330305b16}{remove\+\_\+by\+\_\+date}} (Q\+Date\+Time date, bool all=true, bool first=false, bool last=false)
+\begin{DoxyCompactList}\small\item\em usuwa log lub wiele logow o podanej dacie jako Q\+Date\+Time \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_o_g_s_aea9e48d5f729a10a52a8d99d38150559}{change\+\_\+message}} (int index, Q\+String new\+Message)
+\begin{DoxyCompactList}\small\item\em zmienia wiadomosc logu o podanym indeksie \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_l_o_g}{L\+OG}} $\ast$ \mbox{\hyperlink{class_l_o_g_s_a3427a26e0bda52befa6dd191920820f0}{get\+\_\+\+L\+OG}} (int index)
+\begin{DoxyCompactList}\small\item\em zwraca wskaznik na log o podanym indeksie \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_l_o_g}{L\+OG}} $\ast$ \mbox{\hyperlink{class_l_o_g_s_af49f98c605aeded1180fa565a521774e}{get\+\_\+\+L\+OG}} (Q\+String message, bool reverse=false)
+\begin{DoxyCompactList}\small\item\em zwraca pierwszy wskaznik na log o podanej wiadomosci \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_l_o_g}{L\+OG}} $\ast$ \mbox{\hyperlink{class_l_o_g_s_aecd8c489550895a34a6f6dac4a393ad3}{get\+\_\+\+L\+OG}} (Q\+String date, Q\+String format, bool reverse=false)
+\begin{DoxyCompactList}\small\item\em zwraca pierwszy wskaznik na log o podanej dacie i podanym formacie \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_l_o_g}{L\+OG}} $\ast$ \mbox{\hyperlink{class_l_o_g_s_a954d06395d677bdcabcebd97ad5adfc9}{get\+\_\+\+L\+OG}} (Q\+Date\+Time date, bool reverse=false)
+\begin{DoxyCompactList}\small\item\em zwraca pierwszy wskaznik na log o podanej dacie \end{DoxyCompactList}\item 
+Q\+Vector$<$ \mbox{\hyperlink{class_l_o_g}{L\+OG}} $>$ \mbox{\hyperlink{class_l_o_g_s_aef8f34aa2095838a0eff32092c26065c}{get\+\_\+\+L\+O\+Gs}} ()
+\begin{DoxyCompactList}\small\item\em zwraca wszystkie logi znajdujace sie w tym obiekcie \end{DoxyCompactList}\item 
+Q\+Vector$<$ \mbox{\hyperlink{class_l_o_g}{L\+OG}} $>$ \mbox{\hyperlink{class_l_o_g_s_a2e2a24a9e1cfdab93bc028697c303f9e}{get\+\_\+\+L\+O\+Gs}} (int index\+From=0, int index\+To=0)
+\begin{DoxyCompactList}\small\item\em zwraca wszystkie logi z podanego zakresu indeksow \end{DoxyCompactList}\item 
+Q\+Vector$<$ \mbox{\hyperlink{class_l_o_g}{L\+OG}} $>$ \mbox{\hyperlink{class_l_o_g_s_a91d9795d7376963c64b6c4da32a71819}{get\+\_\+\+L\+O\+Gs}} (Q\+String message)
+\begin{DoxyCompactList}\small\item\em zwraca wszystkie logi o podanej wiadomosci \end{DoxyCompactList}\item 
+Q\+Vector$<$ \mbox{\hyperlink{class_l_o_g}{L\+OG}} $>$ \mbox{\hyperlink{class_l_o_g_s_acd151e258e8af0c7bfdc17c51551b713}{get\+\_\+\+L\+O\+Gs\+\_\+by\+\_\+date}} (Q\+String date, Q\+String format)
+\begin{DoxyCompactList}\small\item\em zwraca wszystkie logi o podanej dacie i podanym formacie \end{DoxyCompactList}\item 
+Q\+Vector$<$ \mbox{\hyperlink{class_l_o_g}{L\+OG}} $>$ \mbox{\hyperlink{class_l_o_g_s_ae82cfb6e26ff431f09d63273b88c73a2}{get\+\_\+\+L\+O\+Gs\+\_\+by\+\_\+date}} (Q\+Date\+Time date)
+\begin{DoxyCompactList}\small\item\em zwraca wszystkie logi o podanej dacie i podanym formacie \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{class_l_o_g_s_a5bd0b8651a9da27285d93c8b9bf57cff}{get\+\_\+file\+\_\+name}} ()
+\begin{DoxyCompactList}\small\item\em zwraca nazwe pliku, do ktorego bedzie zapisywany wynik \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{class_l_o_g_s_aecf37fa9bd1411642677e11a4d0ae8e8}{get\+\_\+file\+\_\+path}} ()
+\begin{DoxyCompactList}\small\item\em zwraca sciezke, w ktorym zostanie utworzony plik \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{class_l_o_g_s_a6281a350c4777768a5f84db1ae4b05b6}{get\+\_\+date\+\_\+format}} ()
+\begin{DoxyCompactList}\small\item\em zwraca domyslny format daty jaki jest ustawiony \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{class_l_o_g_s_acb2af25b28722a53c5bf54294f0a8d5b}{get\+\_\+default\+\_\+type}} ()
+\begin{DoxyCompactList}\small\item\em zwraca domyslny typ logu jaki jest ustawiony \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_f_i_l_e___s_t_r_u_c_t}{F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+CT}} $\ast$ \mbox{\hyperlink{class_l_o_g_s_af8d7081f5423377ad2d3d5459e55aec7}{get\+\_\+file\+\_\+struct}} ()
+\begin{DoxyCompactList}\small\item\em zwraca wskaźnik na obiekt typu \mbox{\hyperlink{class_f_i_l_e___s_t_r_u_c_t}{F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+CT}} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_o_g_s_a9cb2a2a6567490732968f8ce80ec048b}{set\+\_\+file\+\_\+name}} (Q\+String file\+Name)
+\begin{DoxyCompactList}\small\item\em ustawia nazwe pliku, do ktorego bedzie zapisany wynik \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_o_g_s_a24a69af54f81053a05f06e1157e27358}{set\+\_\+file\+\_\+path}} (Q\+String path)
+\begin{DoxyCompactList}\small\item\em ustawia sciezke do katalogu, gdzie bedzie zapisany plik wynikowy \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_o_g_s_a4c1d7a34c41dd368c813e45682074af6}{set\+\_\+date\+\_\+format}} (Q\+String format)
+\begin{DoxyCompactList}\small\item\em ustawia domyslny format daty logow \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_o_g_s_ace1a9f88aa70f61406c77ff46d26850f}{set\+\_\+default\+\_\+header}} (Q\+String header)
+\begin{DoxyCompactList}\small\item\em ustawia domyslny naglowek logow \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_o_g_s_a92076875095a694fcce77fe82cacf3d2}{set\+\_\+custom\+\_\+log\+\_\+sys\+\_\+info}} (\mbox{\hyperlink{class_s_y_s___i_n_f_o}{S\+Y\+S\+\_\+\+I\+N\+FO}} si)
+\begin{DoxyCompactList}\small\item\em ustawia obiekt o informacji o systemie na obiekt utworzony i skonfigurowany przez uzytkownika \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_o_g_s_a0526ea15cedd0a17ea4aa2c96e16e8b0}{set\+\_\+default\+\_\+type}} (Q\+String type)
+\begin{DoxyCompactList}\small\item\em ustawia domyslny typ logow \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_l_o_g_s_a9a944969fd6599b3eac33ceb55ff1e74}{save}} ()
+\begin{DoxyCompactList}\small\item\em zapisuje logi do pliku, lub wysyla do serwera, jesli jest ustanowione polaczenie \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_l_o_g_s_a52aa456dea76fb3d63c5666627fc7a94}{save}} (\mbox{\hyperlink{class_f_i_l_e___s_t_r_u_c_t}{F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+CT}} $\ast$file\+\_\+struct)
+\begin{DoxyCompactList}\small\item\em zapisuje logi do pliku, lub wysyla do serwera, jesli jest ustanowione polaczenie \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_l_o_g_s_a3eedadf336f8da84c56e24e6f72d1d58}{save}} (Q\+String file\+Path, \mbox{\hyperlink{class_f_i_l_e___s_t_r_u_c_t}{F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+CT}} $\ast$file\+\_\+struct=nullptr)
+\begin{DoxyCompactList}\small\item\em zapisuje logi do pliku, lub wysyla do serwera, jesli jest ustanowione polaczenie \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_l_o_g_s_a9a2fb15fcffaa27f87457239150e0e6f}{autosave\+\_\+start}} ()
+\begin{DoxyCompactList}\small\item\em rozpoczyna automatyczne zapisywanie, uzywa wczesniej ustawionych parametrow \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_l_o_g_s_a523bda8cb10b485d63dca494c7024c21}{autosave\+\_\+start}} (int auto\+Save\+Time)
+\begin{DoxyCompactList}\small\item\em rozpoczyna automatyczne zapisywanie co jakis czas, podany jako parametr \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_l_o_g_s_a27b2f9ba28db0164e9b3f624f2888462}{autosave\+\_\+start}} (\mbox{\hyperlink{class_f_i_l_e___s_t_r_u_c_t}{F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+CT}} $\ast$file\+\_\+struct)
+\begin{DoxyCompactList}\small\item\em rozpoczyna automatyczne zapisywanie generujac plik przy uzycie generatora podanego jako parametr \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_l_o_g_s_ab1faf1f83277a68d0f0dc108835edeed}{autosave\+\_\+start}} (int auto\+Save\+Time, Q\+String file\+Path, \mbox{\hyperlink{class_f_i_l_e___s_t_r_u_c_t}{F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+CT}} $\ast$file\+\_\+struct=nullptr)
+\begin{DoxyCompactList}\small\item\em rozpoczyna automatyczne zapisywanie \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_l_o_g_s_a9c9b0ab3434e7696b7886e3c2c488f24}{autosave\+\_\+start}} (Q\+String file\+Path, \mbox{\hyperlink{class_f_i_l_e___s_t_r_u_c_t}{F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+CT}} $\ast$file\+\_\+struct=nullptr)
+\begin{DoxyCompactList}\small\item\em rozpoczyna automatyczne zapisywanie \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_l_o_g_s_a9b393b971e0d1a7f0b3ba050ba1c7a9a}{autolog\+\_\+start}} (int auto\+Log\+Time=10)
+\begin{DoxyCompactList}\small\item\em rozpoczyna automatyczne logowanie \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_l_o_g_s_a6a66ce9f02385fc4057d767890a50f7e}{autolog\+\_\+start}} (\mbox{\hyperlink{class_l_o_g}{L\+OG}} $\ast$cfg, \mbox{\hyperlink{class_s_y_s___i_n_f_o}{S\+Y\+S\+\_\+\+I\+N\+FO}} $\ast$si=nullptr)
+\begin{DoxyCompactList}\small\item\em rozpoczyna automatyczne logowanie \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_o_g_s_a72354583c9b00693460e7e49ab6fbe1d}{set\+\_\+autolog\+\_\+message}} (Q\+String $\ast$m)
+\begin{DoxyCompactList}\small\item\em ustawia wskaznik na wiadomosc, ktora ma byc automatycznie dodawana \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_l_o_g_s_aa7ca147985a3ec31544f9d3cca772cd0}\label{class_l_o_g_s_aa7ca147985a3ec31544f9d3cca772cd0}} 
+void \mbox{\hyperlink{class_l_o_g_s_aa7ca147985a3ec31544f9d3cca772cd0}{autosave\+\_\+stop}} ()
+\begin{DoxyCompactList}\small\item\em zatrzymuje autosave \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_l_o_g_s_af493c1554c4af5726cde15153322237c}\label{class_l_o_g_s_af493c1554c4af5726cde15153322237c}} 
+void \mbox{\hyperlink{class_l_o_g_s_af493c1554c4af5726cde15153322237c}{autolog\+\_\+stop}} ()
+\begin{DoxyCompactList}\small\item\em zatrzymuje autologowanie \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_o_g_s_a6be71f2f4a05239226d159265f70ed1d}{set\+\_\+autosave\+\_\+time}} (int time)
+\begin{DoxyCompactList}\small\item\em ustawia czas, co ile ma byc wykonany autosave \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_o_g_s_a2bd7df170ccc658f9d6cc88a39c1da03}{set\+\_\+autolog\+\_\+time}} (int time)
+\begin{DoxyCompactList}\small\item\em ustawia czas, co ile ma byc wykonany autolog \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_o_g_s_a6ef59c39c85323ba486f4cacec675472}{set\+\_\+connection}} (\mbox{\hyperlink{class_i_connector}{I\+Connector}} $\ast$conn)
+\begin{DoxyCompactList}\small\item\em ustawia domyslne polaczenie sieciowe \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_l_o_g_s_ac4d43397730751fe3391807534934804}{connect\+\_\+to\+\_\+log\+\_\+serv}} (Q\+String host, quint16 port, Q\+String username=\char`\"{}\char`\"{}, Q\+String password=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em laczy sie do serwera uzywajac domyslnego polaczenia \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_o_g_s_aa8f0f1ee15aaffdfb22a7e2623f82238}{stop\+\_\+watch}} (Q\+String name)
+\begin{DoxyCompactList}\small\item\em zatrzymuje monitorowanie zmiennej \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{class_l_o_g_s_a83ae9f08ea060deb96d438476608fee0}{watch}} (Q\+String name, T $\ast$val)
+\begin{DoxyCompactList}\small\item\em rozpoczyna monitorowanie zmiennej \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Kontroler logow. 
+
+zawiera liste logow
+
+umozliwia zapis logow do pliku jak i przesylanie na serwer 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_l_o_g_s_ab944c4a22e5bdb1daf543dc1a1f4903f}\label{class_l_o_g_s_ab944c4a22e5bdb1daf543dc1a1f4903f}} 
+\index{LOGS@{LOGS}!LOGS@{LOGS}}
+\index{LOGS@{LOGS}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{LOGS()}{LOGS()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily L\+O\+G\+S\+::\+L\+O\+GS (\begin{DoxyParamCaption}\item[{Q\+String}]{file\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+konstruktor z parametrem 
+
+wykonuje najpierw konstruktor bezparametrowy, a nastepnie ustawia zmienna 
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & -\/ nazwa pliku, do ktorego ma byc zapisany wynik \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_g_s_a5af3766041629b6ab380fb8e2dea509f}\label{class_l_o_g_s_a5af3766041629b6ab380fb8e2dea509f}} 
+\index{LOGS@{LOGS}!LOGS@{LOGS}}
+\index{LOGS@{LOGS}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{LOGS()}{LOGS()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily L\+O\+G\+S\+::\+L\+O\+GS (\begin{DoxyParamCaption}\item[{Q\+String}]{file\+Name,  }\item[{Q\+String}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+konstruktor z parametrami 
+
+wykonuje najpierw konstruktor bezparametrowy, a nastepnie ustawia zmienne 
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & -\/ nazwa pliku, do ktorego ma byc zapisany wynik \\
+\hline
+{\em path} & -\/ sciezka do katalogu, gdzie ma byc plik wynikowy \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_g_s_aad3e111a0550db6b27f301177c8796e4}\label{class_l_o_g_s_aad3e111a0550db6b27f301177c8796e4}} 
+\index{LOGS@{LOGS}!LOGS@{LOGS}}
+\index{LOGS@{LOGS}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{LOGS()}{LOGS()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily L\+O\+G\+S\+::\+L\+O\+GS (\begin{DoxyParamCaption}\item[{Q\+Vector$<$ \mbox{\hyperlink{class_l_o_g}{L\+OG}} $>$}]{logs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+konstruktor z parametrami 
+
+wykonuje najpierw konstruktor bezparametrowy, a nastepnie ustawia zmienna 
+\begin{DoxyParams}{Parameters}
+{\em logs} & -\/ lita logow \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_g_s_add53fcea4fc5b97c4591c1cfcfc6a255}\label{class_l_o_g_s_add53fcea4fc5b97c4591c1cfcfc6a255}} 
+\index{LOGS@{LOGS}!LOGS@{LOGS}}
+\index{LOGS@{LOGS}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{LOGS()}{LOGS()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily L\+O\+G\+S\+::\+L\+O\+GS (\begin{DoxyParamCaption}\item[{Q\+String}]{file\+Name,  }\item[{Q\+Vector$<$ \mbox{\hyperlink{class_l_o_g}{L\+OG}} $>$}]{logs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+konstruktor z parametrami 
+
+wykonuje najpierw konstruktor bezparametrowy, a nastepnie ustawia zmienne 
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & -\/ nazwa pliku, do ktorego ma byc zapisany wynik \\
+\hline
+{\em logs} & -\/ lista logow \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_l_o_g_s_ab67cc04efceafd929a4db6c2e42458fd}\label{class_l_o_g_s_ab67cc04efceafd929a4db6c2e42458fd}} 
+\index{LOGS@{LOGS}!add@{add}}
+\index{add@{add}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily template$<$template$<$ typename $>$ class C$>$ \\
+void L\+O\+G\+S\+::add (\begin{DoxyParamCaption}\item[{C$<$ \mbox{\hyperlink{class_l_o_g}{L\+OG}} $>$}]{log }\end{DoxyParamCaption})}
+
+
+
+dodaje nowe logi z listy podanej jako parametr 
+
+parametrem moze byc dowolny kontener, ktory obsluguje iterator 
+\begin{DoxyParams}{Parameters}
+{\em log} & -\/ lista logow do dodania w formie kontenera$<$\+L\+O\+G$>$ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_g_s_a1127f213e026784c77d036ce732ac695}\label{class_l_o_g_s_a1127f213e026784c77d036ce732ac695}} 
+\index{LOGS@{LOGS}!add@{add}}
+\index{add@{add}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily void L\+O\+G\+S\+::add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_l_o_g}{L\+OG}}}]{log }\end{DoxyParamCaption})}
+
+
+
+dodaje do listy logow, log podany jako parametr 
+
+
+\begin{DoxyParams}{Parameters}
+{\em log} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_g_s_a22730ebc1b4ec3adee41beefd67c8707}\label{class_l_o_g_s_a22730ebc1b4ec3adee41beefd67c8707}} 
+\index{LOGS@{LOGS}!add@{add}}
+\index{add@{add}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily void L\+O\+G\+S\+::add (\begin{DoxyParamCaption}\item[{Q\+String}]{header,  }\item[{Q\+Date\+Time}]{date,  }\item[{Q\+String}]{message }\end{DoxyParamCaption})}
+
+
+
+dodaje do listy logow nowy log utworzony z parametrow 
+
+
+\begin{DoxyParams}{Parameters}
+{\em header} & -\/ naglowek logu \\
+\hline
+{\em date} & -\/ data logu jako obiekt Q\+Date\+Time \\
+\hline
+{\em message} & -\/ wiadomosc logu \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_g_s_a4828182fadb7fc07dd4bbcc272f99c38}\label{class_l_o_g_s_a4828182fadb7fc07dd4bbcc272f99c38}} 
+\index{LOGS@{LOGS}!add@{add}}
+\index{add@{add}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily void L\+O\+G\+S\+::add (\begin{DoxyParamCaption}\item[{Q\+String}]{header,  }\item[{Q\+String}]{date,  }\item[{Q\+String}]{format,  }\item[{Q\+String}]{message }\end{DoxyParamCaption})}
+
+
+
+dodaje do listy logow nowy log utworzony z parametrow 
+
+
+\begin{DoxyParams}{Parameters}
+{\em header} & -\/ naglowek logu \\
+\hline
+{\em date} & -\/ data logu w formie napisu \\
+\hline
+{\em format} & -\/ format daty \\
+\hline
+{\em message} & -\/ wiadomosc logu \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_g_s_ab9e0b8224c205dbaf64518939cd6edc1}\label{class_l_o_g_s_ab9e0b8224c205dbaf64518939cd6edc1}} 
+\index{LOGS@{LOGS}!add\_msg@{add\_msg}}
+\index{add\_msg@{add\_msg}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{add\_msg()}{add\_msg()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void L\+O\+G\+S\+::add\+\_\+msg (\begin{DoxyParamCaption}\item[{Q\+String}]{message }\end{DoxyParamCaption})}
+
+
+
+dodaje nowy log z wiadomoscia podana jako parametr 
+
+do utworzenia logu wybiera domyslne parametry, ktore zostaly wczesniej ustawione przez uzytkownika lub automatycznie przy tworzeniu obiektu 
+\begin{DoxyParams}{Parameters}
+{\em message} & -\/ wiadomosc logu \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_g_s_a281e4f36b822c5a9d82000dcf8fa21d6}\label{class_l_o_g_s_a281e4f36b822c5a9d82000dcf8fa21d6}} 
+\index{LOGS@{LOGS}!add\_msg@{add\_msg}}
+\index{add\_msg@{add\_msg}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{add\_msg()}{add\_msg()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void L\+O\+G\+S\+::add\+\_\+msg (\begin{DoxyParamCaption}\item[{Q\+String}]{message,  }\item[{Q\+String}]{type }\end{DoxyParamCaption})}
+
+
+
+dodaje nowy log z wiadomoscia i typem podanymi jako parametry 
+
+do utworzenia logu wybiera domyslne parametry, ktore zostaly wczesniej ustawione przez uzytkownika lub automatycznie przy tworzeniu obiektu 
+\begin{DoxyParams}{Parameters}
+{\em message} & -\/ wiadomosc logu \\
+\hline
+{\em type} & -\/ typ logu \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_g_s_a9b393b971e0d1a7f0b3ba050ba1c7a9a}\label{class_l_o_g_s_a9b393b971e0d1a7f0b3ba050ba1c7a9a}} 
+\index{LOGS@{LOGS}!autolog\_start@{autolog\_start}}
+\index{autolog\_start@{autolog\_start}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{autolog\_start()}{autolog\_start()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int L\+O\+G\+S\+::autolog\+\_\+start (\begin{DoxyParamCaption}\item[{int}]{auto\+Log\+Time = {\ttfamily 10} }\end{DoxyParamCaption})}
+
+
+
+rozpoczyna automatyczne logowanie 
+
+dodaje nowe wpisy do listy logow 
+\begin{DoxyParams}{Parameters}
+{\em auto\+Log\+Time} & -\/ czas pomiedzy utworzeniem kolejnych logow \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 -\/ jesli wszystko jest ok 
+
+-\/1 -\/ jesli autolog jest juz uruchomiony 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_l_o_g_s_a6a66ce9f02385fc4057d767890a50f7e}\label{class_l_o_g_s_a6a66ce9f02385fc4057d767890a50f7e}} 
+\index{LOGS@{LOGS}!autolog\_start@{autolog\_start}}
+\index{autolog\_start@{autolog\_start}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{autolog\_start()}{autolog\_start()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily int L\+O\+G\+S\+::autolog\+\_\+start (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_l_o_g}{L\+OG}} $\ast$}]{cfg,  }\item[{\mbox{\hyperlink{class_s_y_s___i_n_f_o}{S\+Y\+S\+\_\+\+I\+N\+FO}} $\ast$}]{si = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+rozpoczyna automatyczne logowanie 
+
+dodaje nowe wpisy do listy logow 
+\begin{DoxyParams}{Parameters}
+{\em cfg} & -\/ wskaznik na obiekt \mbox{\hyperlink{class_l_o_g}{L\+OG}}, pobierana jest z niego konfiguracja pojedynczego logu \\
+\hline
+{\em si} & -\/ wskaznik na obiekt \mbox{\hyperlink{class_s_y_s___i_n_f_o}{S\+Y\+S\+\_\+\+I\+N\+FO}}, domyslnie nullptr, jesli podano -\/ jest bazowym obiektem o informacjach o systemie \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 -\/ jesli wszystko jest ok 
+
+-\/1 -\/ jesli autolog jest juz uruchomiony 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_l_o_g_s_a9a2fb15fcffaa27f87457239150e0e6f}\label{class_l_o_g_s_a9a2fb15fcffaa27f87457239150e0e6f}} 
+\index{LOGS@{LOGS}!autosave\_start@{autosave\_start}}
+\index{autosave\_start@{autosave\_start}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{autosave\_start()}{autosave\_start()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily int L\+O\+G\+S\+::autosave\+\_\+start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+rozpoczyna automatyczne zapisywanie, uzywa wczesniej ustawionych parametrow 
+
+\begin{DoxyReturn}{Returns}
+0 -\/ jesli wszystko jest ok 
+
+-\/1 -\/ jesli autosave jest juz uruchomiony 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_l_o_g_s_a27b2f9ba28db0164e9b3f624f2888462}\label{class_l_o_g_s_a27b2f9ba28db0164e9b3f624f2888462}} 
+\index{LOGS@{LOGS}!autosave\_start@{autosave\_start}}
+\index{autosave\_start@{autosave\_start}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{autosave\_start()}{autosave\_start()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily int L\+O\+G\+S\+::autosave\+\_\+start (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_f_i_l_e___s_t_r_u_c_t}{F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+CT}} $\ast$}]{file\+\_\+struct }\end{DoxyParamCaption})}
+
+
+
+rozpoczyna automatyczne zapisywanie generujac plik przy uzycie generatora podanego jako parametr 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+\_\+struct} & -\/ wskaznik na obiekt generatora pliku \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 -\/ jesli wszystko jest ok 
+
+-\/1 -\/ jesli autosave jest juz uruchomiony 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_l_o_g_s_a523bda8cb10b485d63dca494c7024c21}\label{class_l_o_g_s_a523bda8cb10b485d63dca494c7024c21}} 
+\index{LOGS@{LOGS}!autosave\_start@{autosave\_start}}
+\index{autosave\_start@{autosave\_start}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{autosave\_start()}{autosave\_start()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily int L\+O\+G\+S\+::autosave\+\_\+start (\begin{DoxyParamCaption}\item[{int}]{auto\+Save\+Time }\end{DoxyParamCaption})}
+
+
+
+rozpoczyna automatyczne zapisywanie co jakis czas, podany jako parametr 
+
+
+\begin{DoxyParams}{Parameters}
+{\em auto\+Save\+Time} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 -\/ jesli wszystko jest ok 
+
+-\/1 -\/ jesli autosave jest juz uruchomiony 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_l_o_g_s_ab1faf1f83277a68d0f0dc108835edeed}\label{class_l_o_g_s_ab1faf1f83277a68d0f0dc108835edeed}} 
+\index{LOGS@{LOGS}!autosave\_start@{autosave\_start}}
+\index{autosave\_start@{autosave\_start}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{autosave\_start()}{autosave\_start()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily int L\+O\+G\+S\+::autosave\+\_\+start (\begin{DoxyParamCaption}\item[{int}]{auto\+Save\+Time,  }\item[{Q\+String}]{file\+Path,  }\item[{\mbox{\hyperlink{class_f_i_l_e___s_t_r_u_c_t}{F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+CT}} $\ast$}]{file\+\_\+struct = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+rozpoczyna automatyczne zapisywanie 
+
+czas i miejsce zapisu podane jako parametry
+
+domyslnie bierze generator pliku ustawiony wczesniej, chyba, ze podano jako paramter 
+\begin{DoxyParams}{Parameters}
+{\em auto\+Save\+Time} & -\/ czas, co jaki ma byc wykonany automatyczny zapis \\
+\hline
+{\em file\+Path} & -\/ pelna sciezka(sciezka+nazwa pliku) \\
+\hline
+{\em file\+\_\+struct} & -\/ wskaznik na obiekt typu F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+C\+T$\ast$, domyslnie nullptr \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 -\/ jesli wszystko jest ok 
+
+-\/1 -\/ jesli autosave jest juz uruchomiony 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_l_o_g_s_a9c9b0ab3434e7696b7886e3c2c488f24}\label{class_l_o_g_s_a9c9b0ab3434e7696b7886e3c2c488f24}} 
+\index{LOGS@{LOGS}!autosave\_start@{autosave\_start}}
+\index{autosave\_start@{autosave\_start}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{autosave\_start()}{autosave\_start()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily int L\+O\+G\+S\+::autosave\+\_\+start (\begin{DoxyParamCaption}\item[{Q\+String}]{file\+Path,  }\item[{\mbox{\hyperlink{class_f_i_l_e___s_t_r_u_c_t}{F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+CT}} $\ast$}]{file\+\_\+struct = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+rozpoczyna automatyczne zapisywanie 
+
+miejsce zapisu podane jako parametry
+
+domyslnie bierze generator pliku ustawiony wczesniej, chyba, ze podano jako paramter 
+\begin{DoxyParams}{Parameters}
+{\em file\+Path} & -\/ pelna sciezka(sciezka+nazwa pliku) \\
+\hline
+{\em file\+\_\+struct} & -\/ wskaznik na obiekt typu F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+C\+T$\ast$, domyslnie nullptr \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 -\/ jesli wszystko jest ok 
+
+-\/1 -\/ jesli autosave jest juz uruchomiony 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_l_o_g_s_aea9e48d5f729a10a52a8d99d38150559}\label{class_l_o_g_s_aea9e48d5f729a10a52a8d99d38150559}} 
+\index{LOGS@{LOGS}!change\_message@{change\_message}}
+\index{change\_message@{change\_message}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{change\_message()}{change\_message()}}
+{\footnotesize\ttfamily void L\+O\+G\+S\+::change\+\_\+message (\begin{DoxyParamCaption}\item[{int}]{index,  }\item[{Q\+String}]{new\+Message }\end{DoxyParamCaption})}
+
+
+
+zmienia wiadomosc logu o podanym indeksie 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & -\/ indeks logu \\
+\hline
+{\em new\+Message} & -\/ nowa wiadomosc logu \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_g_s_ac4d43397730751fe3391807534934804}\label{class_l_o_g_s_ac4d43397730751fe3391807534934804}} 
+\index{LOGS@{LOGS}!connect\_to\_log\_serv@{connect\_to\_log\_serv}}
+\index{connect\_to\_log\_serv@{connect\_to\_log\_serv}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{connect\_to\_log\_serv()}{connect\_to\_log\_serv()}}
+{\footnotesize\ttfamily int L\+O\+G\+S\+::connect\+\_\+to\+\_\+log\+\_\+serv (\begin{DoxyParamCaption}\item[{Q\+String}]{host,  }\item[{quint16}]{port,  }\item[{Q\+String}]{username = {\ttfamily \char`\"{}\char`\"{}},  }\item[{Q\+String}]{password = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})}
+
+
+
+laczy sie do serwera uzywajac domyslnego polaczenia 
+
+domyslnym polaczeniem jest polaczenie \mbox{\hyperlink{class_direct_connection}{Direct\+Connection}} 
+\begin{DoxyParams}{Parameters}
+{\em host} & -\/ adres hosta \\
+\hline
+{\em port} & -\/ port hosta \\
+\hline
+{\em username} & -\/ nazwa uzytkownika \\
+\hline
+{\em password} & -\/ haslo uzytkownika \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 -\/ polaczono i zalogowano 
+
+1 -\/ podany uzytkownik zostal odrzucony przez serwer 
+
+2 -\/ podany uzytkownik zostal zaakceptowany, serwer czeka na haslo 
+
+3 -\/ podane haslo jest nieprawidlowe 
+
+4 -\/ uzytkownik nie zostal podany 
+
+-\/1 -\/ blad polaczenia 
+
+-\/2 -\/ brak hosta 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_i_connector}{I\+Connector}} 
+
+\mbox{\hyperlink{class_direct_connection}{Direct\+Connection}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{class_l_o_g_s_a6281a350c4777768a5f84db1ae4b05b6}\label{class_l_o_g_s_a6281a350c4777768a5f84db1ae4b05b6}} 
+\index{LOGS@{LOGS}!get\_date\_format@{get\_date\_format}}
+\index{get\_date\_format@{get\_date\_format}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{get\_date\_format()}{get\_date\_format()}}
+{\footnotesize\ttfamily Q\+String L\+O\+G\+S\+::get\+\_\+date\+\_\+format (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+zwraca domyslny format daty jaki jest ustawiony 
+
+\begin{DoxyReturn}{Returns}
+Q\+String -\/ format daty 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_l_o_g_s_acb2af25b28722a53c5bf54294f0a8d5b}\label{class_l_o_g_s_acb2af25b28722a53c5bf54294f0a8d5b}} 
+\index{LOGS@{LOGS}!get\_default\_type@{get\_default\_type}}
+\index{get\_default\_type@{get\_default\_type}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{get\_default\_type()}{get\_default\_type()}}
+{\footnotesize\ttfamily Q\+String L\+O\+G\+S\+::get\+\_\+default\+\_\+type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+zwraca domyslny typ logu jaki jest ustawiony 
+
+\begin{DoxyReturn}{Returns}
+Q\+String -\/ typ logu 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_l_o_g_s_a5bd0b8651a9da27285d93c8b9bf57cff}\label{class_l_o_g_s_a5bd0b8651a9da27285d93c8b9bf57cff}} 
+\index{LOGS@{LOGS}!get\_file\_name@{get\_file\_name}}
+\index{get\_file\_name@{get\_file\_name}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{get\_file\_name()}{get\_file\_name()}}
+{\footnotesize\ttfamily Q\+String L\+O\+G\+S\+::get\+\_\+file\+\_\+name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+zwraca nazwe pliku, do ktorego bedzie zapisywany wynik 
+
+\begin{DoxyReturn}{Returns}
+Q\+String -\/ nazwa pliku 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_l_o_g_s_aecf37fa9bd1411642677e11a4d0ae8e8}\label{class_l_o_g_s_aecf37fa9bd1411642677e11a4d0ae8e8}} 
+\index{LOGS@{LOGS}!get\_file\_path@{get\_file\_path}}
+\index{get\_file\_path@{get\_file\_path}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{get\_file\_path()}{get\_file\_path()}}
+{\footnotesize\ttfamily Q\+String L\+O\+G\+S\+::get\+\_\+file\+\_\+path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+zwraca sciezke, w ktorym zostanie utworzony plik 
+
+\begin{DoxyReturn}{Returns}
+Q\+String -\/ sciezka do katalogu 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_l_o_g_s_af8d7081f5423377ad2d3d5459e55aec7}\label{class_l_o_g_s_af8d7081f5423377ad2d3d5459e55aec7}} 
+\index{LOGS@{LOGS}!get\_file\_struct@{get\_file\_struct}}
+\index{get\_file\_struct@{get\_file\_struct}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{get\_file\_struct()}{get\_file\_struct()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_f_i_l_e___s_t_r_u_c_t}{F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+CT}}$\ast$ L\+O\+G\+S\+::get\+\_\+file\+\_\+struct (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+zwraca wskaźnik na obiekt typu \mbox{\hyperlink{class_f_i_l_e___s_t_r_u_c_t}{F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+CT}} 
+
+umożliwia edycje generatora pliku \begin{DoxyReturn}{Returns}
+F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+C\+T$\ast$ -\/ wskaźnik 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_f_i_l_e___s_t_r_u_c_t}{F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+CT}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{class_l_o_g_s_a3427a26e0bda52befa6dd191920820f0}\label{class_l_o_g_s_a3427a26e0bda52befa6dd191920820f0}} 
+\index{LOGS@{LOGS}!get\_LOG@{get\_LOG}}
+\index{get\_LOG@{get\_LOG}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{get\_LOG()}{get\_LOG()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_l_o_g}{L\+OG}} $\ast$ L\+O\+G\+S\+::get\+\_\+\+L\+OG (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+zwraca wskaznik na log o podanym indeksie 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & -\/ indeks logu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+L\+O\+G$\ast$ -\/ wskaznik na typ log 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_l_o_g_s_a954d06395d677bdcabcebd97ad5adfc9}\label{class_l_o_g_s_a954d06395d677bdcabcebd97ad5adfc9}} 
+\index{LOGS@{LOGS}!get\_LOG@{get\_LOG}}
+\index{get\_LOG@{get\_LOG}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{get\_LOG()}{get\_LOG()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_l_o_g}{L\+OG}} $\ast$ L\+O\+G\+S\+::get\+\_\+\+L\+OG (\begin{DoxyParamCaption}\item[{Q\+Date\+Time}]{date,  }\item[{bool}]{reverse = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+zwraca pierwszy wskaznik na log o podanej dacie 
+
+
+\begin{DoxyParams}{Parameters}
+{\em date} & -\/ data logu jako typ Q\+Date\+Time \\
+\hline
+{\em reverse} & -\/ true, jesli szukac od konca, domyslnie false \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+L\+O\+G$\ast$ -\/ wskaznik na typ log 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_l_o_g_s_aecd8c489550895a34a6f6dac4a393ad3}\label{class_l_o_g_s_aecd8c489550895a34a6f6dac4a393ad3}} 
+\index{LOGS@{LOGS}!get\_LOG@{get\_LOG}}
+\index{get\_LOG@{get\_LOG}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{get\_LOG()}{get\_LOG()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_l_o_g}{L\+OG}} $\ast$ L\+O\+G\+S\+::get\+\_\+\+L\+OG (\begin{DoxyParamCaption}\item[{Q\+String}]{date,  }\item[{Q\+String}]{format,  }\item[{bool}]{reverse = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+zwraca pierwszy wskaznik na log o podanej dacie i podanym formacie 
+
+
+\begin{DoxyParams}{Parameters}
+{\em date} & -\/ data logu jako napis \\
+\hline
+{\em format} & -\/ format daty logu \\
+\hline
+{\em reverse} & -\/ true, jesli szukac od konca, domyslnie false \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+L\+O\+G$\ast$ -\/ wskaznik na typ log 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_l_o_g_s_af49f98c605aeded1180fa565a521774e}\label{class_l_o_g_s_af49f98c605aeded1180fa565a521774e}} 
+\index{LOGS@{LOGS}!get\_LOG@{get\_LOG}}
+\index{get\_LOG@{get\_LOG}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{get\_LOG()}{get\_LOG()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_l_o_g}{L\+OG}} $\ast$ L\+O\+G\+S\+::get\+\_\+\+L\+OG (\begin{DoxyParamCaption}\item[{Q\+String}]{message,  }\item[{bool}]{reverse = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+zwraca pierwszy wskaznik na log o podanej wiadomosci 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & -\/ wiadomosc logu \\
+\hline
+{\em reverse} & -\/ true, jesli szukac od konca, domyslnie false \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+L\+O\+G$\ast$ -\/ wskaznik na typ log 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_l_o_g_s_aef8f34aa2095838a0eff32092c26065c}\label{class_l_o_g_s_aef8f34aa2095838a0eff32092c26065c}} 
+\index{LOGS@{LOGS}!get\_LOGs@{get\_LOGs}}
+\index{get\_LOGs@{get\_LOGs}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{get\_LOGs()}{get\_LOGs()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Q\+Vector$<$ \mbox{\hyperlink{class_l_o_g}{L\+OG}} $>$ L\+O\+G\+S\+::get\+\_\+\+L\+O\+Gs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+zwraca wszystkie logi znajdujace sie w tym obiekcie 
+
+\begin{DoxyReturn}{Returns}
+Q\+Vector$<$\+L\+O\+G$>$ -\/ lista logow 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_l_o_g_s_a2e2a24a9e1cfdab93bc028697c303f9e}\label{class_l_o_g_s_a2e2a24a9e1cfdab93bc028697c303f9e}} 
+\index{LOGS@{LOGS}!get\_LOGs@{get\_LOGs}}
+\index{get\_LOGs@{get\_LOGs}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{get\_LOGs()}{get\_LOGs()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Q\+Vector$<$ \mbox{\hyperlink{class_l_o_g}{L\+OG}} $>$ L\+O\+G\+S\+::get\+\_\+\+L\+O\+Gs (\begin{DoxyParamCaption}\item[{int}]{index\+From = {\ttfamily 0},  }\item[{int}]{index\+To = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+zwraca wszystkie logi z podanego zakresu indeksow 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index\+From} & -\/ poczatkowy indeks \\
+\hline
+{\em index\+To} & -\/ koncowy indeks \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Q\+Vector$<$\+L\+O\+G$>$ -\/ lista logow 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_l_o_g_s_a91d9795d7376963c64b6c4da32a71819}\label{class_l_o_g_s_a91d9795d7376963c64b6c4da32a71819}} 
+\index{LOGS@{LOGS}!get\_LOGs@{get\_LOGs}}
+\index{get\_LOGs@{get\_LOGs}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{get\_LOGs()}{get\_LOGs()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Q\+Vector$<$ \mbox{\hyperlink{class_l_o_g}{L\+OG}} $>$ L\+O\+G\+S\+::get\+\_\+\+L\+O\+Gs (\begin{DoxyParamCaption}\item[{Q\+String}]{message }\end{DoxyParamCaption})}
+
+
+
+zwraca wszystkie logi o podanej wiadomosci 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & -\/ wiadomosc logu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Q\+Vector$<$\+L\+O\+G$>$ -\/ lista logow 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_l_o_g_s_ae82cfb6e26ff431f09d63273b88c73a2}\label{class_l_o_g_s_ae82cfb6e26ff431f09d63273b88c73a2}} 
+\index{LOGS@{LOGS}!get\_LOGs\_by\_date@{get\_LOGs\_by\_date}}
+\index{get\_LOGs\_by\_date@{get\_LOGs\_by\_date}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{get\_LOGs\_by\_date()}{get\_LOGs\_by\_date()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Q\+Vector$<$ \mbox{\hyperlink{class_l_o_g}{L\+OG}} $>$ L\+O\+G\+S\+::get\+\_\+\+L\+O\+Gs\+\_\+by\+\_\+date (\begin{DoxyParamCaption}\item[{Q\+Date\+Time}]{date }\end{DoxyParamCaption})}
+
+
+
+zwraca wszystkie logi o podanej dacie i podanym formacie 
+
+
+\begin{DoxyParams}{Parameters}
+{\em date} & -\/ data jako typ Q\+Date\+Time \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Q\+Vector$<$\+L\+O\+G$>$ -\/ lista logow 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_l_o_g_s_acd151e258e8af0c7bfdc17c51551b713}\label{class_l_o_g_s_acd151e258e8af0c7bfdc17c51551b713}} 
+\index{LOGS@{LOGS}!get\_LOGs\_by\_date@{get\_LOGs\_by\_date}}
+\index{get\_LOGs\_by\_date@{get\_LOGs\_by\_date}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{get\_LOGs\_by\_date()}{get\_LOGs\_by\_date()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Q\+Vector$<$ \mbox{\hyperlink{class_l_o_g}{L\+OG}} $>$ L\+O\+G\+S\+::get\+\_\+\+L\+O\+Gs\+\_\+by\+\_\+date (\begin{DoxyParamCaption}\item[{Q\+String}]{date,  }\item[{Q\+String}]{format }\end{DoxyParamCaption})}
+
+
+
+zwraca wszystkie logi o podanej dacie i podanym formacie 
+
+
+\begin{DoxyParams}{Parameters}
+{\em date} & -\/ data logu jako napis \\
+\hline
+{\em format} & -\/ format daty logu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Q\+Vector$<$\+L\+O\+G$>$ -\/ lista logow 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_l_o_g_s_a9597d1f6d5cd4acd40a4d2701351a1de}\label{class_l_o_g_s_a9597d1f6d5cd4acd40a4d2701351a1de}} 
+\index{LOGS@{LOGS}!remove@{remove}}
+\index{remove@{remove}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{remove()}{remove()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void L\+O\+G\+S\+::remove (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+usuwa log o podanym indexie 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & -\/ index logu \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_g_s_ab3a1aa4ba3ed2a5fc0070db5d18f296c}\label{class_l_o_g_s_ab3a1aa4ba3ed2a5fc0070db5d18f296c}} 
+\index{LOGS@{LOGS}!remove@{remove}}
+\index{remove@{remove}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{remove()}{remove()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void L\+O\+G\+S\+::remove (\begin{DoxyParamCaption}\item[{Q\+String}]{message,  }\item[{bool}]{all = {\ttfamily true},  }\item[{bool}]{first = {\ttfamily false},  }\item[{bool}]{last = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+usuwa log lub wiele logow o podanej wiadomosci 
+
+jesli parametr all jest true, reszta nie jest brana pod uwage
+
+jesli paramter first jest true, parametr last nie jest brany pod uwage 
+\begin{DoxyParams}{Parameters}
+{\em message} & -\/ wiadomosc logu \\
+\hline
+{\em all} & -\/ czy maja byc usuniete wszystkie -\/ true jesli tak, false jesli nie, domyslnie true \\
+\hline
+{\em first} & -\/ czy ma byc usuniety tylko pierwszy znaleziony -\/ true jesli tak, false jesli nie, domyslnie false \\
+\hline
+{\em last} & -\/ czy ma byc usuniety tylko ostatni znaleziony -\/ true jesli tak, false jesli nie, domyslnie false \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_g_s_aa30bfbe4794d6b276be5712330305b16}\label{class_l_o_g_s_aa30bfbe4794d6b276be5712330305b16}} 
+\index{LOGS@{LOGS}!remove\_by\_date@{remove\_by\_date}}
+\index{remove\_by\_date@{remove\_by\_date}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{remove\_by\_date()}{remove\_by\_date()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void L\+O\+G\+S\+::remove\+\_\+by\+\_\+date (\begin{DoxyParamCaption}\item[{Q\+Date\+Time}]{date,  }\item[{bool}]{all = {\ttfamily true},  }\item[{bool}]{first = {\ttfamily false},  }\item[{bool}]{last = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+usuwa log lub wiele logow o podanej dacie jako Q\+Date\+Time 
+
+jesli parametr all jest true, reszta nie jest brana pod uwage
+
+jesli paramter first jest true, parametr last nie jest brany pod uwage 
+\begin{DoxyParams}{Parameters}
+{\em date} & -\/ data typu Q\+Date\+Time \\
+\hline
+{\em all} & -\/ czy maja byc usuniete wszystkie -\/ true jesli tak, false jesli nie, domyslnie true \\
+\hline
+{\em first} & -\/ czy ma byc usuniety tylko pierwszy znaleziony -\/ true jesli tak, false jesli nie, domyslnie false \\
+\hline
+{\em last} & -\/ czy ma byc usuniety tylko ostatni znaleziony -\/ true jesli tak, false jesli nie, domyslnie false \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_g_s_a314533ea04264c24eecf75e88e95c026}\label{class_l_o_g_s_a314533ea04264c24eecf75e88e95c026}} 
+\index{LOGS@{LOGS}!remove\_by\_date@{remove\_by\_date}}
+\index{remove\_by\_date@{remove\_by\_date}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{remove\_by\_date()}{remove\_by\_date()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void L\+O\+G\+S\+::remove\+\_\+by\+\_\+date (\begin{DoxyParamCaption}\item[{Q\+String}]{date,  }\item[{Q\+String}]{format,  }\item[{bool}]{all = {\ttfamily true},  }\item[{bool}]{first = {\ttfamily false},  }\item[{bool}]{last = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+usuwa log lub wiele logow o podanej dacie i podanym formacie 
+
+jesli parametr all jest true, reszta nie jest brana pod uwage
+
+jesli paramter first jest true, parametr last nie jest brany pod uwage 
+\begin{DoxyParams}{Parameters}
+{\em date} & -\/ data logu \\
+\hline
+{\em format} & -\/ format daty logu \\
+\hline
+{\em all} & -\/ czy maja byc usuniete wszystkie -\/ true jesli tak, false jesli nie, domyslnie true \\
+\hline
+{\em first} & -\/ czy ma byc usuniety tylko pierwszy znaleziony -\/ true jesli tak, false jesli nie, domyslnie false \\
+\hline
+{\em last} & -\/ czy ma byc usuniety tylko ostatni znaleziony -\/ true jesli tak, false jesli nie, domyslnie false \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_g_s_a9a944969fd6599b3eac33ceb55ff1e74}\label{class_l_o_g_s_a9a944969fd6599b3eac33ceb55ff1e74}} 
+\index{LOGS@{LOGS}!save@{save}}
+\index{save@{save}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{save()}{save()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily int L\+O\+G\+S\+::save (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+zapisuje logi do pliku, lub wysyla do serwera, jesli jest ustanowione polaczenie 
+
+\begin{DoxyReturn}{Returns}
+0 -\/ wszystko zakonczylo sie pomyslnie 
+
+-\/1 -\/ brak dostepu do zapisu do pliku lub katalogu ustawionego 
+
+1,2 -\/ jesli problem jest z polaczeniem do serwera 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_i_connector_ad3b45aac6eb53481b9d59313f214c028}{I\+Connector\+::send\+\_\+data}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{class_l_o_g_s_a52aa456dea76fb3d63c5666627fc7a94}\label{class_l_o_g_s_a52aa456dea76fb3d63c5666627fc7a94}} 
+\index{LOGS@{LOGS}!save@{save}}
+\index{save@{save}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{save()}{save()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily int L\+O\+G\+S\+::save (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_f_i_l_e___s_t_r_u_c_t}{F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+CT}} $\ast$}]{file\+\_\+struct }\end{DoxyParamCaption})}
+
+
+
+zapisuje logi do pliku, lub wysyla do serwera, jesli jest ustanowione polaczenie 
+
+dodatkowo ustawia generatora pliku na tego podanego w parametrze 
+\begin{DoxyParams}{Parameters}
+{\em file\+\_\+struct} & -\/ wskaznik na generator pliku \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 -\/ wszystko zakonczylo sie pomyslnie 
+
+-\/1 -\/ brak dostepu do zapisu do pliku lub katalogu ustawionego 
+
+1,2 -\/ jesli problem jest z polaczeniem do serwera 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_i_connector_ad3b45aac6eb53481b9d59313f214c028}{I\+Connector\+::send\+\_\+data}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{class_l_o_g_s_a3eedadf336f8da84c56e24e6f72d1d58}\label{class_l_o_g_s_a3eedadf336f8da84c56e24e6f72d1d58}} 
+\index{LOGS@{LOGS}!save@{save}}
+\index{save@{save}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{save()}{save()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily int L\+O\+G\+S\+::save (\begin{DoxyParamCaption}\item[{Q\+String}]{file\+Path,  }\item[{\mbox{\hyperlink{class_f_i_l_e___s_t_r_u_c_t}{F\+I\+L\+E\+\_\+\+S\+T\+R\+U\+CT}} $\ast$}]{file\+\_\+struct = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+zapisuje logi do pliku, lub wysyla do serwera, jesli jest ustanowione polaczenie 
+
+wymaga podania scezki do pliku, do ktorego bedzie wykonany zapis przy uzyciu tej metody
+
+nie nadpisuje domyslnej sciezki
+
+dodatkowo ustawia nowy generator pliku, jesli podano 
+\begin{DoxyParams}{Parameters}
+{\em file\+Path} & -\/ pelna sciezka(sciezka+nazwa pliku) \\
+\hline
+{\em file\+\_\+struct} & -\/ wskaznik na generator pliku, domyslnie nullptr \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 -\/ wszystko zakonczylo sie pomyslnie 
+
+-\/1 -\/ brak dostepu do zapisu do pliku lub katalogu ustawionego 
+
+1,2 -\/ jesli problem jest z polaczeniem do serwera 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_i_connector_ad3b45aac6eb53481b9d59313f214c028}{I\+Connector\+::send\+\_\+data}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{class_l_o_g_s_a72354583c9b00693460e7e49ab6fbe1d}\label{class_l_o_g_s_a72354583c9b00693460e7e49ab6fbe1d}} 
+\index{LOGS@{LOGS}!set\_autolog\_message@{set\_autolog\_message}}
+\index{set\_autolog\_message@{set\_autolog\_message}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{set\_autolog\_message()}{set\_autolog\_message()}}
+{\footnotesize\ttfamily void L\+O\+G\+S\+::set\+\_\+autolog\+\_\+message (\begin{DoxyParamCaption}\item[{Q\+String $\ast$}]{m }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ustawia wskaznik na wiadomosc, ktora ma byc automatycznie dodawana 
+
+zamysl tego jest, ze podczas autologowania, funkcja pobiera wartosc na jaka wskazuje
+
+tak, ze w przypadku zmiany wartosci, nowa zostanie zapisana 
+\begin{DoxyParams}{Parameters}
+{\em m} & -\/ wskaznik do wiadomosci \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_g_s_a2bd7df170ccc658f9d6cc88a39c1da03}\label{class_l_o_g_s_a2bd7df170ccc658f9d6cc88a39c1da03}} 
+\index{LOGS@{LOGS}!set\_autolog\_time@{set\_autolog\_time}}
+\index{set\_autolog\_time@{set\_autolog\_time}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{set\_autolog\_time()}{set\_autolog\_time()}}
+{\footnotesize\ttfamily void L\+O\+G\+S\+::set\+\_\+autolog\+\_\+time (\begin{DoxyParamCaption}\item[{int}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ustawia czas, co ile ma byc wykonany autolog 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time} & -\/ czas w sekundach \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_g_s_a6be71f2f4a05239226d159265f70ed1d}\label{class_l_o_g_s_a6be71f2f4a05239226d159265f70ed1d}} 
+\index{LOGS@{LOGS}!set\_autosave\_time@{set\_autosave\_time}}
+\index{set\_autosave\_time@{set\_autosave\_time}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{set\_autosave\_time()}{set\_autosave\_time()}}
+{\footnotesize\ttfamily void L\+O\+G\+S\+::set\+\_\+autosave\+\_\+time (\begin{DoxyParamCaption}\item[{int}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ustawia czas, co ile ma byc wykonany autosave 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time} & -\/ czas w sekundach \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_g_s_a6ef59c39c85323ba486f4cacec675472}\label{class_l_o_g_s_a6ef59c39c85323ba486f4cacec675472}} 
+\index{LOGS@{LOGS}!set\_connection@{set\_connection}}
+\index{set\_connection@{set\_connection}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{set\_connection()}{set\_connection()}}
+{\footnotesize\ttfamily void L\+O\+G\+S\+::set\+\_\+connection (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_i_connector}{I\+Connector}} $\ast$}]{conn }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ustawia domyslne polaczenie sieciowe 
+
+
+\begin{DoxyParams}{Parameters}
+{\em conn} & -\/ wskaznik do obiektu implementujacego interfejs \mbox{\hyperlink{class_i_connector}{I\+Connector}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_i_connector}{I\+Connector}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{class_l_o_g_s_a92076875095a694fcce77fe82cacf3d2}\label{class_l_o_g_s_a92076875095a694fcce77fe82cacf3d2}} 
+\index{LOGS@{LOGS}!set\_custom\_log\_sys\_info@{set\_custom\_log\_sys\_info}}
+\index{set\_custom\_log\_sys\_info@{set\_custom\_log\_sys\_info}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{set\_custom\_log\_sys\_info()}{set\_custom\_log\_sys\_info()}}
+{\footnotesize\ttfamily void L\+O\+G\+S\+::set\+\_\+custom\+\_\+log\+\_\+sys\+\_\+info (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_s_y_s___i_n_f_o}{S\+Y\+S\+\_\+\+I\+N\+FO}}}]{si }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ustawia obiekt o informacji o systemie na obiekt utworzony i skonfigurowany przez uzytkownika 
+
+
+\begin{DoxyParams}{Parameters}
+{\em si} & -\/ obiekt \mbox{\hyperlink{class_s_y_s___i_n_f_o}{S\+Y\+S\+\_\+\+I\+N\+FO}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_s_y_s___i_n_f_o}{S\+Y\+S\+\_\+\+I\+N\+FO}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{class_l_o_g_s_a4c1d7a34c41dd368c813e45682074af6}\label{class_l_o_g_s_a4c1d7a34c41dd368c813e45682074af6}} 
+\index{LOGS@{LOGS}!set\_date\_format@{set\_date\_format}}
+\index{set\_date\_format@{set\_date\_format}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{set\_date\_format()}{set\_date\_format()}}
+{\footnotesize\ttfamily void L\+O\+G\+S\+::set\+\_\+date\+\_\+format (\begin{DoxyParamCaption}\item[{Q\+String}]{format }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ustawia domyslny format daty logow 
+
+
+\begin{DoxyParams}{Parameters}
+{\em format} & -\/ format daty \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_g_s_ace1a9f88aa70f61406c77ff46d26850f}\label{class_l_o_g_s_ace1a9f88aa70f61406c77ff46d26850f}} 
+\index{LOGS@{LOGS}!set\_default\_header@{set\_default\_header}}
+\index{set\_default\_header@{set\_default\_header}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{set\_default\_header()}{set\_default\_header()}}
+{\footnotesize\ttfamily void L\+O\+G\+S\+::set\+\_\+default\+\_\+header (\begin{DoxyParamCaption}\item[{Q\+String}]{header }\end{DoxyParamCaption})}
+
+
+
+ustawia domyslny naglowek logow 
+
+
+\begin{DoxyParams}{Parameters}
+{\em header} & -\/ naglowek logow \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_g_s_a0526ea15cedd0a17ea4aa2c96e16e8b0}\label{class_l_o_g_s_a0526ea15cedd0a17ea4aa2c96e16e8b0}} 
+\index{LOGS@{LOGS}!set\_default\_type@{set\_default\_type}}
+\index{set\_default\_type@{set\_default\_type}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{set\_default\_type()}{set\_default\_type()}}
+{\footnotesize\ttfamily void L\+O\+G\+S\+::set\+\_\+default\+\_\+type (\begin{DoxyParamCaption}\item[{Q\+String}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ustawia domyslny typ logow 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & -\/ typ logow \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_g_s_a9cb2a2a6567490732968f8ce80ec048b}\label{class_l_o_g_s_a9cb2a2a6567490732968f8ce80ec048b}} 
+\index{LOGS@{LOGS}!set\_file\_name@{set\_file\_name}}
+\index{set\_file\_name@{set\_file\_name}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{set\_file\_name()}{set\_file\_name()}}
+{\footnotesize\ttfamily void L\+O\+G\+S\+::set\+\_\+file\+\_\+name (\begin{DoxyParamCaption}\item[{Q\+String}]{file\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ustawia nazwe pliku, do ktorego bedzie zapisany wynik 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & -\/ nazwa pliku \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_g_s_a24a69af54f81053a05f06e1157e27358}\label{class_l_o_g_s_a24a69af54f81053a05f06e1157e27358}} 
+\index{LOGS@{LOGS}!set\_file\_path@{set\_file\_path}}
+\index{set\_file\_path@{set\_file\_path}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{set\_file\_path()}{set\_file\_path()}}
+{\footnotesize\ttfamily void L\+O\+G\+S\+::set\+\_\+file\+\_\+path (\begin{DoxyParamCaption}\item[{Q\+String}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ustawia sciezke do katalogu, gdzie bedzie zapisany plik wynikowy 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & -\/ sciezka do katalogu \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_g_s_abd08563e396c38229e56bf06731f5ec1}\label{class_l_o_g_s_abd08563e396c38229e56bf06731f5ec1}} 
+\index{LOGS@{LOGS}!show\_file\_date@{show\_file\_date}}
+\index{show\_file\_date@{show\_file\_date}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{show\_file\_date()}{show\_file\_date()}}
+{\footnotesize\ttfamily void L\+O\+G\+S\+::show\+\_\+file\+\_\+date (\begin{DoxyParamCaption}\item[{bool}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ustawia, czy w pliku wynikowym ma byc pokazana data utworzenia pliku 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & -\/ true -\/ pokazuje, false -\/ nie pokazuje \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_g_s_a9efa59b4ed47977096019c734892ce7b}\label{class_l_o_g_s_a9efa59b4ed47977096019c734892ce7b}} 
+\index{LOGS@{LOGS}!show\_log\_date@{show\_log\_date}}
+\index{show\_log\_date@{show\_log\_date}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{show\_log\_date()}{show\_log\_date()}}
+{\footnotesize\ttfamily void L\+O\+G\+S\+::show\+\_\+log\+\_\+date (\begin{DoxyParamCaption}\item[{bool}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ustawia, czy w pliku wynikowym ma byc wyswietlana data pojedynczego logu 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & -\/ true -\/ pokazuje, false -\/ nie pokazuje \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_g_s_a4bbf7f7b3500f96be9e74997ac9f80b1}\label{class_l_o_g_s_a4bbf7f7b3500f96be9e74997ac9f80b1}} 
+\index{LOGS@{LOGS}!show\_log\_header@{show\_log\_header}}
+\index{show\_log\_header@{show\_log\_header}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{show\_log\_header()}{show\_log\_header()}}
+{\footnotesize\ttfamily void L\+O\+G\+S\+::show\+\_\+log\+\_\+header (\begin{DoxyParamCaption}\item[{bool}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ustawia, czy w pliku wynikowym ma byc wyswietlany naglowek pojedynczego logu 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & -\/ true -\/ pokazuje, false -\/ nie pokazuje \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_g_s_ab28cdd4a5246e5815a4ee67380cf92d6}\label{class_l_o_g_s_ab28cdd4a5246e5815a4ee67380cf92d6}} 
+\index{LOGS@{LOGS}!show\_log\_memory\_avail@{show\_log\_memory\_avail}}
+\index{show\_log\_memory\_avail@{show\_log\_memory\_avail}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{show\_log\_memory\_avail()}{show\_log\_memory\_avail()}}
+{\footnotesize\ttfamily void L\+O\+G\+S\+::show\+\_\+log\+\_\+memory\+\_\+avail (\begin{DoxyParamCaption}\item[{bool}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ustawia, czy w pliku wynikowym, w pojedynczym logu ma byc wyswietlana informacja o dostepnej pamieci 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & -\/ true -\/ pokazuje, false -\/ nie pokazuje \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_g_s_a5fb41b199b438297196b4e4dadd6199b}\label{class_l_o_g_s_a5fb41b199b438297196b4e4dadd6199b}} 
+\index{LOGS@{LOGS}!show\_log\_memory\_usage@{show\_log\_memory\_usage}}
+\index{show\_log\_memory\_usage@{show\_log\_memory\_usage}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{show\_log\_memory\_usage()}{show\_log\_memory\_usage()}}
+{\footnotesize\ttfamily void L\+O\+G\+S\+::show\+\_\+log\+\_\+memory\+\_\+usage (\begin{DoxyParamCaption}\item[{bool}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ustawia, czy w pliku wynikowym, w pojedynczym logu ma byc wyswietlana informacja o uzywanej pamieci 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & -\/ true -\/ pokazuje, false -\/ nie pokazuje \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_g_s_a8c50e302029e52ff5fe19c7f369e75bf}\label{class_l_o_g_s_a8c50e302029e52ff5fe19c7f369e75bf}} 
+\index{LOGS@{LOGS}!show\_log\_number@{show\_log\_number}}
+\index{show\_log\_number@{show\_log\_number}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{show\_log\_number()}{show\_log\_number()}}
+{\footnotesize\ttfamily void L\+O\+G\+S\+::show\+\_\+log\+\_\+number (\begin{DoxyParamCaption}\item[{bool}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ustawia, czy w pliku wynikowym ma byc wyswietlany numer pojedynczego logu 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & -\/ true -\/ pokazuje, false -\/ nie pokazuje \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_g_s_ae416a75c5c6347e06ce4526c7bfb3fba}\label{class_l_o_g_s_ae416a75c5c6347e06ce4526c7bfb3fba}} 
+\index{LOGS@{LOGS}!show\_log\_proc\_memory\_max@{show\_log\_proc\_memory\_max}}
+\index{show\_log\_proc\_memory\_max@{show\_log\_proc\_memory\_max}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{show\_log\_proc\_memory\_max()}{show\_log\_proc\_memory\_max()}}
+{\footnotesize\ttfamily void L\+O\+G\+S\+::show\+\_\+log\+\_\+proc\+\_\+memory\+\_\+max (\begin{DoxyParamCaption}\item[{bool}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ustawia, czy w pliku wynikowym, w pojedynczym logu ma byc wyswietlana informacja o najwiekszej ilosci pamieci uzytej przez proces logujacy 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & -\/ true -\/ pokazuje, false -\/ nie pokazuje \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_g_s_a24bc1c4603d2d3b6ab932f799940d420}\label{class_l_o_g_s_a24bc1c4603d2d3b6ab932f799940d420}} 
+\index{LOGS@{LOGS}!show\_log\_proc\_memory\_usage@{show\_log\_proc\_memory\_usage}}
+\index{show\_log\_proc\_memory\_usage@{show\_log\_proc\_memory\_usage}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{show\_log\_proc\_memory\_usage()}{show\_log\_proc\_memory\_usage()}}
+{\footnotesize\ttfamily void L\+O\+G\+S\+::show\+\_\+log\+\_\+proc\+\_\+memory\+\_\+usage (\begin{DoxyParamCaption}\item[{bool}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ustawia, czy w pliku wynikowym, w pojedynczym logu ma byc wyswietlana informacja o uzywanej pamieci przez proces logujacy 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & -\/ true -\/ pokazuje, false -\/ nie pokazuje \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_g_s_a356be055849135ac7e8680aef873fa3d}\label{class_l_o_g_s_a356be055849135ac7e8680aef873fa3d}} 
+\index{LOGS@{LOGS}!show\_log\_type@{show\_log\_type}}
+\index{show\_log\_type@{show\_log\_type}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{show\_log\_type()}{show\_log\_type()}}
+{\footnotesize\ttfamily void L\+O\+G\+S\+::show\+\_\+log\+\_\+type (\begin{DoxyParamCaption}\item[{bool}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ustawia, czy w pliku wynikowym ma byc wyswietlany typ pojedynczego logu 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & -\/ true -\/ pokazuje, false -\/ nie pokazuje \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_g_s_ae2e8d4bfc6f3d6d63d920c3e8118adef}\label{class_l_o_g_s_ae2e8d4bfc6f3d6d63d920c3e8118adef}} 
+\index{LOGS@{LOGS}!show\_sys\_summary@{show\_sys\_summary}}
+\index{show\_sys\_summary@{show\_sys\_summary}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{show\_sys\_summary()}{show\_sys\_summary()}}
+{\footnotesize\ttfamily void L\+O\+G\+S\+::show\+\_\+sys\+\_\+summary (\begin{DoxyParamCaption}\item[{bool}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ustawia, czy w pliku wynikowym ma byc pokazane podsumowanie informacji o systemie 
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & -\/ true -\/ pokazuje, false -\/ nie pokazuje \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_g_s_aa8f0f1ee15aaffdfb22a7e2623f82238}\label{class_l_o_g_s_aa8f0f1ee15aaffdfb22a7e2623f82238}} 
+\index{LOGS@{LOGS}!stop\_watch@{stop\_watch}}
+\index{stop\_watch@{stop\_watch}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{stop\_watch()}{stop\_watch()}}
+{\footnotesize\ttfamily void L\+O\+G\+S\+::stop\+\_\+watch (\begin{DoxyParamCaption}\item[{Q\+String}]{name }\end{DoxyParamCaption})}
+
+
+
+zatrzymuje monitorowanie zmiennej 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & -\/ nazwa zmiennej \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_g_s_a83ae9f08ea060deb96d438476608fee0}\label{class_l_o_g_s_a83ae9f08ea060deb96d438476608fee0}} 
+\index{LOGS@{LOGS}!watch@{watch}}
+\index{watch@{watch}!LOGS@{LOGS}}
+\doxysubsubsection{\texorpdfstring{watch()}{watch()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void L\+O\+G\+S\+::watch (\begin{DoxyParamCaption}\item[{Q\+String}]{name,  }\item[{T $\ast$}]{val }\end{DoxyParamCaption})}
+
+
+
+rozpoczyna monitorowanie zmiennej 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & -\/ nazwa zmiennej \\
+\hline
+{\em val} & -\/ wskaznik na zmienna \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Programowanie/\+Projekty/\+C++/logs\+\_\+library/logs.\+h\item 
+D\+:/\+Programowanie/\+Projekty/\+C++/logs\+\_\+library/logs.\+cpp\end{DoxyCompactItemize}

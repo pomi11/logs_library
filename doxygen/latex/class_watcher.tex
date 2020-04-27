@@ -1,0 +1,74 @@
+\hypertarget{class_watcher}{}\doxysection{Watcher Class Reference}
+\label{class_watcher}\index{Watcher@{Watcher}}
+
+
+Klasa do monitorowania zmiennych.  
+
+
+
+
+{\ttfamily \#include $<$watcher.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_watcher_a5b9395cd341fc8fb76736558194dbd69}\label{class_watcher_a5b9395cd341fc8fb76736558194dbd69}} 
+\mbox{\hyperlink{class_watcher_a5b9395cd341fc8fb76736558194dbd69}{Watcher}} ()
+\begin{DoxyCompactList}\small\item\em konstruktor bezparametrowy \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_watcher_a158b04fde48cead2ca379326d1a09202}{set\+\_\+first\+\_\+thread}} (std\+::thread $\ast$th)
+\begin{DoxyCompactList}\small\item\em przypisuje wskaznik na watek \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_watcher_ad1615ca40d8d293c5c577885549ace2b}\label{class_watcher_ad1615ca40d8d293c5c577885549ace2b}} 
+void \mbox{\hyperlink{class_watcher_ad1615ca40d8d293c5c577885549ace2b}{stop\+Watch}} ()
+\begin{DoxyCompactList}\small\item\em zatrzymuje proces monitorowania \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_watcher_ac492ad13e14d9e8ac3411bb1858e5d3d}{is\+\_\+running}} ()
+\begin{DoxyCompactList}\small\item\em zwraca informacje, czy proces trwa \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_watcher_a229a0f7f0865af7322b17fc7c2c5b9ec}\label{class_watcher_a229a0f7f0865af7322b17fc7c2c5b9ec}} 
+{\footnotesize template$<$typename T $>$ }\\void {\bfseries set\+\_\+value} (T val)
+\item 
+\mbox{\Hypertarget{class_watcher_a8e57bd50de84ed757bc87a5c56d6ed20}\label{class_watcher_a8e57bd50de84ed757bc87a5c56d6ed20}} 
+Q\+String {\bfseries get\+\_\+value} ()
+\item 
+\mbox{\Hypertarget{class_watcher_a639dd1dced6c9497cbd1ec572c1fbc11}\label{class_watcher_a639dd1dced6c9497cbd1ec572c1fbc11}} 
+void {\bfseries set\+\_\+add\+\_\+conversion} (bool val)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Klasa do monitorowania zmiennych. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_watcher_ac492ad13e14d9e8ac3411bb1858e5d3d}\label{class_watcher_ac492ad13e14d9e8ac3411bb1858e5d3d}} 
+\index{Watcher@{Watcher}!is\_running@{is\_running}}
+\index{is\_running@{is\_running}!Watcher@{Watcher}}
+\doxysubsubsection{\texorpdfstring{is\_running()}{is\_running()}}
+{\footnotesize\ttfamily bool Watcher\+::is\+\_\+running (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+zwraca informacje, czy proces trwa 
+
+\begin{DoxyReturn}{Returns}
+true -\/ proces jest wciaz uruchomiony 
+
+false -\/ proces sie zakonczyl 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_watcher_a158b04fde48cead2ca379326d1a09202}\label{class_watcher_a158b04fde48cead2ca379326d1a09202}} 
+\index{Watcher@{Watcher}!set\_first\_thread@{set\_first\_thread}}
+\index{set\_first\_thread@{set\_first\_thread}!Watcher@{Watcher}}
+\doxysubsubsection{\texorpdfstring{set\_first\_thread()}{set\_first\_thread()}}
+{\footnotesize\ttfamily void Watcher\+::set\+\_\+first\+\_\+thread (\begin{DoxyParamCaption}\item[{std\+::thread $\ast$}]{th }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+przypisuje wskaznik na watek 
+
+
+\begin{DoxyParams}{Parameters}
+{\em th} & -\/ wskaznik na watek \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Programowanie/\+Projekty/\+C++/logs\+\_\+library/watcher.\+h\end{DoxyCompactItemize}

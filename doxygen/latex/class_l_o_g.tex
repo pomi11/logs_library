@@ -1,0 +1,363 @@
+\hypertarget{class_l_o_g}{}\doxysection{L\+OG Class Reference}
+\label{class_l_o_g}\index{LOG@{LOG}}
+
+
+Klasa reprezentuje pojednczy log.  
+
+
+
+
+{\ttfamily \#include $<$L\+O\+G.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_l_o_g_a78bfdfa3de93d15a713b9de2488f8218}{L\+OG}} ()
+\begin{DoxyCompactList}\small\item\em konstruktor bezparametrowy \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_l_o_g_a12e4cba2da9b746ea51cb6c3a9596ed0}{L\+OG}} (Q\+Date\+Time date)
+\begin{DoxyCompactList}\small\item\em konstruktor z jednym parametrem -\/ date \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_l_o_g_a8c7aa7b3dd3a0e79e9635df4fb7c87dc}{L\+OG}} (Q\+String header, Q\+String message)
+\begin{DoxyCompactList}\small\item\em konstruktor z dwoma parametrami -\/ header oraz message \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_o_g_a56dc84c6245bbca0a561bdbb35d74c1d}{set\+\_\+message}} (Q\+String message)
+\begin{DoxyCompactList}\small\item\em ustawia wiadomosc logu \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_o_g_a0d3b38129ec4d071ee1f1e080aab8dc7}{add\+\_\+sys\+\_\+info}} (\mbox{\hyperlink{class_s_y_s___i_n_f_o}{S\+Y\+S\+\_\+\+I\+N\+FO}} si)
+\begin{DoxyCompactList}\small\item\em dodaje obiekt typu \mbox{\hyperlink{class_s_y_s___i_n_f_o}{S\+Y\+S\+\_\+\+I\+N\+FO}} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_o_g_afbd3caaa468a7d5a25b53c68d8a1f359}{set\+\_\+date}} (Q\+String date, Q\+String format)
+\begin{DoxyCompactList}\small\item\em ustawia date logu \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_o_g_aed710165d3c2b74f9cd39bab26cf5da4}{set\+\_\+date}} (Q\+Date\+Time date)
+\begin{DoxyCompactList}\small\item\em ustawia date logu \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_o_g_ab51d360d48b5132a953b30549ce0cd07}{set\+\_\+date\+\_\+format}} (Q\+String format)
+\begin{DoxyCompactList}\small\item\em ustawia domyslny format daty \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_o_g_ab725f8ae1a93f465674f0d568a2c0ee9}{set\+\_\+header}} (Q\+String header)
+\begin{DoxyCompactList}\small\item\em ustawia naglowek logu \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_l_o_g_a1e92de257e73a5ba934694cec6d3fd50}{set\+\_\+type}} (Q\+String type)
+\begin{DoxyCompactList}\small\item\em ustawia typ logu \end{DoxyCompactList}\item 
+Q\+Map$<$ Q\+String, Q\+String $>$ \mbox{\hyperlink{class_l_o_g_a3d058c5b0f230b74eaff5e9aa768a45a}{get\+\_\+basic}} ()
+\begin{DoxyCompactList}\small\item\em zwraca mape nazw i ich wartosci \end{DoxyCompactList}\item 
+Q\+Map$<$ Q\+String, Q\+String $>$ \mbox{\hyperlink{class_l_o_g_af174e2e5b29a6a62840f4abcf92acdb9}{get\+\_\+sys\+\_\+info\+\_\+map}} ()
+\begin{DoxyCompactList}\small\item\em zwraca mape nazw i ich wartosci \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_s_y_s___i_n_f_o}{S\+Y\+S\+\_\+\+I\+N\+FO}} $\ast$ \mbox{\hyperlink{class_l_o_g_a837b8dd69938245b50f3250c5204e9dd}{get\+\_\+sys\+\_\+info}} ()
+\begin{DoxyCompactList}\small\item\em zwraca wskaźnik na obiekt typu \mbox{\hyperlink{class_s_y_s___i_n_f_o}{S\+Y\+S\+\_\+\+I\+N\+FO}} \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{class_l_o_g_ab80e67e3bec341c8155fa832eeed4e0c}{get\+\_\+message}} ()
+\begin{DoxyCompactList}\small\item\em zwraca wiadomosc logu w formie napisu \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{class_l_o_g_a693e53e35381a1f974da68977a59ba37}{get\+\_\+date}} (Q\+String format)
+\begin{DoxyCompactList}\small\item\em zwraca date logu w formie napisu w podanym formacie \end{DoxyCompactList}\item 
+Q\+Date\+Time \mbox{\hyperlink{class_l_o_g_a4977e6b9d30df28327fac5f29d3cf3d5}{get\+\_\+date}} ()
+\begin{DoxyCompactList}\small\item\em zwraca date logu jako obiekt Q\+Date\+Time \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{class_l_o_g_a34f9202b44ec226a8c9c66e5e47c094b}{get\+\_\+header}} ()
+\begin{DoxyCompactList}\small\item\em zwraca naglowek logu w formie napisu \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{class_l_o_g_af87b8155dfd2176b5428169628a4d00a}{get\+\_\+type}} ()
+\begin{DoxyCompactList}\small\item\em zwraca typ logu w formie napisu \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{class_l_o_g_a2d303496a2d6ab22bf16b8c52edf0154}{get\+\_\+date\+\_\+format}} ()
+\begin{DoxyCompactList}\small\item\em zwraca format daty logu w formie napisu \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Klasa reprezentuje pojednczy log. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_l_o_g_a78bfdfa3de93d15a713b9de2488f8218}\label{class_l_o_g_a78bfdfa3de93d15a713b9de2488f8218}} 
+\index{LOG@{LOG}!LOG@{LOG}}
+\index{LOG@{LOG}!LOG@{LOG}}
+\doxysubsubsection{\texorpdfstring{LOG()}{LOG()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily L\+O\+G\+::\+L\+OG (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+konstruktor bezparametrowy 
+
+ustawia domyslne wartosci
+
+data jest ustawiana automatycznie \mbox{\Hypertarget{class_l_o_g_a12e4cba2da9b746ea51cb6c3a9596ed0}\label{class_l_o_g_a12e4cba2da9b746ea51cb6c3a9596ed0}} 
+\index{LOG@{LOG}!LOG@{LOG}}
+\index{LOG@{LOG}!LOG@{LOG}}
+\doxysubsubsection{\texorpdfstring{LOG()}{LOG()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily L\+O\+G\+::\+L\+OG (\begin{DoxyParamCaption}\item[{Q\+Date\+Time}]{date }\end{DoxyParamCaption})}
+
+
+
+konstruktor z jednym parametrem -\/ date 
+
+wykonywany jest najpierw konstruktor bezparametrowy 
+\begin{DoxyParams}{Parameters}
+{\em date} & -\/ data L\+O\+Gu \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_l_o_g}{L\+OG}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{class_l_o_g_a8c7aa7b3dd3a0e79e9635df4fb7c87dc}\label{class_l_o_g_a8c7aa7b3dd3a0e79e9635df4fb7c87dc}} 
+\index{LOG@{LOG}!LOG@{LOG}}
+\index{LOG@{LOG}!LOG@{LOG}}
+\doxysubsubsection{\texorpdfstring{LOG()}{LOG()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily L\+O\+G\+::\+L\+OG (\begin{DoxyParamCaption}\item[{Q\+String}]{header,  }\item[{Q\+String}]{message }\end{DoxyParamCaption})}
+
+
+
+konstruktor z dwoma parametrami -\/ header oraz message 
+
+wykonywany jest najpierw konstruktor bezparametrowy 
+\begin{DoxyParams}{Parameters}
+{\em header} & -\/ naglowek logu \\
+\hline
+{\em message} & -\/ wiadomosc logu \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_l_o_g}{L\+OG}} 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_l_o_g_a0d3b38129ec4d071ee1f1e080aab8dc7}\label{class_l_o_g_a0d3b38129ec4d071ee1f1e080aab8dc7}} 
+\index{LOG@{LOG}!add\_sys\_info@{add\_sys\_info}}
+\index{add\_sys\_info@{add\_sys\_info}!LOG@{LOG}}
+\doxysubsubsection{\texorpdfstring{add\_sys\_info()}{add\_sys\_info()}}
+{\footnotesize\ttfamily void L\+O\+G\+::add\+\_\+sys\+\_\+info (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_s_y_s___i_n_f_o}{S\+Y\+S\+\_\+\+I\+N\+FO}}}]{si }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+dodaje obiekt typu \mbox{\hyperlink{class_s_y_s___i_n_f_o}{S\+Y\+S\+\_\+\+I\+N\+FO}} 
+
+wykorzystac go mozna, jesli jest domyslne informacje o systemie sa niewystarczajace 
+\begin{DoxyParams}{Parameters}
+{\em si} & -\/ obiekt typu \mbox{\hyperlink{class_s_y_s___i_n_f_o}{S\+Y\+S\+\_\+\+I\+N\+FO}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_s_y_s___i_n_f_o}{S\+Y\+S\+\_\+\+I\+N\+FO}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{class_l_o_g_a3d058c5b0f230b74eaff5e9aa768a45a}\label{class_l_o_g_a3d058c5b0f230b74eaff5e9aa768a45a}} 
+\index{LOG@{LOG}!get\_basic@{get\_basic}}
+\index{get\_basic@{get\_basic}!LOG@{LOG}}
+\doxysubsubsection{\texorpdfstring{get\_basic()}{get\_basic()}}
+{\footnotesize\ttfamily Q\+Map$<$ Q\+String, Q\+String $>$ L\+O\+G\+::get\+\_\+basic (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+zwraca mape nazw i ich wartosci 
+
+basic -\/ to podstawowe dane\+:
+
+heder, date, message \begin{DoxyReturn}{Returns}
+Q\+Map$<$\+Q\+String,\+Q\+String$>$ -\/ mapa nazw i ich wartosci 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\href{https://doc.qt.io/qt-5/qmap.html}{\texttt{ Q\+Data\+Stream}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{class_l_o_g_a4977e6b9d30df28327fac5f29d3cf3d5}\label{class_l_o_g_a4977e6b9d30df28327fac5f29d3cf3d5}} 
+\index{LOG@{LOG}!get\_date@{get\_date}}
+\index{get\_date@{get\_date}!LOG@{LOG}}
+\doxysubsubsection{\texorpdfstring{get\_date()}{get\_date()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Q\+Date\+Time L\+O\+G\+::get\+\_\+date (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+zwraca date logu jako obiekt Q\+Date\+Time 
+
+\begin{DoxyReturn}{Returns}
+Q\+Date\+Time -\/ data logu 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_l_o_g_a693e53e35381a1f974da68977a59ba37}\label{class_l_o_g_a693e53e35381a1f974da68977a59ba37}} 
+\index{LOG@{LOG}!get\_date@{get\_date}}
+\index{get\_date@{get\_date}!LOG@{LOG}}
+\doxysubsubsection{\texorpdfstring{get\_date()}{get\_date()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Q\+String L\+O\+G\+::get\+\_\+date (\begin{DoxyParamCaption}\item[{Q\+String}]{format }\end{DoxyParamCaption})}
+
+
+
+zwraca date logu w formie napisu w podanym formacie 
+
+
+\begin{DoxyParams}{Parameters}
+{\em format} & -\/ format daty \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Q\+String -\/ data w podanym formacie 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_l_o_g_a2d303496a2d6ab22bf16b8c52edf0154}\label{class_l_o_g_a2d303496a2d6ab22bf16b8c52edf0154}} 
+\index{LOG@{LOG}!get\_date\_format@{get\_date\_format}}
+\index{get\_date\_format@{get\_date\_format}!LOG@{LOG}}
+\doxysubsubsection{\texorpdfstring{get\_date\_format()}{get\_date\_format()}}
+{\footnotesize\ttfamily Q\+String L\+O\+G\+::get\+\_\+date\+\_\+format (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+zwraca format daty logu w formie napisu 
+
+\begin{DoxyReturn}{Returns}
+Q\+String -\/ format daty 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_l_o_g_a34f9202b44ec226a8c9c66e5e47c094b}\label{class_l_o_g_a34f9202b44ec226a8c9c66e5e47c094b}} 
+\index{LOG@{LOG}!get\_header@{get\_header}}
+\index{get\_header@{get\_header}!LOG@{LOG}}
+\doxysubsubsection{\texorpdfstring{get\_header()}{get\_header()}}
+{\footnotesize\ttfamily Q\+String L\+O\+G\+::get\+\_\+header (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+zwraca naglowek logu w formie napisu 
+
+\begin{DoxyReturn}{Returns}
+Q\+String -\/ naglowek logu 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_l_o_g_ab80e67e3bec341c8155fa832eeed4e0c}\label{class_l_o_g_ab80e67e3bec341c8155fa832eeed4e0c}} 
+\index{LOG@{LOG}!get\_message@{get\_message}}
+\index{get\_message@{get\_message}!LOG@{LOG}}
+\doxysubsubsection{\texorpdfstring{get\_message()}{get\_message()}}
+{\footnotesize\ttfamily Q\+String L\+O\+G\+::get\+\_\+message (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+zwraca wiadomosc logu w formie napisu 
+
+\begin{DoxyReturn}{Returns}
+Q\+String -\/ wiadomosc 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_l_o_g_a837b8dd69938245b50f3250c5204e9dd}\label{class_l_o_g_a837b8dd69938245b50f3250c5204e9dd}} 
+\index{LOG@{LOG}!get\_sys\_info@{get\_sys\_info}}
+\index{get\_sys\_info@{get\_sys\_info}!LOG@{LOG}}
+\doxysubsubsection{\texorpdfstring{get\_sys\_info()}{get\_sys\_info()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_s_y_s___i_n_f_o}{S\+Y\+S\+\_\+\+I\+N\+FO}}$\ast$ L\+O\+G\+::get\+\_\+sys\+\_\+info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+zwraca wskaźnik na obiekt typu \mbox{\hyperlink{class_s_y_s___i_n_f_o}{S\+Y\+S\+\_\+\+I\+N\+FO}} 
+
+umożliwia edycje generacji informacji o systemie \begin{DoxyReturn}{Returns}
+S\+Y\+S\+\_\+\+I\+N\+F\+O$\ast$ -\/ wskaźnik 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_s_y_s___i_n_f_o}{S\+Y\+S\+\_\+\+I\+N\+FO}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{class_l_o_g_af174e2e5b29a6a62840f4abcf92acdb9}\label{class_l_o_g_af174e2e5b29a6a62840f4abcf92acdb9}} 
+\index{LOG@{LOG}!get\_sys\_info\_map@{get\_sys\_info\_map}}
+\index{get\_sys\_info\_map@{get\_sys\_info\_map}!LOG@{LOG}}
+\doxysubsubsection{\texorpdfstring{get\_sys\_info\_map()}{get\_sys\_info\_map()}}
+{\footnotesize\ttfamily Q\+Map$<$ Q\+String, Q\+String $>$ L\+O\+G\+::get\+\_\+sys\+\_\+info\+\_\+map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+zwraca mape nazw i ich wartosci 
+
+sys\+\_\+info -\/ to dane przechowywane przez obiekt \mbox{\hyperlink{class_s_y_s___i_n_f_o}{S\+Y\+S\+\_\+\+I\+N\+FO}} \begin{DoxyReturn}{Returns}
+Q\+Map$<$\+Q\+String,\+Q\+String$>$ -\/ mapa nazw i ich wartosci 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_s_y_s___i_n_f_o}{S\+Y\+S\+\_\+\+I\+N\+FO}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{class_l_o_g_af87b8155dfd2176b5428169628a4d00a}\label{class_l_o_g_af87b8155dfd2176b5428169628a4d00a}} 
+\index{LOG@{LOG}!get\_type@{get\_type}}
+\index{get\_type@{get\_type}!LOG@{LOG}}
+\doxysubsubsection{\texorpdfstring{get\_type()}{get\_type()}}
+{\footnotesize\ttfamily Q\+String L\+O\+G\+::get\+\_\+type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+zwraca typ logu w formie napisu 
+
+\begin{DoxyReturn}{Returns}
+Q\+String -\/ typ logu 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_l_o_g_aed710165d3c2b74f9cd39bab26cf5da4}\label{class_l_o_g_aed710165d3c2b74f9cd39bab26cf5da4}} 
+\index{LOG@{LOG}!set\_date@{set\_date}}
+\index{set\_date@{set\_date}!LOG@{LOG}}
+\doxysubsubsection{\texorpdfstring{set\_date()}{set\_date()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void L\+O\+G\+::set\+\_\+date (\begin{DoxyParamCaption}\item[{Q\+Date\+Time}]{date }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ustawia date logu 
+
+
+\begin{DoxyParams}{Parameters}
+{\em date} & -\/ data w postaci typu Q\+Date\+Time \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\href{https://doc.qt.io/qt-5/qdatetime.html}{\texttt{ Q\+Date\+Time}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{class_l_o_g_afbd3caaa468a7d5a25b53c68d8a1f359}\label{class_l_o_g_afbd3caaa468a7d5a25b53c68d8a1f359}} 
+\index{LOG@{LOG}!set\_date@{set\_date}}
+\index{set\_date@{set\_date}!LOG@{LOG}}
+\doxysubsubsection{\texorpdfstring{set\_date()}{set\_date()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void L\+O\+G\+::set\+\_\+date (\begin{DoxyParamCaption}\item[{Q\+String}]{date,  }\item[{Q\+String}]{format }\end{DoxyParamCaption})}
+
+
+
+ustawia date logu 
+
+
+\begin{DoxyParams}{Parameters}
+{\em date} & -\/ data w postaci napisu \\
+\hline
+{\em format} & -\/ format daty, w jakim jest podana data w pierwszym parametrze, ustawiany jest jako domyslny \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_g_ab51d360d48b5132a953b30549ce0cd07}\label{class_l_o_g_ab51d360d48b5132a953b30549ce0cd07}} 
+\index{LOG@{LOG}!set\_date\_format@{set\_date\_format}}
+\index{set\_date\_format@{set\_date\_format}!LOG@{LOG}}
+\doxysubsubsection{\texorpdfstring{set\_date\_format()}{set\_date\_format()}}
+{\footnotesize\ttfamily void L\+O\+G\+::set\+\_\+date\+\_\+format (\begin{DoxyParamCaption}\item[{Q\+String}]{format }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ustawia domyslny format daty 
+
+
+\begin{DoxyParams}{Parameters}
+{\em format} & -\/ format daty w postaci napisu \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_g_ab725f8ae1a93f465674f0d568a2c0ee9}\label{class_l_o_g_ab725f8ae1a93f465674f0d568a2c0ee9}} 
+\index{LOG@{LOG}!set\_header@{set\_header}}
+\index{set\_header@{set\_header}!LOG@{LOG}}
+\doxysubsubsection{\texorpdfstring{set\_header()}{set\_header()}}
+{\footnotesize\ttfamily void L\+O\+G\+::set\+\_\+header (\begin{DoxyParamCaption}\item[{Q\+String}]{header }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ustawia naglowek logu 
+
+
+\begin{DoxyParams}{Parameters}
+{\em header} & -\/ naglowek logu \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_g_a56dc84c6245bbca0a561bdbb35d74c1d}\label{class_l_o_g_a56dc84c6245bbca0a561bdbb35d74c1d}} 
+\index{LOG@{LOG}!set\_message@{set\_message}}
+\index{set\_message@{set\_message}!LOG@{LOG}}
+\doxysubsubsection{\texorpdfstring{set\_message()}{set\_message()}}
+{\footnotesize\ttfamily void L\+O\+G\+::set\+\_\+message (\begin{DoxyParamCaption}\item[{Q\+String}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ustawia wiadomosc logu 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & -\/ wiadomosc logu \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_l_o_g_a1e92de257e73a5ba934694cec6d3fd50}\label{class_l_o_g_a1e92de257e73a5ba934694cec6d3fd50}} 
+\index{LOG@{LOG}!set\_type@{set\_type}}
+\index{set\_type@{set\_type}!LOG@{LOG}}
+\doxysubsubsection{\texorpdfstring{set\_type()}{set\_type()}}
+{\footnotesize\ttfamily void L\+O\+G\+::set\+\_\+type (\begin{DoxyParamCaption}\item[{Q\+String}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ustawia typ logu 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & -\/ typ \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Programowanie/\+Projekty/\+C++/logs\+\_\+library/L\+O\+G.\+h\item 
+D\+:/\+Programowanie/\+Projekty/\+C++/logs\+\_\+library/L\+O\+G.\+cpp\end{DoxyCompactItemize}
