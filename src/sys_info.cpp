@@ -1,4 +1,4 @@
-#include "sys_info.h"
+#include "include/sys_info.h"
 
 SYS_INFO::SYS_INFO()
 {

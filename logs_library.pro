@@ -17,24 +17,24 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    directserver.cpp \
-    FILE_STRUCT.cpp \
-    iconnector.cpp \
-    LOG.cpp \
-    logs.cpp \
-    sys_info.cpp \
-    watcher.cpp
+    src/directserver.cpp \
+    src/FILE_STRUCT.cpp \
+    src/iconnector.cpp \
+    src/LOG.cpp \
+    src/logs.cpp \
+    src/sys_info.cpp \
+    src/watcher.cpp
 
 HEADERS += \
-    directserver.h \
-    FILE_STRUCT.h \
-    iconnector.h \
-    LOG.h \
-    logs.h \
-    logs_library_global.h \
-    logs_library.h \
-    sys_info.h \
-    watcher.h
+    include/FILE_STRUCT.h \
+    include/iconnector.h \
+    include/LOG.h \
+    include/logs.h \
+    include/logs_library_global.h \
+    include/logs_library.h \
+    include/sys_info.h \
+    include/watcher.h \
+    include/directserver.h
 
 TRANSLATIONS += \
     logs_library_pl_PL.ts
@@ -48,9 +48,5 @@ unix {
 win32:CONFIG(release, debug|release): LIBS += -lpsapi
 else:win32:CONFIG(debug, debug|release): LIBS += -lpsapi
 
-#win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../build-logs_library-Nienazwany-Debug/release/ -llogs_library
-#else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../build-logs_library-Nienazwany-Debug/debug/ -llogs_library
-#else:unix: LIBS += -L$$PWD/../build-logs_library-Nienazwany-Debug/ -llogs_library
-
-INCLUDEPATH += $$PWD/../
-DEPENDPATH += $$PWD/../
+INCLUDEPATH += $$PWD/../include
+DEPENDPATH += $$PWD/../include

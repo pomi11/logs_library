@@ -1,4 +1,4 @@
-#include "logs.h"
+#include "include/logs.h"
 #include <QFile>
 
 LOGS::LOGS()
