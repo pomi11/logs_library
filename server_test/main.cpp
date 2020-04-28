@@ -1,5 +1,5 @@
 #include <QCoreApplication>
-#include "../directserver.h"
+#include "../include/directserver.h"
 #include <QDebug>
 
 void start()

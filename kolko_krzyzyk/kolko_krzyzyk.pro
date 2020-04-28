@@ -48,9 +48,10 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../C++/logs_library/debug_win/release/ -llogs_library
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../C++/logs_library/debug_win/debug/ -llogs_library
-else:unix: LIBS += -L$$PWD/../../../C++/logs_library/debug_win/ -llogs_library
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/lib/ -llogs_library
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/lib/ -llogs_library
+else:unix: LIBS += -L$$PWD/lib/ -llogs_library
 
 INCLUDEPATH += $$PWD/include
 DEPENDPATH += $$PWD/include

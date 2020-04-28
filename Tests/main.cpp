@@ -1,5 +1,5 @@
 #include <QCoreApplication>
-#include "logs.h"
+#include "../include/logs.h"
 #include <QTcpSocket>
 //#include <watcher.h>
 
@@ -115,7 +115,7 @@ int main(int argc, char *argv[])
     c.watch("QSTRING",&xd);
     while(1)
     {
-        Sleep(1);
+        Sleep(2);
         if(asd==59)
         {
             c.stop_watch("INT");
@@ -127,7 +127,7 @@ int main(int argc, char *argv[])
         asd++;
         g++;
         cde+=1;
-        xd = "Everybody down"+QString::number(g)+QString::number(asd)+QString::number(cde);
+        //xd = "Everybody down"+QString::number(g)+QString::number(asd)+QString::number(cde);
     }
 
 
