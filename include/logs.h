@@ -570,7 +570,7 @@ template<typename T> void LOGS::watch(QString name, T *val/*,RealWatcher<T> *rw*
     std::thread *tx=new std::thread(&LOGS::watching<T>,this,val,name/*,rw*/,tmp);
     tmp->set_first_thread(tx);
 
-    QThread::sleep(2);
+   // QThread::sleep(2);
     qDebug()<<"Watching started";
 };
 
